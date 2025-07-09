@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub Pro - Advanced Career Development Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>CareerHub Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="#forum"><i class="fas fa-users"></i> Community</a>
+                <a href="#resume-builder"><i class="fas fa-file-alt"></i> Resume Builder</a>
+                <a href="#postgrad"><i class="fas fa-graduation-cap"></i> Postgrad</a>
+                <a href="#quotes"><i class="fas fa-quote-left"></i> Quotes</a>
+                <a href="#hr-contacts"><i class="fas fa-address-book"></i> HR Contacts</a>
+                <a href="#projects"><i class="fas fa-lightbulb"></i> Projects</a>
+                <a href="#jobs"><i class="fas fa-briefcase"></i> Jobs</a>
+                <a href="#hackathons"><i class="fas fa-code"></i> Hackathons</a>
+            </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Elevate Your Career to <span class="highlight">New Heights</span></h1>
+                <p class="subtitle">Comprehensive tools, expert advice, and a supportive community to accelerate your professional journey</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="members-count">25,000+</div>
+                        <div class="stat-label">Community Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="jobs-count">1,200+</div>
+                        <div class="stat-label">Job Opportunities</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="success-rate">92%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#resume-builder" class="btn primary">
+                        <i class="fas fa-magic"></i> Build Your Resume
+                    </a>
+                    <a href="#forum" class="btn secondary">
+                        <i class="fas fa-comments"></i> Join Discussion
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Career Growth">
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Forum Section -->
+    <section id="forum" class="section">
+        <div class="container">
+            <h2 class="section-title">Career Insights & Community Forum</h2>
+            <p class="section-subtitle">Learn from industry leaders and engage with our growing community of professionals</p>
+            
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All Topics</button>
+                <button class="filter-btn" data-filter="tech">Tech Careers</button>
+                <button class="filter-btn" data-filter="leadership">Leadership</button>
+                <button class="filter-btn" data-filter="productivity">Productivity</button>
+                <button class="filter-btn" data-filter="interview">Interview Prep</button>
+            </div>
+            
+            <div class="forum-grid">
+                <!-- Featured Blog 1 -->
+                <div class="blog-card featured" data-category="tech">
+                    <div class="featured-badge">
+                        <i class="fas fa-star"></i> Featured
+                    </div>
+                    <div class="blog-header">
+                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Satya Nadella">
+                        <div>
+                            <h3>Satya Nadella</h3>
+                            <p class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar"></i> June 15, 2023</span>
+                                <span class="blog-comments"><i class="far fa-comment"></i> 142 comments</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4>The Future of Tech Careers in the AI Era</h4>
+                        <p>As we stand at the inflection point of the AI revolution, the most valuable skills will be those that combine deep technical expertise with creative problem-solving and emotional intelligence. In my experience leading Microsoft through this transformation, I've observed three key trends that will shape tech careers...</p>
+                        <ul class="blog-tags">
+                            <li>#AI</li>
+                            <li>#FutureOfWork</li>
+                            <li>#TechTrends</li>
+                        </ul>
+                    </div>
+                    <div class="blog-actions">
+                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
+                    </div>
+                </div>
+                
+                <!-- Blog 2 -->
+                <div class="blog-card" data-category="leadership">
+                    <div class="blog-header">
+                        <img src="https://media.licdn.com/dms/image/C5603AQH6w9Z2J0X9Zg/profile-displayphoto-shrink_800_800/0/1517286190665?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Sheryl Sandberg">
+                        <div>
+                            <h3>Sheryl Sandberg</h3>
+                            <p class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar"></i> May 28, 2023</span>
+                                <span class="blog-comments"><i class="far fa-comment"></i> 89 comments</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4>Navigating Career Transitions Successfully</h4>
+                        <p>After my transition from Google to Facebook (now Meta), I learned that career paths are rarely linear. The key to successful transitions lies in building transferable skills, maintaining strong networks, and developing resilience. In this post, I'll share the framework I've used to make career decisions...</p>
+                        <ul class="blog-tags">
+                            <li>#CareerChange</li>
+                            <li>#Networking</li>
+                            <li>#Leadership</li>
+                        </ul>
+                    </div>
+                    <div class="blog-actions">
+                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
+                    </div>
+                </div>
+                
+                <!-- Blog 3 -->
+                <div class="blog-card" data-category="productivity">
+                    <div class="blog-header">
+                        <img src="https://media.licdn.com/dms/image/C5603AQH6w9Z2J0X9Zg/profile-displayphoto-shrink_800_800/0/1517286190665?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Tim Ferriss">
+                        <div>
+                            <h3>Tim Ferriss</h3>
+                            <p class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar"></i> April 10, 2023</span>
+                                <span class="blog-comments"><i class="far fa-comment"></i> 203 comments</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4>The 4-Hour Workweek Principles for Career Growth</h4>
+                        <p>Many misunderstand my approach as being about working less. In reality, it's about working smarter to create disproportionate results. When applied to career development, these principles can help you 10x your productivity and impact. Here are the key lessons from interviewing hundreds of top performers...</p>
+                        <ul class="blog-tags">
+                            <li>#Productivity</li>
+                            <li>#TimeManagement</li>
+                            <li>#CareerGrowth</li>
+                        </ul>
+                    </div>
+                    <div class="blog-actions">
+                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
+                    </div>
+                </div>
+                
+                <!-- Blog 4 -->
+                <div class="blog-card" data-category="interview">
+                    <div class="blog-header">
+                        <img src="https://media.licdn.com/dms/image/C5603AQH6w9Z2J0X9Zg/profile-displayphoto-shrink_800_800/0/1517286190665?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Gayle McDowell">
+                        <div>
+                            <h3>Gayle McDowell</h3>
+                            <p class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar"></i> March 22, 2023</span>
+                                <span class="blog-comments"><i class="far fa-comment"></i> 76 comments</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4>Cracking the Coding Interview in 2023</h4>
+                        <p>Having interviewed thousands of candidates at Google and helped many more through my books, I've identified the patterns that separate successful candidates from others. The interview landscape has changed significantly in recent years. Here's my updated framework for technical interview preparation...</p>
+                        <ul class="blog-tags">
+                            <li>#InterviewPrep</li>
+                            <li>#Coding</li>
+                            <li>#TechJobs</li>
+                        </ul>
+                    </div>
+                    <div class="blog-actions">
+                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <a href="#" class="btn primary">
+                    <i class="fas fa-book-open"></i> View All Articles
+                </a>
+                <a href="#" class="btn secondary">
+                    <i class="fas fa-plus"></i> Start New Discussion
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Builder Section -->
+    <section id="resume-builder" class="section dark">
+        <div class="container">
+            <h2 class="section-title">AI-Powered Resume Builder</h2>
+            <p class="section-subtitle">Create a professional resume tailored to your target roles with our intelligent builder</p>
+            
+            <div class="resume-builder-container">
+                <div class="resume-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Basic Information</h4>
+                            <p>Your contact details and headline</p>
+                        </div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Experience</h4>
+                            <p>Your work history and achievements</p>
+                        </div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Education</h4>
+                            <p>Degrees and certifications</p>
+                        </div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Skills</h4>
+                            <p>Technical and soft skills</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resume-builder-content">
+                    <div class="resume-form-container">
+                        <form id="resumeForm" class="step-form active" data-step="1">
+                            <h3><i class="fas fa-user-circle"></i> Basic Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" placeholder="john@example.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" placeholder="+1 (123) 456-7890">
+                                </div>
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" id="location" placeholder="City, Country">
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkedin">LinkedIn</label>
+                                    <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                                </div>
+                                <div class="form-group">
+                                    <label for="portfolio">Portfolio/GitHub</label>
+                                    <input type="url" id="portfolio" placeholder="https://github.com/yourusername">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="headline">Professional Headline *</label>
+                                    <input type="text" id="headline" placeholder="e.g. Senior Software Engineer | Full Stack Developer" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="summary">Professional Summary *</label>
+                                    <textarea id="summary" rows="4" placeholder="Briefly describe your professional background, skills, and career goals (3-5 sentences)" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn next-btn" data-next="2">Next: Experience <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </form>
+                        
+                        <form id="experienceForm" class="step-form" data-step="2">
+                            <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                            <div class="experience-entries" id="experienceEntries">
+                                <!-- Experience entries will be added here -->
+                            </div>
+                            <button type="button" class="btn add-btn" id="addExperience">
+                                <i class="fas fa-plus"></i> Add Another Position
+                            </button>
+                            <div class="form-actions">
+                                <button type="button" class="btn prev-btn" data-prev="1">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button type="button" class="btn next-btn" data-next="3">
+                                    Next: Education <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <form id="educationForm" class="step-form" data-step="3">
+                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                            <div class="education-entries" id="educationEntries">
+                                <!-- Education entries will be added here -->
+                            </div>
+                            <button type="button" class="btn add-btn" id="addEducation">
+                                <i class="fas fa-plus"></i> Add Another Degree
+                            </button>
+                            <div class="form-actions">
+                                <button type="button" class="btn prev-btn" data-prev="2">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button type="button" class="btn next-btn" data-next="4">
+                                    Next: Skills <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <form id="skillsForm" class="step-form" data-step="4">
+                            <h3><i class="fas fa-tools"></i> Skills & Competencies</h3>
+                            <div class="form-group">
+                                <label for="technicalSkills">Technical Skills *</label>
+                                <div class="tags-input-container">
+                                    <div class="tags-input" id="technicalSkillsInput">
+                                        <input type="text" id="technicalSkills" placeholder="Add skills (e.g. JavaScript, Python, React)" class="tags-input-field">
+                                    </div>
+                                    <div class="suggestions" id="techSkillSuggestions">
+                                        <span>Popular: JavaScript</span>
+                                        <span>Python</span>
+                                        <span>React</span>
+                                        <span>SQL</span>
+                                        <span>Node.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="softSkills">Soft Skills</label>
+                                <div class="tags-input-container">
+                                    <div class="tags-input" id="softSkillsInput">
+                                        <input type="text" id="softSkills" placeholder="Add skills (e.g. Leadership, Communication)" class="tags-input-field">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="languages">Languages</label>
+                                <div class="tags-input-container">
+                                    <div class="tags-input" id="languagesInput">
+                                        <input type="text" id="languages" placeholder="Add languages (e.g. English, Spanish)" class="tags-input-field">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="certifications">Certifications</label>
+                                <textarea id="certifications" rows="3" placeholder="List any relevant certifications with issuing organization and year"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn prev-btn" data-prev="3">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button type="submit" class="btn primary">
+                                    <i class="fas fa-magic"></i> Generate Resume
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="resume-preview-container">
+                        <div class="resume-preview-header">
+                            <h3>Live Preview</h3>
+                            <div class="template-selector">
+                                <label for="templateSelect">Template:</label>
+                                <select id="templateSelect">
+                                    <option value="modern">Modern</option>
+                                    <option value="professional">Professional</option>
+                                    <option value="creative">Creative</option>
+                                    <option value="minimal">Minimal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="resume-preview" id="resumePreview">
+                            <div class="resume-template modern" id="resumeOutput">
+                                <div class="resume-header">
+                                    <h1 id="resumeName">Your Name</h1>
+                                    <p id="resumeHeadline">Professional Headline</p>
+                                    <div class="contact-info" id="resumeContact">
+                                        <span>email@example.com</span>
+                                        <span>•</span>
+                                        <span>(123) 456-7890</span>
+                                        <span>•</span>
+                                        <span>City, Country</span>
+                                    </div>
+                                    <div class="social-links" id="resumeSocial">
+                                        <a href="#">LinkedIn</a>
+                                        <span>•</span>
+                                        <a href="#">Portfolio</a>
+                                    </div>
+                                </div>
+                                <div class="resume-section">
+                                    <h2>PROFESSIONAL SUMMARY</h2>
+                                    <p id="resumeSummary">Experienced professional with expertise in multiple domains. Skilled in various technologies and methodologies with a proven track record of delivering results.</p>
+                                </div>
+                                <div class="resume-section">
+                                    <h2>WORK EXPERIENCE</h2>
+                                    <div id="resumeExperience">
+                                        <div class="experience-item">
+                                            <div class="experience-header">
+                                                <h3>Job Title</h3>
+                                                <span class="experience-date">Month Year - Present</span>
+                                            </div>
+                                            <div class="experience-company">Company Name, Location</div>
+                                            <ul class="experience-details">
+                                                <li>Responsibility or achievement description</li>
+                                                <li>Another responsibility or achievement</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="resume-section">
+                                    <h2>EDUCATION</h2>
+                                    <div id="resumeEducation">
+                                        <div class="education-item">
+                                            <h3>Degree Name</h3>
+                                            <div class="education-institution">Institution Name, Graduation Year</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="resume-section">
+                                    <h2>SKILLS</h2>
+                                    <div class="skills-container">
+                                        <div class="skills-column">
+                                            <h4>Technical Skills</h4>
+                                            <div id="resumeTechnicalSkills" class="skills-list">
+                                                <span>Skill 1</span>
+                                                <span>Skill 2</span>
+                                            </div>
+                                        </div>
+                                        <div class="skills-column">
+                                            <h4>Soft Skills</h4>
+                                            <div id="resumeSoftSkills" class="skills-list">
+                                                <span>Skill 1</span>
+                                                <span>Skill 2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-actions">
+                            <button id="downloadResume" class="btn primary" disabled>
+                                <i class="fas fa-download"></i> Download PDF
+                            </button>
+                            <button id="printResume" class="btn secondary" disabled>
+                                <i class="fas fa-print"></i> Print Resume
+                            </button>
+                            <button id="analyzeResume" class="btn secondary">
+                                <i class="fas fa-chart-line"></i> Analyze Strength
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Postgrad Profile Section -->
+    <section id="postgrad" class="section">
+        <div class="container">
+            <h2 class="section-title">Graduate School Profile Builder</h2>
+            <p class="section-subtitle">Create a compelling academic profile for graduate school applications</p>
+            
+            <div class="postgrad-builder-container">
+                <div class="postgrad-form-container">
+                    <form id="postgradForm">
+                        <div class="form-section">
+                            <h3><i class="fas fa-user-graduate"></i> Academic Background</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="pgName">Full Name *</label>
+                                    <input type="text" id="pgName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pgEmail">Email *</label>
+                                    <input type="email" id="pgEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pgUndergrad">Undergraduate Institution *</label>
+                                    <input type="text" id="pgUndergrad" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pgMajor">Major(s) *</label>
+                                    <input type="text" id="pgMajor" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pgGPA">GPA</label>
+                                    <input type="text" id="pgGPA" placeholder="4.0 scale">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pgGraduation">Expected Graduation *</label>
+                                    <input type="month" id="pgGraduation" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3><i class="fas fa-flask"></i> Research Experience</h3>
+                            <div id="researchEntries">
+                                <!-- Research entries will be added here -->
+                            </div>
+                            <button type="button" class="btn add-btn" id="addResearch">
+                                <i class="fas fa-plus"></i> Add Research Experience
+                            </button>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3><i class="fas fa-project-diagram"></i> Academic Projects</h3>
+                            <div id="projectEntries">
+                                <!-- Project entries will be added here -->
+                            </div>
+                            <button type="button" class="btn add-btn" id="addProject">
+                                <i class="fas fa-plus"></i> Add Academic Project
+                            </button>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3><i class="fas fa-trophy"></i> Publications & Awards</h3>
+                            <div class="form-group">
+                                <label for="pgPublications">Publications</label>
+                                <textarea id="pgPublications" rows="3" placeholder="Format: Authors. (Year). Title. Journal/Conference, Volume(Issue), Pages."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="pgAwards">Honors & Awards</label>
+                                <textarea id="pgAwards" rows="3" placeholder="List any academic honors, scholarships, or awards"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3><i class="fas fa-bullseye"></i> Academic Goals</h3>
+                            <div class="form-group">
+                                <label for="pgInterests">Research Interests *</label>
+                                <textarea id="pgInterests" rows="3" required placeholder="Describe your specific research interests and academic focus areas"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="pgGoals">Career Goals *</label>
+                                <textarea id="pgGoals" rows="3" required placeholder="Describe your short-term and long-term academic/career goals"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="pgPrograms">Target Graduate Programs</label>
+                                <textarea id="pgPrograms" rows="2" placeholder="List programs/institutions you're interested in"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary">
+                                <i class="fas fa-file-alt"></i> Generate Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="postgrad-preview-container">
+                    <div class="postgrad-preview-header">
+                        <h3>Academic Profile Preview</h3>
+                    </div>
+                    <div class="profile-template" id="profileOutput">
+                        <div class="profile-header">
+                            <h1 id="profileName">Your Name</h1>
+                            <div class="profile-contact" id="profileContact">
+                                <span>email@example.com</span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h2>EDUCATION</h2>
+                            <div id="profileEducation">
+                                <div class="education-item">
+                                    <h3>Bachelor of Science in Computer Science</h3>
+                                    <div class="institution">University Name, Expected May 2024</div>
+                                    <div class="gpa">GPA: 3.8/4.0</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h2>RESEARCH INTERESTS</h2>
+                            <p id="profileInterests">My research interests lie at the intersection of artificial intelligence and human-computer interaction, particularly in developing accessible AI systems that can adapt to diverse user needs.</p>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h2>RESEARCH EXPERIENCE</h2>
+                            <div id="profileResearch">
+                                <div class="research-item">
+                                    <h3>Undergraduate Research Assistant</h3>
+                                    <div class="research-details">
+                                        <span class="institution">University Lab Name</span>
+                                        <span class="date">June 2022 - Present</span>
+                                    </div>
+                                    <ul class="research-description">
+                                        <li>Assisted in developing novel algorithms for natural language processing under the guidance of Prof. Smith</li>
+                                        <li>Presented findings at the annual university research symposium</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h2>ACADEMIC PROJECTS</h2>
+                            <div id="profileProjects">
+                                <div class="project-item">
+                                    <h3>Machine Learning for Image Recognition</h3>
+                                    <div class="project-details">
+                                        <span class="course">Advanced Machine Learning Course</span>
+                                        <span class="date">Fall 2022</span>
+                                    </div>
+                                    <ul class="project-description">
+                                        <li>Developed a convolutional neural network achieving 94% accuracy on CIFAR-10 dataset</li>
+                                        <li>Implemented data augmentation techniques to improve model robustness</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h2>PUBLICATIONS</h2>
+                            <div id="profilePublications">
+                                <p>Doe, J., & Smith, A. (2023). "Novel Approach to NLP in Low-Resource Settings." Journal of Computational Linguistics, 15(2), 123-145.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h2>HONORS & AWARDS</h2>
+                            <div id="profileAwards">
+                                <p>Dean's List (All Semesters), University Merit Scholarship (2021-2023)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h2>CAREER GOALS</h2>
+                            <p id="profileGoals">I aim to pursue a PhD in Computer Science with a focus on Human-Centered AI. My long-term goal is to lead research at the intersection of AI and accessibility, developing technologies that empower diverse populations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <button id="downloadProfile" class="btn primary" disabled>
+                            <i class="fas fa-download"></i> Download Profile
+                        </button>
+                        <button id="sopGenerator" class="btn secondary">
+                            <i class="fas fa-magic"></i> Generate Statement of Purpose
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section id="quotes" class="section dark">
+        <div class="container">
+            <h2 class="section-title">Wisdom from Industry Leaders</h2>
+            <p class="section-subtitle">Inspirational quotes to motivate your career journey</p>
+            
+            <div class="quotes-carousel">
+                <div class="quote-card active" data-author="jobs">
+                    <div class="quote-text">
+                        "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle."
+                    </div>
+                    <div class="quote-author">
+                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Steve Jobs">
+                        <div class="author-info">
+                            <h4>Steve Jobs</h4>
+                            <p>Co-founder of Apple Inc.</p>
+                            <div class="author-bio">
+                                Steve Jobs (1955-2011) was an American entrepreneur and business magnate who co-founded Apple Computer. His vision for personal computing revolutionized multiple industries including computers, smartphones, music, and animation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote-card" data-author="musk">
+                    <div class="quote-text">
+                        "When something is important enough, you do it even if the odds are not in your favor. Failure is an option here. If things are not failing, you are not innovating enough."
+                    </div>
+                    <div class="quote-author">
+                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Elon Musk">
+                        <div class="author-info">
+                            <h4>Elon Musk</h4>
+                            <p>CEO of Tesla and SpaceX</p>
+                            <div class="author-bio">
+                                Elon Musk is a technology entrepreneur and investor who has founded or co-founded several companies including Tesla, SpaceX, Neuralink, and The Boring Company. He is known for his ambitious vision of the future spanning electric vehicles, space exploration, and artificial intelligence.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote-card" data-author="sandberg">
+                    <div class="quote-text">
+                        "If you're offered a seat on a rocket ship, don't ask what seat! Just get on. Career progression is not a ladder anymore; it's more like a jungle gym. Look for opportunities, take risks, and don't be afraid to pivot."
+                    </div>
+                    <div class="quote-author">
+                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Sheryl Sandberg">
+                        <div class="author-info">
+                            <h4>Sheryl Sandberg</h4>
+                            <p>COO of Facebook (Meta)</p>
+                            <div class="author-bio">
+                                Sheryl Sandberg is an American technology executive, activist, and author. She served as the chief operating officer of Facebook (now Meta) and is the founder of LeanIn.Org. Her book "Lean In" sparked global conversations about women in the workplace.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote-card" data-author="bezos">
+                    <div class="quote-text">
+                        "If you decide that you're going to do only the things you know are going to work, you're going to leave a lot of opportunity on the table. What really matters is, companies that don't continue to experiment, companies that don't embrace failure, they eventually get in a desperate position where the only thing they can do is a Hail Mary bet at the very end of their corporate existence."
+                    </div>
+                    <div class="quote-author">
+                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Jeff Bezos">
+                        <div class="author-info">
+                            <h4>Jeff Bezos</h4>
+                            <p>Founder of Amazon</p>
+                            <div class="author-bio">
+                                Jeff Bezos is an American entrepreneur who founded Amazon in 1994 as an online bookstore and grew it into the world's largest online retailer. His leadership transformed e-commerce and cloud computing through Amazon Web Services.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                    </div>
+                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="quote-categories">
+                <h3>Explore More Quotes By Topic:</h3>
+                <div class="category-tags">
+                    <a href="#" class="category-tag">Leadership</a>
+                    <a href="#" class="category-tag">Innovation</a>
+                    <a href="#" class="category-tag">Career Growth</a>
+                    <a href="#" class="category-tag">Resilience</a>
+                    <a href="#" class="category-tag">Work-Life Balance</a>
+                    <a href="#" class="category-tag">Entrepreneurship</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HR Contacts Section -->
+    <section id="hr-contacts" class="section">
+        <div class="container">
+            <h2 class="section-title">HR & Recruitment Contacts</h2>
+            <p class="section-subtitle">Direct connections to hiring managers at top companies</p>
+            
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search companies or positions...">
+                </div>
+                <div class="filter-dropdown">
+                    <select id="industryFilter">
+                        <option value="">All Industries</option>
+                        <option value="tech">Technology</option>
+                        <option value="finance">Finance</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="manufacturing">Manufacturing</option>
+                    </select>
+                </div>
+                <div class="filter-dropdown">
+                    <select id="locationFilter">
+                        <option value="">All Locations</option>
+                        <option value="us">United States</option>
+                        <option value="europe">Europe</option>
+                        <option value="asia">Asia</option>
+                        <option value="remote">Remote</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="contacts-grid">
+                <!-- Google Contact -->
+                <div class="contact-card" data-industry="tech" data-location="us">
+                    <div class="contact-company">
+                        <img src="https://logo.clearbit.com/google.com" alt="Google" class="company-logo">
+                        <div class="company-info">
+                            <h3>Google</h3>
+                            <div class="company-meta">
+                                <span><i class="fas fa-globe"></i> Mountain View, CA & Global</span>
+                                <span><i class="fas fa-industry"></i> Technology</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-person">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                            <div>
+                                <h4>Sarah Johnson</h4>
+                                <p class="contact-title">Senior Technical Recruiter</p>
+                            </div>
+                        </div>
+                        <div class="contact-methods">
+                            <p><i class="fas fa-envelope"></i> sarah.johnson@google.com</p>
+                            <p><i class="fas fa-phone"></i> (650) 253-0000 ext. 1234</p>
+                            <p><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/sarahjohnson</a></p>
+                        </div>
+                        <div class="contact-notes">
+                            <h5>Recruiting Focus:</h5>
+                            <p>Software Engineers (All Levels), Product Managers, UX Researchers</p>
+                        </div>
+                    </div>
+                    <div class="contact-actions">
+                        <button class="btn primary contact-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <button class="btn secondary save-btn">
+                            <i class="far fa-bookmark"></i> Save
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Microsoft Contact -->
+                <div class="contact-card" data-industry="tech" data-location="us">
+                    <div class="contact-company">
+                        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="company-logo">
+                        <div class="company-info">
+                            <h3>Microsoft</h3>
+                            <div class="company-meta">
+                                <span><i class="fas fa-globe"></i> Redmond, WA & Global</span>
+                                <span><i class="fas fa-industry"></i> Technology</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-person">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen">
+                            <div>
+                                <h4>Michael Chen</h4>
+                                <p class="contact-title">University Recruiting Lead</p>
+                            </div>
+                        </div>
+                        <div class="contact-methods">
+                            <p><i class="fas fa-envelope"></i> michael.chen@microsoft.com</p>
+                            <p><i class="fas fa-phone"></i> (425) 882-8080 ext. 5678</p>
+                            <p><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/michaelchen</a></p>
+                        </div>
+                        <div class="contact-notes">
+                            <h5>Recruiting Focus:</h5>
+                            <p>New Grad & Intern Hiring, Research Scientists, Cloud Solutions Architects</p>
+                        </div>
+                    </div>
+                    <div class="contact-actions">
+                        <button class="btn primary contact-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <button class="btn secondary save-btn">
+                            <i class="far fa-bookmark"></i> Save
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Goldman Sachs Contact -->
+                <div class="contact-card" data-industry="finance" data-location="us">
+                    <div class="contact-company">
+                        <img src="https://logo.clearbit.com/goldmansachs.com" alt="Goldman Sachs" class="company-logo">
+                        <div class="company-info">
+                            <h3>Goldman Sachs</h3>
+                            <div class="company-meta">
+                                <span><i class="fas fa-globe"></i> New York, NY & Global</span>
+                                <span><i class="fas fa-industry"></i> Financial Services</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-person">
+                            <img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Priya Patel">
+                            <div>
+                                <h4>Priya Patel</h4>
+                                <p class="contact-title">Campus Recruitment Director</p>
+                            </div>
+                        </div>
+                        <div class="contact-methods">
+                            <p><i class="fas fa-envelope"></i> priya.patel@gs.com</p>
+                            <p><i class="fas fa-phone"></i> (212) 902-1000 ext. 3456</p>
+                            <p><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/priyapatel</a></p>
+                        </div>
+                        <div class="contact-notes">
+                            <h5>Recruiting Focus:</h5>
+                            <p>Engineering (All Divisions), Investment Banking Analysts, Summer Interns</p>
+                        </div>
+                    </div>
+                    <div class="contact-actions">
+                        <button class="btn primary contact-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <button class="btn secondary save-btn">
+                            <i class="far fa-bookmark"></i> Save
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- More contacts would be listed here -->
+            </div>
+            
+            <div class="section-footer">
+                <div class="disclaimer">
+                    <i class="fas fa-info-circle"></i>
+                    <p>These contacts are provided for networking purposes only. Please be professional and respectful in your communications. Spam or inappropriate messages may result in account suspension.</p>
+                </div>
+                <a href="#" class="btn primary">
+                    <i class="fas fa-plus"></i> Request to Add a Contact
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Ideas Section -->
+    <section id="projects" class="section dark">
+        <div class="container">
+            <h2 class="section-title">Tech Project Ideas</h2>
+            <p class="section-subtitle">Hands-on projects to build your skills and portfolio</p>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="web">Web Development</button>
+                <button class="tab-btn" data-tab="ai">AI/ML</button>
+                <button class="tab-btn" data-tab="mobile">Mobile</button>
+                <button class="tab-btn" data-tab="data">Data Science</button>
+                <button class="tab-btn" data-tab="iot">IoT</button>
+                <button class="tab-btn" data-tab="blockchain">Blockchain</button>
+            </div>
+            
+            <div class="tab-content active" id="web">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>1. Personal Portfolio with CMS</h3>
+                        <div class="project-level intermediate">
+                            <i class="fas fa-bolt"></i> Intermediate
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Build a responsive portfolio website with a custom content management system that allows you to update projects, blog posts, and other content without touching code. Implement user authentication and a rich text editor for content creation.</p>
+                        <div class="project-details">
+                            <div class="project-skills">
+                                <h4>Skills You'll Build:</h4>
+                                <ul>
+                                    <li>Full-stack development</li>
+                                    <li>Database design</li>
+                                    <li>User authentication</li>
+                                    <li>API design</li>
+                                </ul>
+                            </div>
+                            <div class="project-tech">
+                                <h4>Technologies:</h4>
+                                <div class="tech-tags">
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                    <span>MongoDB</span>
+                                    <span>Express</span>
+                                    <span>JWT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-resources">
+                            <h4>Resources:</h4>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-link"></i> Design Inspiration</a></li>
+                                <li><a href="#"><i class="fab fa-github"></i> Starter Code</a></li>
+                                <li><a href="#"><i class="fas fa-video"></i> Tutorial Video</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn primary">
+                            <i class="far fa-bookmark"></i> Save Project
+                        </button>
+                        <button class="btn secondary">
+                            <i class="fas fa-users"></i> Find Collaborators
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>2. E-commerce Comparison Tool</h3>
+                        <div class="project-level advanced">
+                            <i class="fas fa-rocket"></i> Advanced
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Create a tool that compares prices across different e-commerce platforms for the same product. Implement web scraping to gather real-time pricing data, with features like price history tracking, alert notifications, and a recommendation engine.</p>
+                        <div class="project-details">
+                            <div class="project-skills">
+                                <h4>Skills You'll Build:</h4>
+                                <ul>
+                                    <li>Web scraping</li>
+                                    <li>Data processing</li>
+                                    <li>API integration</li>
+                                    <li>Performance optimization</li>
+                                </ul>
+                            </div>
+                            <div class="project-tech">
+                                <h4>Technologies:</h4>
+                                <div class="tech-tags">
+                                    <span>Python</span>
+                                    <span>BeautifulSoup</span>
+                                    <span>Flask</span>
+                                    <span>PostgreSQL</span>
+                                    <span>Redis</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-resources">
+                            <h4>Resources:</h4>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-link"></i> API Documentation</a></li>
+                                <li><a href="#"><i class="fab fa-github"></i> Scraper Examples</a></li>
+                                <li><a href="#"><i class="fas fa-file-pdf"></i> Project Roadmap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn primary">
+                            <i class="far fa-bookmark"></i> Save Project
+                        </button>
+                        <button class="btn secondary">
+                            <i class="fas fa-users"></i> Find Collaborators
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="ai">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>1. AI-powered Resume Analyzer</h3>
+                        <div class="project-level advanced">
+                            <i class="fas fa-rocket"></i> Advanced
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Develop a tool that analyzes resumes and provides suggestions for improvement based on job descriptions. Implement NLP to extract key skills and experiences, then compare against job requirements to generate a fit score and improvement recommendations.</p>
+                        <div class="project-details">
+                            <div class="project-skills">
+                                <h4>Skills You'll Build:</h4>
+                                <ul>
+                                    <li>Natural language processing</li>
+                                    <li>Machine learning</li>
+                                    <li>Text classification</li>
+                                    <li>Data visualization</li>
+                                </ul>
+                            </div>
+                            <div class="project-tech">
+                                <h4>Technologies:</h4>
+                                <div class="tech-tags">
+                                    <span>Python</span>
+                                    <span>NLTK</span>
+                                    <span>TensorFlow</span>
+                                    <span>Flask</span>
+                                    <span>D3.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn primary">
+                            <i class="far fa-bookmark"></i> Save Project
+                        </button>
+                        <button class="btn secondary">
+                            <i class="fas fa-users"></i> Find Collaborators
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other tab contents would be similar -->
+            
+            <div class="section-footer">
+                <a href="#" class="btn primary">
+                    <i class="fas fa-lightbulb"></i> Suggest a Project Idea
+                </a>
+                <a href="#" class="btn secondary">
+                    <i class="fas fa-trophy"></i> View Completed Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section id="jobs" class="section">
+        <div class="container">
+            <h2 class="section-title">Job Opportunities</h2>
+            <p class="section-subtitle">Curated listings from top employers worldwide</p>
+            
+            <div class="coming-soon-container">
+                <div class="coming-soon-content">
+                    <div class="coming-soon-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Job Board Launching August 2023</h3>
+                    <p class="coming-soon-text">We're building an advanced job matching platform that will connect you with the best opportunities based on your skills, experience, and career goals. Our system will feature:</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Personalized job recommendations</li>
+                        <li><i class="fas fa-check"></i> Salary estimation tools</li>
+                        <li><i class="fas fa-check"></i> Company culture insights</li>
+                        <li><i class="fas fa-check"></i> Application tracking system</li>
+                    </ul>
+                    <div class="notify-form">
+                        <h4>Get Early Access</h4>
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email address">
+                            <button class="btn primary">Notify Me</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hackathon Listings Section -->
+    <section id="hackathons" class="section dark">
+        <div class="container">
+            <h2 class="section-title">Hackathons & Coding Challenges</h2>
+            <p class="section-subtitle">Compete, learn, and showcase your skills</p>
+            
+            <div class="coming-soon-container">
+                <div class="coming-soon-content">
+                    <div class="coming-soon-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Hackathon Portal Coming Soon</h3>
+                    <p class="coming-soon-text">Our upcoming hackathon platform will feature:</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h4>Global Events Calendar</h4>
+                            <p>Find hackathons matching your interests and schedule</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Team Formation</h4>
+                            <p>Connect with other participants to form ideal teams</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h4>Prize Tracking</h4>
+                            <p>See what prizes and opportunities each event offers</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4>Learning Resources</h4>
+                            <p>Access tutorials and guides to prepare for events</p>
+                        </div>
+                    </div>
+                    <div class="countdown">
+                        <h4>Launching in:</h4>
+                        <div class="countdown-timer" id="launchCountdown">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="days">45</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="hours">12</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="minutes">30</span>
+                                <span class="countdown-label">Minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <div class="logo">
+                        <i class="fas fa-rocket"></i>
+                        <span>CareerHub Pro</span>
+                    </div>
+                    <p>Your comprehensive platform for career growth and professional development. We provide the tools, resources, and community to help you succeed at every stage of your career journey.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#forum"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
+                        <li><a href="#resume-builder"><i class="fas fa-chevron-right"></i> Resume Builder</a></li>
+                        <li><a href="#postgrad"><i class="fas fa-chevron-right"></i> Grad School Resources</a></li>
+                        <li><a href="#hr-contacts"><i class="fas fa-chevron-right"></i> HR Contacts</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Project Ideas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Career Guides</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Interview Prep</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Salary Negotiation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Skill Assessments</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Mentorship Program</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Career Street, San Francisco, CA 94107</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> contact@careerhubpro.com</p>
+                    <div class="newsletter">
+                        <h4>Subscribe to Newsletter</h4>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button class="btn primary">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2023 CareerHub Pro. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
