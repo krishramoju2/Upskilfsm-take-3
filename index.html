@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - Your Career Growth Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">CareerHub</a>
+            <div class="nav-links">
+                <a href="#forum">Community</a>
+                <a href="#resume-builder">Resume Builder</a>
+                <a href="#postgrad">Postgrad</a>
+                <a href="#quotes">Quotes</a>
+                <a href="#hr-contacts">HR Contacts</a>
+                <a href="#projects">Project Ideas</a>
+                <a href="#jobs">Jobs</a>
+                <a href="#hackathons">Hackathons</a>
+            </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Accelerate Your Career Growth</h1>
+            <p>Tools, resources and community to help you build an exceptional career</p>
+            <div class="cta-buttons">
+                <a href="#resume-builder" class="btn primary">Build Your Resume</a>
+                <a href="#forum" class="btn secondary">Join Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Forum Section -->
+    <section id="forum" class="section">
+        <div class="container">
+            <h2 class="section-title">Community Forum & Career Blogs</h2>
+            <div class="forum-grid">
+                <!-- Blog Card 1 -->
+                <div class="blog-card">
+                    <div class="blog-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Satya Nadella">
+                        <div>
+                            <h3>Satya Nadella</h3>
+                            <p class="blog-date">June 15, 2023</p>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4>The Future of Tech Careers</h4>
+                        <p>In this rapidly evolving landscape, the most valuable skills are those that combine technical expertise with the ability to learn and adapt...</p>
+                    </div>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+                
+                <!-- Blog Card 2 -->
+                <div class="blog-card">
+                    <div class="blog-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sheryl Sandberg">
+                        <div>
+                            <h3>Sheryl Sandberg</h3>
+                            <p class="blog-date">May 28, 2023</p>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4>Navigating Career Transitions</h4>
+                        <p>Career paths are rarely linear. The key to successful transitions is building transferable skills and maintaining strong networks...</p>
+                    </div>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+                
+                <!-- Blog Card 3 -->
+                <div class="blog-card">
+                    <div class="blog-header">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Elon Musk">
+                        <div>
+                            <h3>Elon Musk</h3>
+                            <p class="blog-date">April 10, 2023</p>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4>Building Skills That Matter</h4>
+                        <p>Focus on solving important problems. The market rewards those who create real value, not just those with impressive credentials...</p>
+                    </div>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <div class="section-footer">
+                <a href="#" class="btn primary">View All Blogs</a>
+                <a href="#" class="btn secondary">Join Forum Discussion</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Builder Section -->
+    <section id="resume-builder" class="section dark">
+        <div class="container">
+            <h2 class="section-title">Smart Resume Builder</h2>
+            <div class="resume-builder">
+                <div class="resume-form">
+                    <form id="resumeForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="summary">Professional Summary</label>
+                            <textarea id="summary" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Work Experience</label>
+                            <textarea id="experience" rows="4" placeholder="Company, Position, Duration, Responsibilities"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="education">Education</label>
+                            <textarea id="education" rows="3" placeholder="Degree, Institution, Year"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="skills">Skills</label>
+                            <input type="text" id="skills" placeholder="Comma separated list">
+                        </div>
+                        <button type="submit" class="btn primary">Generate Resume</button>
+                    </form>
+                </div>
+                <div class="resume-preview">
+                    <div class="resume-template" id="resumeOutput">
+                        <div class="resume-header">
+                            <h2 id="resumeName">Your Name</h2>
+                            <p id="resumeContact">Email | Phone</p>
+                        </div>
+                        <div class="resume-section">
+                            <h3>PROFESSIONAL SUMMARY</h3>
+                            <p id="resumeSummary">Experienced professional with expertise in multiple domains...</p>
+                        </div>
+                        <div class="resume-section">
+                            <h3>WORK EXPERIENCE</h3>
+                            <div id="resumeExperience">
+                                <p><strong>Company Name</strong> - Position (Year-Year)</p>
+                                <ul>
+                                    <li>Responsibility 1</li>
+                                    <li>Responsibility 2</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="resume-section">
+                            <h3>EDUCATION</h3>
+                            <div id="resumeEducation">
+                                <p><strong>Degree</strong> - Institution (Year)</p>
+                            </div>
+                        </div>
+                        <div class="resume-section">
+                            <h3>SKILLS</h3>
+                            <div id="resumeSkills">
+                                <span class="skill-tag">Skill 1</span>
+                                <span class="skill-tag">Skill 2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resume-actions">
+                        <button id="downloadResume" class="btn secondary" disabled>Download PDF</button>
+                        <button id="printResume" class="btn secondary" disabled>Print Resume</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Postgrad Profile Section -->
+    <section id="postgrad" class="section">
+        <div class="container">
+            <h2 class="section-title">Postgrad Profile Builder</h2>
+            <div class="postgrad-builder">
+                <div class="postgrad-form">
+                    <form id="postgradForm">
+                        <div class="form-group">
+                            <label for="pgName">Full Name</label>
+                            <input type="text" id="pgName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pgUndergrad">Undergraduate Degree</label>
+                            <input type="text" id="pgUndergrad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pgResearch">Research Interests</label>
+                            <textarea id="pgResearch" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="pgPublications">Publications (if any)</label>
+                            <textarea id="pgPublications" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="pgProjects">Academic Projects</label>
+                            <textarea id="pgProjects" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="pgGoals">Career Goals</label>
+                            <textarea id="pgGoals" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Generate Profile</button>
+                    </form>
+                </div>
+                <div class="postgrad-preview">
+                    <div class="profile-template" id="profileOutput">
+                        <div class="profile-header">
+                            <h2 id="profileName">Your Name</h2>
+                            <p id="profileDegree">Undergraduate Degree</p>
+                        </div>
+                        <div class="profile-section">
+                            <h3>RESEARCH INTERESTS</h3>
+                            <p id="profileResearch">Your research interests description...</p>
+                        </div>
+                        <div class="profile-section">
+                            <h3>PUBLICATIONS</h3>
+                            <div id="profilePublications">
+                                <p>Publication title, Journal/Conference, Year</p>
+                            </div>
+                        </div>
+                        <div class="profile-section">
+                            <h3>ACADEMIC PROJECTS</h3>
+                            <div id="profileProjects">
+                                <p><strong>Project Title</strong></p>
+                                <p>Project description and outcomes</p>
+                            </div>
+                        </div>
+                        <div class="profile-section">
+                            <h3>CAREER GOALS</h3>
+                            <p id="profileGoals">Your short-term and long-term career goals...</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button id="downloadProfile" class="btn secondary" disabled>Download Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section id="quotes" class="section dark">
+        <div class="container">
+            <h2 class="section-title">Inspirational Career Quotes</h2>
+            <div class="quotes-carousel">
+                <div class="quote-card active">
+                    <div class="quote-text">
+                        "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do."
+                    </div>
+                    <div class="quote-author">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Steve Jobs">
+                        <div>
+                            <h4>Steve Jobs</h4>
+                            <p>Co-founder, Apple</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">
+                        "Don't let the noise of others' opinions drown out your own inner voice. And most important, have the courage to follow your heart and intuition."
+                    </div>
+                    <div class="quote-author">
+                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Steve Jobs">
+                        <div>
+                            <h4>Steve Jobs</h4>
+                            <p>Co-founder, Apple</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">
+                        "The biggest risk is not taking any risk. In a world that's changing really quickly, the only strategy that is guaranteed to fail is not taking risks."
+                    </div>
+                    <div class="quote-author">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Mark Zuckerberg">
+                        <div>
+                            <h4>Mark Zuckerberg</h4>
+                            <p>CEO, Meta</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HR Contacts Section -->
+    <section id="hr-contacts" class="section">
+        <div class="container">
+            <h2 class="section-title">HR Contacts at Tech Companies</h2>
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <div class="contact-company">
+                        <img src="https://logo.clearbit.com/google.com" alt="Google" class="company-logo">
+                        <h3>Google</h3>
+                    </div>
+                    <div class="contact-details">
+                        <p><strong>HR Representative:</strong> Sarah Johnson</p>
+                        <p><strong>Email:</strong> sarah.johnson@google.com</p>
+                        <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/sarahjohnson</a></p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-company">
+                        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="company-logo">
+                        <h3>Microsoft</h3>
+                    </div>
+                    <div class="contact-details">
+                        <p><strong>HR Representative:</strong> Michael Chen</p>
+                        <p><strong>Email:</strong> michael.chen@microsoft.com</p>
+                        <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/michaelchen</a></p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-company">
+                        <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" class="company-logo">
+                        <h3>Amazon</h3>
+                    </div>
+                    <div class="contact-details">
+                        <p><strong>HR Representative:</strong> Priya Patel</p>
+                        <p><strong>Email:</strong> priya.patel@amazon.com</p>
+                        <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/priyapatel</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <p><i class="fas fa-info-circle"></i> These contacts are for demonstration purposes only. Please reach out through official company channels.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Ideas Section -->
+    <section id="projects" class="section dark">
+        <div class="container">
+            <h2 class="section-title">Tech Project Ideas</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="web">Web Development</button>
+                <button class="tab-btn" data-tab="ai">AI/ML</button>
+                <button class="tab-btn" data-tab="mobile">Mobile</button>
+                <button class="tab-btn" data-tab="data">Data Science</button>
+            </div>
+            <div class="tab-content active" id="web">
+                <div class="project-card">
+                    <h3>1. Personal Portfolio with CMS</h3>
+                    <p>Build a portfolio website with a custom content management system that allows you to update projects without coding.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>2. E-commerce Comparison Tool</h3>
+                    <p>Create a tool that compares prices across different e-commerce platforms for the same product.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>BeautifulSoup</span>
+                        <span>Flask</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="ai">
+                <div class="project-card">
+                    <h3>1. AI-powered Resume Analyzer</h3>
+                    <p>Develop a tool that analyzes resumes and provides suggestions for improvement based on job descriptions.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>NLTK</span>
+                        <span>TensorFlow</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="mobile">
+                <div class="project-card">
+                    <h3>1. Habit Tracking App</h3>
+                    <p>Build a mobile app that helps users track and build positive habits with reminders and progress tracking.</p>
+                    <div class="project-tech">
+                        <span>Flutter</span>
+                        <span>Firebase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="data">
+                <div class="project-card">
+                    <h3>1. COVID-19 Data Visualization</h3>
+                    <p>Create interactive visualizations of COVID-19 data trends across different countries and regions.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>Plotly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section id="jobs" class="section">
+        <div class="container">
+            <h2 class="section-title">Job Listings</h2>
+            <div class="coming-soon">
+                <div class="coming-soon-content">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Exciting Job Opportunities Coming Soon!</h3>
+                    <p>We're curating the best tech jobs from top companies. Check back in a few days.</p>
+                    <button class="btn primary">Notify Me When Live</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hackathon Listings Section -->
+    <section id="hackathons" class="section dark">
+        <div class="container">
+            <h2 class="section-title">Hackathon Listings</h2>
+            <div class="coming-soon">
+                <div class="coming-soon-content">
+                    <i class="fas fa-code"></i>
+                    <h3>Hackathons Portal Launching Soon!</h3>
+                    <p>Get ready to participate in exciting coding challenges and win amazing prizes.</p>
+                    <button class="btn primary">Notify Me When Live</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CareerHub</h3>
+                    <p>Your one-stop platform for career growth and development.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#forum">Community</a></li>
+                        <li><a href="#resume-builder">Resume Builder</a></li>
+                        <li><a href="#postgrad">Postgrad</a></li>
+                        <li><a href="#jobs">Jobs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@careerhub.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CareerHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
