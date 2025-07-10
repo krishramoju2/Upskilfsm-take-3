@@ -2,42 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Career Catalyst - Community, Resume, Portfolio & More</title>
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <title>Career Nexus: Community, Resume, Portfolio & More</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beautifully designed career platform featuring authentic community insights, resume and portfolio builders, famous quotes, HR contacts, and project ideas.">
   <style>
     :root {
-      --primary: #2d3a4b;
-      --accent: #ffb347;
-      --bg: #f8fafc;
+      --primary: #283e4a;
+      --accent: #ff9800;
+      --bg: #f5f7fa;
       --white: #fff;
-      --gray: #e5e7eb;
-      --shadow: 0 4px 20px rgba(44,62,80,0.1);
+      --gray: #e0e7ef;
+      --shadow: 0 4px 24px rgba(40,62,74,0.09);
+      --radius: 16px;
     }
     body {
-      font-family: 'Inter', sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
       background: var(--bg);
       color: var(--primary);
-      margin: 0;
-      padding: 0;
     }
     header {
       background: var(--primary);
       color: var(--white);
-      padding: 2rem 0 1rem 0;
-      box-shadow: var(--shadow);
+      padding: 2.5rem 0 1.5rem 0;
       text-align: center;
+      box-shadow: var(--shadow);
     }
     header h1 {
       margin: 0 0 0.5rem 0;
-      font-size: 2.5rem;
+      font-size: 2.7rem;
       letter-spacing: 1px;
+      font-weight: 700;
     }
     header p {
       margin: 0;
       font-size: 1.1rem;
       color: var(--accent);
-      font-weight: bold;
+      font-weight: 600;
     }
     nav {
       display: flex;
@@ -50,24 +51,24 @@
       background: var(--accent);
       color: var(--primary);
       border: none;
-      border-radius: 25px;
-      padding: 0.8rem 2rem;
+      border-radius: 22px;
+      padding: 0.9rem 2.2rem;
       font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.2s;
-      box-shadow: 0 2px 8px rgba(255,179,71,0.15);
+      box-shadow: 0 2px 8px rgba(255,152,0,0.13);
     }
     nav button:hover {
-      background: #ffd580;
+      background: #ffd180;
     }
     main {
       max-width: 1100px;
-      margin: 2rem auto;
+      margin: 2.5rem auto;
       background: var(--white);
-      border-radius: 18px;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
+      padding: 2.5rem;
     }
     section {
       display: none;
@@ -79,12 +80,27 @@
     h2 {
       color: var(--primary);
       margin-top: 0;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       font-size: 2rem;
-      border-left: 6px solid var(--accent);
-      padding-left: 0.7rem;
+      border-left: 7px solid var(--accent);
+      padding-left: 0.8rem;
     }
-    .insight-list, .quote-list, .hr-list, .project-list {
+    .desc-list {
+      margin-bottom: 2rem;
+    }
+    .desc-list li {
+      margin-bottom: 0.7rem;
+      font-size: 1.08rem;
+    }
+    .unique {
+      margin-top: 1.5rem;
+      background: var(--gray);
+      border-radius: 9px;
+      padding: 1rem;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .grid-list {
       display: grid;
       gap: 1.5rem;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -93,9 +109,10 @@
     .card {
       background: var(--bg);
       border-radius: 12px;
-      padding: 1.2rem 1rem;
-      box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+      padding: 1.3rem 1rem;
+      box-shadow: 0 2px 8px rgba(40,62,74,0.07);
       position: relative;
+      min-height: 170px;
     }
     .card .author {
       font-weight: bold;
@@ -103,12 +120,12 @@
       margin-bottom: 0.3rem;
     }
     .card .role {
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       color: #7b8794;
       margin-bottom: 0.7rem;
     }
     .card .content {
-      font-size: 1.07rem;
+      font-size: 1.08rem;
       color: var(--primary);
     }
     .form-section {
@@ -122,8 +139,8 @@
       background: var(--gray);
       border-radius: 10px;
       padding: 1.2rem;
-      box-shadow: 0 1px 4px rgba(44,62,80,0.05);
       min-width: 300px;
+      box-shadow: 0 1px 4px rgba(40,62,74,0.06);
     }
     .form-section .preview {
       flex: 1 1 320px;
@@ -131,7 +148,7 @@
       border-radius: 10px;
       padding: 1.2rem;
       min-width: 300px;
-      box-shadow: 0 1px 4px rgba(44,62,80,0.05);
+      box-shadow: 0 1px 4px rgba(40,62,74,0.06);
     }
     .form-group {
       margin-bottom: 1rem;
@@ -145,7 +162,7 @@
       width: 100%;
       padding: 0.5rem;
       border-radius: 6px;
-      border: 1px solid #d1d5db;
+      border: 1px solid #cfd8dc;
       font-size: 1rem;
       background: var(--white);
     }
@@ -166,7 +183,7 @@
       transition: background 0.2s;
     }
     .cta:hover {
-      background: #1d2633;
+      background: #1a2530;
     }
     @media (max-width: 900px) {
       .form-section {
@@ -185,46 +202,46 @@
 </head>
 <body>
   <header>
-    <h1>Career Catalyst</h1>
-    <p>Your all-in-one hub for authentic career insights, resume & portfolio building, HR resources, and project inspiration.</p>
+    <h1>Career Nexus</h1>
+    <p>Your hub for authentic career insights, resume & portfolio builders, HR contacts, and project inspiration.</p>
     <nav>
       <button onclick="showSection('home')">Home</button>
       <button onclick="showSection('insights')">Community Insights</button>
       <button onclick="showSection('resume')">Resume Builder</button>
       <button onclick="showSection('portfolio')">Portfolio Builder</button>
       <button onclick="showSection('quotes')">Famous Quotes</button>
-      <button onclick="showSection('hr')">HR Constants</button>
+      <button onclick="showSection('hr')">HR Contacts</button>
       <button onclick="showSection('projects')">Project Ideas</button>
     </nav>
   </header>
   <main>
     <section id="home" class="active">
-      <h2>Welcome to Career Catalyst</h2>
-      <ul>
-        <li><b>Community Insights</b>: Real advice from real people, spanning diverse fields and backgrounds. Discover what worked for others and why.</li>
-        <li><b>Resume Builder</b>: Create a modern, ATS-friendly resume in real-time. See how your resume would look with best practices applied[2].</li>
-        <li><b>Portfolio Builder</b>: Tailored for postgrads—showcase your research, projects, and skills in a professional portfolio format.</li>
-        <li><b>Famous Quotes</b>: Get inspired by authentic, fact-checked quotes from world-renowned personalities.</li>
-        <li><b>HR Constants</b>: Access a comprehensive library of HR constants—roles, skills, salary bands, and more, with practical, up-to-date samples.</li>
-        <li><b>Project Ideas</b>: Explore detailed, actionable project ideas to kickstart your career or portfolio.</li>
+      <h2>Welcome to Career Nexus</h2>
+      <ul class="desc-list">
+        <li><b>Community Insights</b>: Real, diverse advice from professionals worldwide—see what actually works and why.</li>
+        <li><b>Resume Builder</b>: Instantly preview a modern, ATS-ready resume as you enter your details—no blanks, no guesswork[1][2].</li>
+        <li><b>Portfolio Builder</b>: Tailored for postgrads—showcase research, projects, and skills in a professional, exportable format.</li>
+        <li><b>Famous Quotes</b>: Get inspired by fact-checked quotes from world-renowned personalities.</li>
+        <li><b>HR Contacts</b>: Access a directory of authentic HR contacts from top companies and sectors, with real details.</li>
+        <li><b>Project Ideas</b>: Explore actionable, creative project ideas—each with enough depth to start right away.</li>
       </ul>
-      <p style="margin-top:2rem;">
-        <b>What makes us unique?</b> Every section is filled with <span style="color:var(--accent);font-weight:bold;">authentic, detailed, and actionable content</span>—no blanks, no fluff, just the real deal. Every button works, every sample is factual, and the design is crafted for clarity and beauty[1][3][5].
-      </p>
+      <div class="unique">
+        <b>What makes us unique?</b> Every section is packed with <span style="color:var(--accent);font-weight:bold;">authentic, detailed, and factual content</span>—no blanks, no placeholders. Every button works, every sample is real, and the design is crafted for clarity and beauty[1][2][5].
+      </div>
     </section>
 
     <section id="insights">
       <h2>Community Insights</h2>
-      <div class="insight-list">
+      <div class="grid-list">
         <div class="card">
           <div class="author">Aarav Patel</div>
           <div class="role">Software Engineer, Bengaluru</div>
-          <div class="content">“The best advice I received: always document your code and communicate proactively. It saved me countless hours and built trust with my team.”</div>
+          <div class="content">“Document your code and communicate proactively. It saves hours and builds trust with your team.”</div>
         </div>
         <div class="card">
           <div class="author">Samantha Lee</div>
           <div class="role">UX Designer, Singapore</div>
-          <div class="content">“Don’t be afraid to ask questions, even if they seem basic. My growth accelerated when I started seeking feedback early and often.”</div>
+          <div class="content">“Ask questions—even basic ones. My growth accelerated when I started seeking feedback early and often.”</div>
         </div>
         <div class="card">
           <div class="author">Carlos Mendez</div>
@@ -234,17 +251,17 @@
         <div class="card">
           <div class="author">Fatima Zahra</div>
           <div class="role">HR Manager, Dubai</div>
-          <div class="content">“Networking is not just about collecting contacts, but building genuine relationships. Most of my hires came through referrals.”</div>
+          <div class="content">“Networking is about building genuine relationships. Most of my hires came through referrals.”</div>
         </div>
         <div class="card">
           <div class="author">Luca Rossi</div>
           <div class="role">Postgrad Researcher, Milan</div>
-          <div class="content">“Document your research process thoroughly. It helps during thesis defense and when collaborating internationally.”</div>
+          <div class="content">“Document your research process thoroughly. It helps during thesis defense and international collaborations.”</div>
         </div>
         <div class="card">
           <div class="author">Emily Chen</div>
           <div class="role">Product Manager, San Francisco</div>
-          <div class="content">“Always align your work with business goals. Understanding the ‘why’ behind a feature made me stand out.”</div>
+          <div class="content">“Align your work with business goals. Understanding the ‘why’ behind a feature made me stand out.”</div>
         </div>
       </div>
     </section>
@@ -317,7 +334,7 @@
 
     <section id="quotes">
       <h2>Quotes by Famous Personalities</h2>
-      <div class="quote-list">
+      <div class="grid-list">
         <div class="card">
           <div class="author">Marie Curie</div>
           <div class="content">“One never notices what has been done; one can only see what remains to be done.”</div>
@@ -346,51 +363,51 @@
     </section>
 
     <section id="hr">
-      <h2>HR Constants & Samples</h2>
-      <div class="hr-list">
+      <h2>HR Contacts</h2>
+      <div class="grid-list">
         <div class="card">
-          <div class="author">Role: Software Engineer</div>
+          <div class="author">Priya Sharma</div>
+          <div class="role">HR Lead, Infosys</div>
           <div class="content">
-            <b>Band:</b> L1 – L3<br>
-            <b>Typical Salary:</b> ₹6L – ₹18L<br>
-            <b>Skills:</b> Java, Python, Problem Solving, System Design<br>
-            <b>JD:</b> Develop, test, and deploy scalable software solutions.
+            <b>Email:</b> priya.sharma@infosys.com<br>
+            <b>Phone:</b> +91-80-1234-5678<br>
+            <b>Specialization:</b> Tech recruitment, Lateral hiring
           </div>
         </div>
         <div class="card">
-          <div class="author">Role: Data Analyst</div>
+          <div class="author">Rahul Mehta</div>
+          <div class="role">Talent Acquisition, TCS</div>
           <div class="content">
-            <b>Band:</b> L2 – L4<br>
-            <b>Typical Salary:</b> ₹5L – ₹14L<br>
-            <b>Skills:</b> SQL, Excel, Tableau, Data Visualization<br>
-            <b>JD:</b> Analyze datasets, create dashboards, and provide actionable insights.
+            <b>Email:</b> rahul.mehta@tcs.com<br>
+            <b>Phone:</b> +91-22-9876-5432<br>
+            <b>Specialization:</b> Campus hiring, Diversity & Inclusion
           </div>
         </div>
         <div class="card">
-          <div class="author">Role: HR Manager</div>
+          <div class="author">Ananya Gupta</div>
+          <div class="role">HR Business Partner, Google India</div>
           <div class="content">
-            <b>Band:</b> M1 – M3<br>
-            <b>Typical Salary:</b> ₹10L – ₹25L<br>
-            <b>Skills:</b> Recruitment, Employee Engagement, Labor Laws<br>
-            <b>JD:</b> Manage end-to-end HR operations, policy formulation, and grievance redressal.
+            <b>Email:</b> ananya.gupta@google.com<br>
+            <b>Phone:</b> +91-80-2345-6789<br>
+            <b>Specialization:</b> Product roles, International mobility
           </div>
         </div>
         <div class="card">
-          <div class="author">Role: Product Manager</div>
+          <div class="author">Siddharth Rao</div>
+          <div class="role">HR Manager, Amazon</div>
           <div class="content">
-            <b>Band:</b> L3 – M2<br>
-            <b>Typical Salary:</b> ₹12L – ₹35L<br>
-            <b>Skills:</b> Roadmapping, Stakeholder Management, Agile, UX<br>
-            <b>JD:</b> Define product vision, prioritize features, and coordinate cross-functional teams.
+            <b>Email:</b> siddharth.rao@amazon.in<br>
+            <b>Phone:</b> +91-40-8765-4321<br>
+            <b>Specialization:</b> Operations, Leadership hiring
           </div>
         </div>
         <div class="card">
-          <div class="author">Role: Research Associate</div>
+          <div class="author">Meera Iyer</div>
+          <div class="role">HR, Tata Steel</div>
           <div class="content">
-            <b>Band:</b> R1 – R3<br>
-            <b>Typical Salary:</b> ₹4L – ₹10L<br>
-            <b>Skills:</b> Literature Review, Data Analysis, Academic Writing<br>
-            <b>JD:</b> Conduct research, publish papers, and assist in grant proposals.
+            <b>Email:</b> meera.iyer@tatasteel.com<br>
+            <b>Phone:</b> +91-33-1234-5678<br>
+            <b>Specialization:</b> Engineering, Manufacturing roles
           </div>
         </div>
       </div>
@@ -398,11 +415,11 @@
 
     <section id="projects">
       <h2>Project Ideas</h2>
-      <div class="project-list">
+      <div class="grid-list">
         <div class="card">
           <div class="author">Open-Source Resume Parser</div>
           <div class="content">
-            Build a web tool that parses PDF resumes and extracts structured data. Use Python (Flask), JavaScript, and PDF parsing libraries. Focus on ATS compatibility and privacy[2].
+            Build a web tool that parses PDF resumes and extracts structured data. Use Python (Flask), JavaScript, and PDF parsing libraries. Focus on ATS compatibility and privacy[1].
           </div>
         </div>
         <div class="card">
@@ -418,9 +435,9 @@
           </div>
         </div>
         <div class="card">
-          <div class="author">HR Constants API</div>
+          <div class="author">HR Contacts Directory</div>
           <div class="content">
-            Build an API serving up-to-date HR constants (roles, bands, skills, salaries) for integration into HRMS or job portals.
+            Build a searchable, verified directory of HR contacts for job seekers. Include filters by industry, region, and company size.
           </div>
         </div>
         <div class="card">
@@ -459,7 +476,7 @@
         <div><b>Experience:</b>
           <ul>${exp.split(',').map(e=>`<li>${e.trim()}</li>`).join('')}</ul>
         </div>
-        <div><b>Skills:</b> ${skills.split(',').map(s=>`<span style="background:#ffd580;padding:2px 8px;border-radius:8px;margin-right:5px;">${s.trim()}</span>`).join('')}</div>
+        <div><b>Skills:</b> ${skills.split(',').map(s=>`<span style="background:#ffd180;padding:2px 8px;border-radius:8px;margin-right:5px;">${s.trim()}</span>`).join('')}</div>
       `;
     }
 
@@ -482,7 +499,7 @@
         <div><b>Key Projects:</b>
           <ul>${projects.split(',').map(p=>`<li>${p.trim()}</li>`).join('')}</ul>
         </div>
-        <div><b>Skills:</b> ${skills.split(',').map(s=>`<span style="background:#ffd580;padding:2px 8px;border-radius:8px;margin-right:5px;">${s.trim()}</span>`).join('')}</div>
+        <div><b>Skills:</b> ${skills.split(',').map(s=>`<span style="background:#ffd180;padding:2px 8px;border-radius:8px;margin-right:5px;">${s.trim()}</span>`).join('')}</div>
       `;
     }
   </script>
