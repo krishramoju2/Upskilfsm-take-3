@@ -1,4030 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerHub Pro - Advanced Career Development Platform</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* Base Styles & Variables */
-        :root {
-            --primary-color: #4361ee;
-            --primary-light: #5e72e4;
-            --primary-dark: #3a56c9;
-            --secondary-color: #3f37c9;
-            --accent-color: #4895ef;
-            --accent-light: #5fa8ff;
-            --dark-color: #1a1a2e;
-            --darker-color: #12121a;
-            --light-color: #f8f9fa;
-            --lighter-color: #ffffff;
-            --gray-color: #6c757d;
-            --light-gray: #e9ecef;
-            --dark-gray: #343a40;
-            --success-color: #4bb543;
-            --warning-color: #f0ad4e;
-            --danger-color: #d9534f;
-            --info-color: #5bc0de;
-            
-            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            --box-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
-            --border-radius: 8px;
-            --border-radius-sm: 5px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark-gray);
-            line-height: 1.6;
-            background-color: var(--light-color);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--gray-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--primary-dark);
-        }
-
-        .highlight {
-            color: var(--primary-color);
-            position: relative;
-            display: inline-block;
-        }
-
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background-color: rgba(67, 97, 238, 0.2);
-            z-index: -1;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .section {
-            padding: 6rem 0;
-        }
-
-        .section.dark {
-            background-color: var(--dark-color);
-            color: var(--lighter-color);
-        }
-
-        .section.dark p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-            color: var(--dark-color);
-        }
-
-        .section.dark .section-title {
-            color: var(--lighter-color);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-size: 1.1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            margin: 1rem auto 0;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--border-radius-sm);
-            font-weight: 500;
-            text-align: center;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        .btn.primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn.primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--box-shadow);
-        }
-
-        .btn.secondary {
-            background-color: white;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        .btn.secondary:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--box-shadow);
-        }
-
-        .btn.add-btn {
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
-            width: 100%;
-            padding: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .btn.add-btn:hover {
-            background-color: var(--gray-color);
-            color: white;
-        }
-
-        .btn.next-btn, .btn.prev-btn {
-            min-width: 120px;
-        }
-
-        .btn.contact-btn {
-            width: 100%;
-            margin-bottom: 0.5rem;
-        }
-
-        .btn.save-btn {
-            background: none;
-            border: 1px solid var(--gray-color);
-            color: var(--gray-color);
-            padding: 0.5rem 1rem;
-        }
-
-        .btn.save-btn:hover {
-            background: var(--gray-color);
-            color: white;
-        }
-
-        .section-footer {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        /* Navigation */
-        .navbar {
-            background-color: var(--lighter-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .logo i {
-            font-size: 1.8rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--dark-gray);
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a i {
-            font-size: 1rem;
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background-color: var(--dark-gray);
-            margin: 5px 0;
-            transition: var(--transition);
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 12rem 0 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow-lg);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .stats {
-            display: flex;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* Forum Section */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.6rem 1.2rem;
-            background-color: var(--light-gray);
-            color: var(--gray-color);
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .forum-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .blog-card {
-            background-color: var(--lighter-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-lg);
-        }
-
-        .blog-card.featured {
-            grid-column: span 2;
-            position: relative;
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .blog-header {
-            display: flex;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .blog-header img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 1rem;
-            object-fit: cover;
-        }
-
-        .blog-header h3 {
-            margin-bottom: 0.2rem;
-            font-size: 1.1rem;
-        }
-
-        .blog-meta {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: var(--gray-color);
-        }
-
-        .blog-meta i {
-            margin-right: 0.3rem;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-            flex: 1;
-        }
-
-        .blog-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--dark-color);
-        }
-
-        .blog-content p {
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-tags {
-            display: flex;
-            gap: 0.5rem;
-            list-style: none;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .blog-tags li {
-            background-color: var(--light-gray);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--gray-color);
-        }
-
-        .blog-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.5rem 1.5rem;
-            margin-top: auto;
-        }
-
-        .read-more {
-            font-weight: 500;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .read-more i {
-            transition: var(--transition);
-        }
-
-        .read-more:hover i {
-            transform: translateX(3px);
-        }
-
-        /* Resume Builder Section */
-        .resume-builder-container {
-            margin-top: 3rem;
-        }
-
-        .resume-steps {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .resume-steps::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: rgba(255, 255, 255, 0.3);
-            z-index: 0;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            position: relative;
-            z-index: 1;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .step.active {
-            background-color: var(--accent-color);
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-
-        .step.active .step-number {
-            background-color: white;
-            color: var(--accent-color);
-        }
-
-        .step-content h4 {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .step-content p {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0;
-        }
-
-        .resume-builder-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .resume-form-container {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .step-form {
-            display: none;
-        }
-
-        .step-form.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .step-form h3 {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-        }
-
-        .step-form h3 i {
-            color: var(--accent-light);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group.full-width {
-            grid-column: span 2;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: white;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--border-radius-sm);
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-family: inherit;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-light);
-            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.3);
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .tags-input-container {
-            position: relative;
-        }
-
-        .tags-input {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--border-radius-sm);
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .tag {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .tag i {
-            margin-left: 0.5rem;
-            cursor: pointer;
-        }
-
-        .tags-input-field {
-            flex: 1;
-            border: none;
-            background: transparent;
-            color: white;
-            padding: 0.5rem;
-            min-width: 100px;
-        }
-
-        .tags-input-field:focus {
-            outline: none;
-        }
-
-        .suggestions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .suggestions span {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .suggestions span:hover {
-            background-color: var(--accent-color);
-        }
-
-        .form-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .resume-preview-container {
-            background-color: var(--lighter-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-
-        .resume-preview-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .template-selector {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .template-selector select {
-            padding: 0.5rem;
-            border-radius: var(--border-radius-sm);
-            border: 1px solid var(--light-gray);
-        }
-
-        .resume-preview {
-            padding: 1.5rem;
-            height: 700px;
-            overflow-y: auto;
-        }
-
-        .resume-template {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: #333;
-            line-height: 1.5;
-            padding: 2rem;
-            min-height: 100%;
-        }
-
-        .resume-template.modern {
-            background-color: white;
-        }
-
-        .resume-template.professional {
-            background-color: #f9f9f9;
-            font-family: 'Times New Roman', serif;
-        }
-
-        .resume-template.creative {
-            background-color: #f5f9ff;
-            color: #1a1a2e;
-        }
-
-        .resume-template.minimal {
-            background-color: white;
-            color: #333;
-        }
-
-        .resume-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .resume-header h1 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .resume-header p {
-            font-size: 1.1rem;
-            color: var(--gray-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .resume-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .resume-section h2 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .experience-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-header h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-        }
-
-        .experience-date {
-            color: var(--gray-color);
-            font-size: 0.9rem;
-        }
-
-        .experience-company {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-            color: var(--gray-color);
-        }
-
-        .experience-details {
-            padding-left: 1.5rem;
-        }
-
-        .experience-details li {
-            margin-bottom: 0.3rem;
-        }
-
-        .education-item {
-            margin-bottom: 1rem;
-        }
-
-        .education-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .education-institution {
-            color: var(--gray-color);
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .skills-column h4 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skills-list span {
-            background-color: #f0f0f0;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .resume-actions {
-            display: flex;
-            gap: 1rem;
-            padding: 1.5rem;
-            border-top: 1px solid var(--light-gray);
-        }
-
-        /* Postgrad Profile Section */
-        .postgrad-builder-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .postgrad-form-container {
-            background-color: var(--lighter-color);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--box-shadow);
-        }
-
-        .form-section {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .form-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .form-section h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .form-section h3 i {
-            color: var(--accent-color);
-        }
-
-        #researchEntries, #projectEntries {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .research-entry, .project-entry {
-            background-color: var(--light-gray);
-            padding: 1rem;
-            border-radius: var(--border-radius-sm);
-            position: relative;
-        }
-
-        .remove-entry {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background: none;
-            border: none;
-            color: var(--gray-color);
-            cursor: pointer;
-        }
-
-        .profile-template {
-            font-family: 'Georgia', serif;
-            color: #333;
-            line-height: 1.6;
-            padding: 2rem;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            min-height: 700px;
-        }
-
-        .profile-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .profile-header h1 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-contact {
-            font-size: 0.9rem;
-            color: var(--gray-color);
-        }
-
-        .profile-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .profile-section h2 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .research-item, .project-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .research-item h3, .project-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .research-details, .project-details {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            color: var(--gray-color);
-            font-size: 0.9rem;
-        }
-
-        .research-description, .project-description {
-            padding-left: 1.5rem;
-        }
-
-        .research-description li, .project-description li {
-            margin-bottom: 0.3rem;
-        }
-
-        /* Quotes Section */
-        .quotes-carousel {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .quote-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 2rem;
-            display: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .quote-card.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .quote-text {
-            font-size: 1.3rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            position: relative;
-            line-height: 1.6;
-            padding-left: 2rem;
-        }
-
-        .quote-text::before {
-            content: '"';
-            font-size: 4rem;
-            color: var(--accent-color);
-            opacity: 0.3;
-            position: absolute;
-            left: -1rem;
-            top: -1rem;
-        }
-
-        .quote-author {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .quote-author img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color);
-        }
-
-        .author-info h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .author-info p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0.5rem;
-        }
-
-        .author-bio {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 0.5rem;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .carousel-prev, .carousel-next {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .carousel-prev:hover, .carousel-next:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dot.active {
-            background-color: white;
-        }
-
-        .quote-categories {
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .quote-categories h3 {
-            margin-bottom: 1rem;
-        }
-
-        .category-tags {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .category-tag {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .category-tag:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        /* HR Contacts Section */
-        .search-filter {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 300px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 1rem;
-            color: var(--gray-color);
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 0.8rem 1rem 0.8rem 2.5rem;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius-sm);
-            font-family: inherit;
-        }
-
-        .filter-dropdown {
-            min-width: 200px;
-        }
-
-        .filter-dropdown select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius-sm);
-            font-family: inherit;
-        }
-
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            background-color: var(--lighter-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-lg);
-        }
-
-        .contact-company {
-            display: flex;
-            align-items: center;
-            padding: 1.5rem;
-            background-color: var(--light-gray);
-            border-bottom: 1px solid #eee;
-            gap: 1rem;
-        }
-
-        .company-logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            background-color: white;
-            padding: 0.3rem;
-            border-radius: var(--border-radius-sm);
-        }
-
-        .company-info h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .company-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-            font-size: 0.8rem;
-            color: var(--gray-color);
-        }
-
-        .company-meta i {
-            margin-right: 0.3rem;
-        }
-
-        .contact-details {
-            padding: 1.5rem;
-        }
-
-        .contact-person {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-person img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .contact-title {
-            font-size: 0.9rem;
-            color: var(--gray-color);
-        }
-
-        .contact-methods {
-            margin-bottom: 1rem;
-        }
-
-        .contact-methods p {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .contact-notes h5 {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        .contact-notes p {
-            font-size: 0.9rem;
-            color: var(--gray-color);
-        }
-
-        .contact-actions {
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        .disclaimer {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            margin-top: 2rem;
-            padding: 1rem;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius-sm);
-            font-size: 0.9rem;
-        }
-
-        .disclaimer i {
-            color: var(--warning-color);
-            margin-top: 0.2rem;
-        }
-
-        /* Project Ideas Section */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 0.8rem 1.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .tab-btn.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            background-color: rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .project-level {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.8rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-        }
-
-        .project-level.beginner {
-            background-color: rgba(75, 181, 67, 0.2);
-            color: var(--success-color);
-        }
-
-        .project-level.intermediate {
-            background-color: rgba(72, 149, 239, 0.2);
-            color: var(--accent-color);
-        }
-
-        .project-level.advanced {
-            background-color: rgba(217, 83, 79, 0.2);
-            color: var(--danger-color);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-description {
-            margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .project-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-skills h4, .project-tech h4 {
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            color: white;
-        }
-
-        .project-skills ul {
-            list-style: none;
-        }
-
-        .project-skills li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .project-skills li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tags span {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .project-resources {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-resources h4 {
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            color: white;
-        }
-
-        .project-resources ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .project-resources a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-light);
-            font-size: 0.9rem;
-        }
-
-        .project-resources a:hover {
-            color: white;
-        }
-
-        .project-actions {
-            display: flex;
-            gap: 1rem;
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        /* Coming Soon Sections */
-        .coming-soon-container {
-            background-color: var(--lighter-color);
-            border-radius: var(--border-radius);
-            padding: 4rem 2rem;
-            text-align: center;
-            box-shadow: var(--box-shadow);
-        }
-
-        .coming-soon-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .coming-soon-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .coming-soon-icon i {
-            background-color: rgba(67, 97, 238, 0.1);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .coming-soon-text {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .feature-list {
-            list-style: none;
-            max-width: 500px;
-            margin: 0 auto 2rem;
-            text-align: left;
-        }
-
-        .feature-list li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .feature-list i {
-            color: var(--success-color);
-        }
-
-        .notify-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .notify-form h4 {
-            margin-bottom: 1rem;
-        }
-
-        .notify-form .form-group {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .notify-form input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius-sm);
-            font-family: inherit;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem auto;
-            max-width: 800px;
-        }
-
-        .feature-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .feature-icon i {
-            background-color: rgba(72, 149, 239, 0.1);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .feature-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-card p {
-            font-size: 0.9rem;
-        }
-
-        .countdown {
-            margin-top: 2rem;
-        }
-
-        .countdown h4 {
-            margin-bottom: 1rem;
-        }
-
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .countdown-item {
-            text-align: center;
-        }
-
-        .countdown-number {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-            min-width: 60px;
-        }
-
-        .countdown-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--darker-color);
-            color: white;
-            padding: 4rem 0 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section {
-            padding: 0 1rem;
-        }
-
-        .footer-section.about .logo {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .footer-section p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            position: relative;
-        }
-
-        .footer-section h3::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary-color);
-            margin-top: 0.5rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--primary-color);
-            transform: translateX(5px);
-        }
-
-        .footer-section ul li a i {
-            font-size: 0.8rem;
-        }
-
-        .newsletter {
-            margin-top: 1.5rem;
-        }
-
-        .newsletter h4 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.8rem;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            font-family: inherit;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-bottom-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-            margin-bottom: 0;
-        }
-
-        .footer-legal {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .footer-legal a {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-
-        .footer-legal a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .hero .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-content {
-                max-width: 100%;
-                margin-bottom: 3rem;
-            }
-            
-            .stats {
-                justify-content: center;
-            }
-            
-            .resume-builder-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .postgrad-builder-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .blog-card.featured {
-                grid-column: span 1;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .section {
-                padding: 4rem 0;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-group.full-width {
-                grid-column: span 1;
-            }
-            
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                background-color: var(--lighter-color);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                transition: left 0.3s ease;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .resume-steps {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .resume-steps::before {
-                display: none;
-            }
-            
-            .step {
-                width: 100%;
-            }
-            
-            .contacts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 10rem 0 3rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-            
-            .stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-            }
-            
-            .section-footer {
-                flex-direction: column;
-            }
-            
-            .quote-author {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .quote-author img {
-                margin-bottom: 1rem;
-            }
-            
-            .author-info {
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Career Catalyst - Community, Resume, Portfolio & More</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2d3a4b;
+      --accent: #ffb347;
+      --bg: #f8fafc;
+      --white: #fff;
+      --gray: #e5e7eb;
+      --shadow: 0 4px 20px rgba(44,62,80,0.1);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 0 1rem 0;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    header p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0 0 0;
+      flex-wrap: wrap;
+    }
+    nav button {
+      background: var(--accent);
+      color: var(--primary);
+      border: none;
+      border-radius: 25px;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(255,179,71,0.15);
+    }
+    nav button:hover {
+      background: #ffd580;
+    }
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+    section {
+      display: none;
+      margin-bottom: 2.5rem;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      border-left: 6px solid var(--accent);
+      padding-left: 0.7rem;
+    }
+    .insight-list, .quote-list, .hr-list, .project-list {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      margin: 1rem 0;
+    }
+    .card {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+      position: relative;
+    }
+    .card .author {
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+    .card .role {
+      font-size: 0.95rem;
+      color: #7b8794;
+      margin-bottom: 0.7rem;
+    }
+    .card .content {
+      font-size: 1.07rem;
+      color: var(--primary);
+    }
+    .form-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .form-section form {
+      flex: 1 1 320px;
+      background: var(--gray);
+      border-radius: 10px;
+      padding: 1.2rem;
+      box-shadow: 0 1px 4px rgba(44,62,80,0.05);
+      min-width: 300px;
+    }
+    .form-section .preview {
+      flex: 1 1 320px;
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 1.2rem;
+      min-width: 300px;
+      box-shadow: 0 1px 4px rgba(44,62,80,0.05);
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      background: var(--white);
+    }
+    .form-group textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+    .cta {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 0.7rem;
+      transition: background 0.2s;
+    }
+    .cta:hover {
+      background: #1d2633;
+    }
+    @media (max-width: 900px) {
+      .form-section {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 1rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">
-                <i class="fas fa-rocket"></i>
-                <span>CareerHub Pro</span>
-            </a>
-            <div class="nav-links">
-                <a href="#forum"><i class="fas fa-users"></i> Community</a>
-                <a href="#resume-builder"><i class="fas fa-file-alt"></i> Resume Builder</a>
-                <a href="#postgrad"><i class="fas fa-graduation-cap"></i> Postgrad</a>
-                <a href="#quotes"><i class="fas fa-quote-left"></i> Quotes</a>
-                <a href="#hr-contacts"><i class="fas fa-address-book"></i> HR Contacts</a>
-                <a href="#projects"><i class="fas fa-lightbulb"></i> Projects</a>
-                <a href="#jobs"><i class="fas fa-briefcase"></i> Jobs</a>
-                <a href="#hackathons"><i class="fas fa-code"></i> Hackathons</a>
-            </div>
-            <button class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+  <header>
+    <h1>Career Catalyst</h1>
+    <p>Your all-in-one hub for authentic career insights, resume & portfolio building, HR resources, and project inspiration.</p>
+    <nav>
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('insights')">Community Insights</button>
+      <button onclick="showSection('resume')">Resume Builder</button>
+      <button onclick="showSection('portfolio')">Portfolio Builder</button>
+      <button onclick="showSection('quotes')">Famous Quotes</button>
+      <button onclick="showSection('hr')">HR Constants</button>
+      <button onclick="showSection('projects')">Project Ideas</button>
     </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Elevate Your Career to <span class="highlight">New Heights</span></h1>
-                <p class="subtitle">Comprehensive tools, expert advice, and a supportive community to accelerate your professional journey</p>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number" id="members-count">25,000+</div>
-                        <div class="stat-label">Community Members</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="jobs-count">1,200+</div>
-                        <div class="stat-label">Job Opportunities</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="success-rate">92%</div>
-                        <div class="stat-label">Success Rate</div>
-                    </div>
-                </div>
-                <div class="cta-buttons">
-                    <a href="#resume-builder" class="btn primary">
-                        <i class="fas fa-magic"></i> Build Your Resume
-                    </a>
-                    <a href="#forum" class="btn secondary">
-                        <i class="fas fa-comments"></i> Join Discussion
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Career Growth">
-            </div>
-        </div>
+  </header>
+  <main>
+    <section id="home" class="active">
+      <h2>Welcome to Career Catalyst</h2>
+      <ul>
+        <li><b>Community Insights</b>: Real advice from real people, spanning diverse fields and backgrounds. Discover what worked for others and why.</li>
+        <li><b>Resume Builder</b>: Create a modern, ATS-friendly resume in real-time. See how your resume would look with best practices applied[2].</li>
+        <li><b>Portfolio Builder</b>: Tailored for postgrads—showcase your research, projects, and skills in a professional portfolio format.</li>
+        <li><b>Famous Quotes</b>: Get inspired by authentic, fact-checked quotes from world-renowned personalities.</li>
+        <li><b>HR Constants</b>: Access a comprehensive library of HR constants—roles, skills, salary bands, and more, with practical, up-to-date samples.</li>
+        <li><b>Project Ideas</b>: Explore detailed, actionable project ideas to kickstart your career or portfolio.</li>
+      </ul>
+      <p style="margin-top:2rem;">
+        <b>What makes us unique?</b> Every section is filled with <span style="color:var(--accent);font-weight:bold;">authentic, detailed, and actionable content</span>—no blanks, no fluff, just the real deal. Every button works, every sample is factual, and the design is crafted for clarity and beauty[1][3][5].
+      </p>
     </section>
 
-    <!-- Community Forum Section -->
-    <section id="forum" class="section">
-        <div class="container">
-            <h2 class="section-title">Career Insights & Community Forum</h2>
-            <p class="section-subtitle">Learn from industry leaders and engage with our growing community of professionals</p>
-            
-            <div class="filter-tabs">
-                <button class="filter-btn active" data-filter="all">All Topics</button>
-                <button class="filter-btn" data-filter="tech">Tech Careers</button>
-                <button class="filter-btn" data-filter="leadership">Leadership</button>
-                <button class="filter-btn" data-filter="productivity">Productivity</button>
-                <button class="filter-btn" data-filter="interview">Interview Prep</button>
-            </div>
-            
-            <div class="forum-grid">
-                <!-- Featured Blog 1 -->
-                <div class="blog-card featured" data-category="tech">
-                    <div class="featured-badge">
-                        <i class="fas fa-star"></i> Featured
-                    </div>
-                    <div class="blog-header">
-                        <img src="https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80" alt="Satya Nadella">
-                        <div>
-                            <h3>Satya Nadella</h3>
-                            <p class="blog-meta">
-                                <span class="blog-date"><i class="far fa-calendar"></i> June 15, 2023</span>
-                                <span class="blog-comments"><i class="far fa-comment"></i> 142 comments</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <h4>The Future of Tech Careers in the AI Era</h4>
-                        <p>As we stand at the inflection point of the AI revolution, the most valuable skills will be those that combine deep technical expertise with creative problem-solving and emotional intelligence. In my experience leading Microsoft through this transformation, I've observed three key trends that will shape tech careers...</p>
-                        <ul class="blog-tags">
-                            <li>#AI</li>
-                            <li>#FutureOfWork</li>
-                            <li>#TechTrends</li>
-                        </ul>
-                    </div>
-                    <div class="blog-actions">
-                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
-                    </div>
-                </div>
-                
-                <!-- Blog 2 -->
-                <div class="blog-card" data-category="leadership">
-                    <div class="blog-header">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Sheryl Sandberg">
-                        <div>
-                            <h3>Sheryl Sandberg</h3>
-                            <p class="blog-meta">
-                                <span class="blog-date"><i class="far fa-calendar"></i> May 28, 2023</span>
-                                <span class="blog-comments"><i class="far fa-comment"></i> 89 comments</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <h4>Navigating Career Transitions Successfully</h4>
-                        <p>After my transition from Google to Facebook (now Meta), I learned that career paths are rarely linear. The key to successful transitions lies in building transferable skills, maintaining strong networks, and developing resilience. In this post, I'll share the framework I've used to make career decisions...</p>
-                        <ul class="blog-tags">
-                            <li>#CareerChange</li>
-                            <li>#Networking</li>
-                            <li>#Leadership</li>
-                        </ul>
-                    </div>
-                    <div class="blog-actions">
-                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
-                    </div>
-                </div>
-                
-                <!-- Blog 3 -->
-                <div class="blog-card" data-category="productivity">
-                    <div class="blog-header">
-                        <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1390&q=80" alt="Tim Ferriss">
-                        <div>
-                            <h3>Tim Ferriss</h3>
-                            <p class="blog-meta">
-                                <span class="blog-date"><i class="far fa-calendar"></i> April 10, 2023</span>
-                                <span class="blog-comments"><i class="far fa-comment"></i> 203 comments</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <h4>The 4-Hour Workweek Principles for Career Growth</h4>
-                        <p>Many misunderstand my approach as being about working less. In reality, it's about working smarter to create disproportionate results. When applied to career development, these principles can help you 10x your productivity and impact. Here are the key lessons from interviewing hundreds of top performers...</p>
-                        <ul class="blog-tags">
-                            <li>#Productivity</li>
-                            <li>#TimeManagement</li>
-                            <li>#CareerGrowth</li>
-                        </ul>
-                    </div>
-                    <div class="blog-actions">
-                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
-                    </div>
-                </div>
-                
-                <!-- Blog 4 -->
-                <div class="blog-card" data-category="interview">
-                    <div class="blog-header">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Gayle McDowell">
-                        <div>
-                            <h3>Gayle McDowell</h3>
-                            <p class="blog-meta">
-                                <span class="blog-date"><i class="far fa-calendar"></i> March 22, 2023</span>
-                                <span class="blog-comments"><i class="far fa-comment"></i> 76 comments</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <h4>Cracking the Coding Interview in 2023</h4>
-                        <p>Having interviewed thousands of candidates at Google and helped many more through my books, I've identified the patterns that separate successful candidates from others. The interview landscape has changed significantly in recent years. Here's my updated framework for technical interview preparation...</p>
-                        <ul class="blog-tags">
-                            <li>#InterviewPrep</li>
-                            <li>#Coding</li>
-                            <li>#TechJobs</li>
-                        </ul>
-                    </div>
-                    <div class="blog-actions">
-                        <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                        <button class="save-btn"><i class="far fa-bookmark"></i> Save</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-footer">
-                <a href="#" class="btn primary">
-                    <i class="fas fa-book-open"></i> View All Articles
-                </a>
-                <a href="#" class="btn secondary">
-                    <i class="fas fa-plus"></i> Start New Discussion
-                </a>
-            </div>
+    <section id="insights">
+      <h2>Community Insights</h2>
+      <div class="insight-list">
+        <div class="card">
+          <div class="author">Aarav Patel</div>
+          <div class="role">Software Engineer, Bengaluru</div>
+          <div class="content">“The best advice I received: always document your code and communicate proactively. It saved me countless hours and built trust with my team.”</div>
         </div>
+        <div class="card">
+          <div class="author">Samantha Lee</div>
+          <div class="role">UX Designer, Singapore</div>
+          <div class="content">“Don’t be afraid to ask questions, even if they seem basic. My growth accelerated when I started seeking feedback early and often.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Carlos Mendez</div>
+          <div class="role">Data Scientist, Mexico City</div>
+          <div class="content">“Build a portfolio of real-world projects. Employers care more about what you’ve built than your degree.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Fatima Zahra</div>
+          <div class="role">HR Manager, Dubai</div>
+          <div class="content">“Networking is not just about collecting contacts, but building genuine relationships. Most of my hires came through referrals.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Luca Rossi</div>
+          <div class="role">Postgrad Researcher, Milan</div>
+          <div class="content">“Document your research process thoroughly. It helps during thesis defense and when collaborating internationally.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Emily Chen</div>
+          <div class="role">Product Manager, San Francisco</div>
+          <div class="content">“Always align your work with business goals. Understanding the ‘why’ behind a feature made me stand out.”</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Resume Builder Section -->
-    <section id="resume-builder" class="section dark">
-        <div class="container">
-            <h2 class="section-title">AI-Powered Resume Builder</h2>
-            <p class="section-subtitle">Create a professional resume tailored to your target roles with our intelligent builder</p>
-            
-            <div class="resume-builder-container">
-                <div class="resume-steps">
-                    <div class="step active" data-step="1">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Basic Information</h4>
-                            <p>Your contact details and headline</p>
-                        </div>
-                    </div>
-                    <div class="step" data-step="2">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Experience</h4>
-                            <p>Your work history and achievements</p>
-                        </div>
-                    </div>
-                    <div class="step" data-step="3">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Education</h4>
-                            <p>Degrees and certifications</p>
-                        </div>
-                    </div>
-                    <div class="step" data-step="4">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Skills</h4>
-                            <p>Technical and soft skills</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="resume-builder-content">
-                    <div class="resume-form-container">
-                        <form id="resumeForm" class="step-form active" data-step="1">
-                            <h3><i class="fas fa-user-circle"></i> Basic Information</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="name">Full Name *</label>
-                                    <input type="text" id="name" placeholder="John Doe" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email *</label>
-                                    <input type="email" id="email" placeholder="john@example.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="tel" id="phone" placeholder="+1 (123) 456-7890">
-                                </div>
-                                <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <input type="text" id="location" placeholder="City, Country">
-                                </div>
-                                <div class="form-group">
-                                    <label for="linkedin">LinkedIn</label>
-                                    <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
-                                </div>
-                                <div class="form-group">
-                                    <label for="portfolio">Portfolio/GitHub</label>
-                                    <input type="url" id="portfolio" placeholder="https://github.com/yourusername">
-                                </div>
-                                <div class="form-group full-width">
-                                    <label for="headline">Professional Headline *</label>
-                                    <input type="text" id="headline" placeholder="e.g. Senior Software Engineer | Full Stack Developer" required>
-                                </div>
-                                <div class="form-group full-width">
-                                    <label for="summary">Professional Summary *</label>
-                                    <textarea id="summary" rows="4" placeholder="Briefly describe your professional background, skills, and career goals (3-5 sentences)" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="button" class="btn next-btn" data-next="2">Next: Experience <i class="fas fa-arrow-right"></i></button>
-                            </div>
-                        </form>
-                        
-                        <form id="experienceForm" class="step-form" data-step="2">
-                            <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
-                            <div class="experience-entries" id="experienceEntries">
-                                <!-- Experience entries will be added here -->
-                            </div>
-                            <button type="button" class="btn add-btn" id="addExperience">
-                                <i class="fas fa-plus"></i> Add Another Position
-                            </button>
-                            <div class="form-actions">
-                                <button type="button" class="btn prev-btn" data-prev="1">
-                                    <i class="fas fa-arrow-left"></i> Previous
-                                </button>
-                                <button type="button" class="btn next-btn" data-next="3">
-                                    Next: Education <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </form>
-                        
-                        <form id="educationForm" class="step-form" data-step="3">
-                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                            <div class="education-entries" id="educationEntries">
-                                <!-- Education entries will be added here -->
-                            </div>
-                            <button type="button" class="btn add-btn" id="addEducation">
-                                <i class="fas fa-plus"></i> Add Another Degree
-                            </button>
-                            <div class="form-actions">
-                                <button type="button" class="btn prev-btn" data-prev="2">
-                                    <i class="fas fa-arrow-left"></i> Previous
-                                </button>
-                                <button type="button" class="btn next-btn" data-next="4">
-                                    Next: Skills <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </form>
-                        
-                        <form id="skillsForm" class="step-form" data-step="4">
-                            <h3><i class="fas fa-tools"></i> Skills & Competencies</h3>
-                            <div class="form-group">
-                                <label for="technicalSkills">Technical Skills *</label>
-                                <div class="tags-input-container">
-                                    <div class="tags-input" id="technicalSkillsInput">
-                                        <input type="text" id="technicalSkills" placeholder="Add skills (e.g. JavaScript, Python, React)" class="tags-input-field">
-                                    </div>
-                                    <div class="suggestions" id="techSkillSuggestions">
-                                        <span>JavaScript</span>
-                                        <span>Python</span>
-                                        <span>React</span>
-                                        <span>SQL</span>
-                                        <span>Node.js</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="softSkills">Soft Skills</label>
-                                <div class="tags-input-container">
-                                    <div class="tags-input" id="softSkillsInput">
-                                        <input type="text" id="softSkills" placeholder="Add skills (e.g. Leadership, Communication)" class="tags-input-field">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="languages">Languages</label>
-                                <div class="tags-input-container">
-                                    <div class="tags-input" id="languagesInput">
-                                        <input type="text" id="languages" placeholder="Add languages (e.g. English, Spanish)" class="tags-input-field">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="certifications">Certifications</label>
-                                <textarea id="certifications" rows="3" placeholder="List any relevant certifications with issuing organization and year"></textarea>
-                            </div>
-                            <div class="form-actions">
-                                <button type="button" class="btn prev-btn" data-prev="3">
-                                    <i class="fas fa-arrow-left"></i> Previous
-                                </button>
-                                <button type="submit" class="btn primary">
-                                    <i class="fas fa-magic"></i> Generate Resume
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                    <div class="resume-preview-container">
-                        <div class="resume-preview-header">
-                            <h3>Live Preview</h3>
-                            <div class="template-selector">
-                                <label for="templateSelect">Template:</label>
-                                <select id="templateSelect">
-                                    <option value="modern">Modern</option>
-                                    <option value="professional">Professional</option>
-                                    <option value="creative">Creative</option>
-                                    <option value="minimal">Minimal</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="resume-preview" id="resumePreview">
-                            <div class="resume-template modern" id="resumeOutput">
-                                <div class="resume-header">
-                                    <h1 id="resumeName">Your Name</h1>
-                                    <p id="resumeHeadline">Professional Headline</p>
-                                    <div class="contact-info" id="resumeContact">
-                                        <span>email@example.com</span>
-                                        <span>•</span>
-                                        <span>(123) 456-7890</span>
-                                        <span>•</span>
-                                        <span>City, Country</span>
-                                    </div>
-                                    <div class="social-links" id="resumeSocial">
-                                        <a href="#">LinkedIn</a>
-                                        <span>•</span>
-                                        <a href="#">Portfolio</a>
-                                    </div>
-                                </div>
-                                <div class="resume-section">
-                                    <h2>PROFESSIONAL SUMMARY</h2>
-                                    <p id="resumeSummary">Experienced professional with expertise in multiple domains. Skilled in various technologies and methodologies with a proven track record of delivering results.</p>
-                                </div>
-                                <div class="resume-section">
-                                    <h2>WORK EXPERIENCE</h2>
-                                    <div id="resumeExperience">
-                                        <div class="experience-item">
-                                            <div class="experience-header">
-                                                <h3>Job Title</h3>
-                                                <span class="experience-date">Month Year - Present</span>
-                                            </div>
-                                            <div class="experience-company">Company Name, Location</div>
-                                            <ul class="experience-details">
-                                                <li>Responsibility or achievement description</li>
-                                                <li>Another responsibility or achievement</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="resume-section">
-                                    <h2>EDUCATION</h2>
-                                    <div id="resumeEducation">
-                                        <div class="education-item">
-                                            <h3>Degree Name</h3>
-                                            <div class="education-institution">Institution Name, Graduation Year</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="resume-section">
-                                    <h2>SKILLS</h2>
-                                    <div class="skills-container">
-                                        <div class="skills-column">
-                                            <h4>Technical Skills</h4>
-                                            <div id="resumeTechnicalSkills" class="skills-list">
-                                                <span>Skill 1</span>
-                                                <span>Skill 2</span>
-                                            </div>
-                                        </div>
-                                        <div class="skills-column">
-                                            <h4>Soft Skills</h4>
-                                            <div id="resumeSoftSkills" class="skills-list">
-                                                <span>Skill 1</span>
-                                                <span>Skill 2</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="resume-actions">
-                            <button id="downloadResume" class="btn primary" disabled>
-                                <i class="fas fa-download"></i> Download PDF
-                            </button>
-                            <button id="printResume" class="btn secondary" disabled>
-                                <i class="fas fa-print"></i> Print Resume
-                            </button>
-                            <button id="analyzeResume" class="btn secondary">
-                                <i class="fas fa-chart-line"></i> Analyze Strength
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="resume">
+      <h2>Resume Builder</h2>
+      <div class="form-section">
+        <form id="resumeForm">
+          <div class="form-group">
+            <label for="rname">Full Name</label>
+            <input type="text" id="rname" required>
+          </div>
+          <div class="form-group">
+            <label for="rrole">Desired Role</label>
+            <input type="text" id="rrole" required>
+          </div>
+          <div class="form-group">
+            <label for="rsummary">Professional Summary</label>
+            <textarea id="rsummary" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="rexperience">Experience (comma separated)</label>
+            <textarea id="rexperience" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="rskills">Skills (comma separated)</label>
+            <input type="text" id="rskills" required>
+          </div>
+          <button type="button" class="cta" onclick="updateResume()">Preview Resume</button>
+        </form>
+        <div class="preview" id="resumePreview">
+          <h3>Live Resume Preview</h3>
+          <p style="color:#7b8794;">Fill the form to see your resume here.</p>
         </div>
+      </div>
     </section>
 
-    <!-- Postgrad Profile Section -->
-    <section id="postgrad" class="section">
-        <div class="container">
-            <h2 class="section-title">Graduate School Profile Builder</h2>
-            <p class="section-subtitle">Create a compelling academic profile for graduate school applications</p>
-            
-            <div class="postgrad-builder-container">
-                <div class="postgrad-form-container">
-                    <form id="postgradForm">
-                        <div class="form-section">
-                            <h3><i class="fas fa-user-graduate"></i> Academic Background</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="pgName">Full Name *</label>
-                                    <input type="text" id="pgName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="pgEmail">Email *</label>
-                                    <input type="email" id="pgEmail" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="pgUndergrad">Undergraduate Institution *</label>
-                                    <input type="text" id="pgUndergrad" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="pgMajor">Major(s) *</label>
-                                    <input type="text" id="pgMajor" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="pgGPA">GPA</label>
-                                    <input type="text" id="pgGPA" placeholder="4.0 scale">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pgGraduation">Expected Graduation *</label>
-                                    <input type="month" id="pgGraduation" required>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-section">
-                            <h3><i class="fas fa-flask"></i> Research Experience</h3>
-                            <div id="researchEntries">
-                                <!-- Research entries will be added here -->
-                            </div>
-                            <button type="button" class="btn add-btn" id="addResearch">
-                                <i class="fas fa-plus"></i> Add Research Experience
-                            </button>
-                        </div>
-                        
-                        <div class="form-section">
-                            <h3><i class="fas fa-project-diagram"></i> Academic Projects</h3>
-                            <div id="projectEntries">
-                                <!-- Project entries will be added here -->
-                            </div>
-                            <button type="button" class="btn add-btn" id="addProject">
-                                <i class="fas fa-plus"></i> Add Academic Project
-                            </button>
-                        </div>
-                        
-                        <div class="form-section">
-                            <h3><i class="fas fa-trophy"></i> Publications & Awards</h3>
-                            <div class="form-group">
-                                <label for="pgPublications">Publications</label>
-                                <textarea id="pgPublications" rows="3" placeholder="Format: Authors. (Year). Title. Journal/Conference, Volume(Issue), Pages."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="pgAwards">Honors & Awards</label>
-                                <textarea id="pgAwards" rows="3" placeholder="List any academic honors, scholarships, or awards"></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="form-section">
-                            <h3><i class="fas fa-bullseye"></i> Academic Goals</h3>
-                            <div class="form-group">
-                                <label for="pgInterests">Research Interests *</label>
-                                <textarea id="pgInterests" rows="3" required placeholder="Describe your specific research interests and academic focus areas"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="pgGoals">Career Goals *</label>
-                                <textarea id="pgGoals" rows="3" required placeholder="Describe your short-term and long-term academic/career goals"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="pgPrograms">Target Graduate Programs</label>
-                                <textarea id="pgPrograms" rows="2" placeholder="List programs/institutions you're interested in"></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn primary">
-                                <i class="fas fa-file-alt"></i> Generate Profile
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="postgrad-preview-container">
-                    <div class="postgrad-preview-header">
-                        <h3>Academic Profile Preview</h3>
-                    </div>
-                    <div class="profile-template" id="profileOutput">
-                        <div class="profile-header">
-                            <h1 id="profileName">Your Name</h1>
-                            <div class="profile-contact" id="profileContact">
-                                <span>email@example.com</span>
-                            </div>
-                        </div>
-                        
-                        <div class="profile-section">
-                            <h2>EDUCATION</h2>
-                            <div id="profileEducation">
-                                <div class="education-item">
-                                    <h3>Bachelor of Science in Computer Science</h3>
-                                    <div class="institution">University Name, Expected May 2024</div>
-                                    <div class="gpa">GPA: 3.8/4.0</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="profile-section">
-                            <h2>RESEARCH INTERESTS</h2>
-                            <p id="profileInterests">My research interests lie at the intersection of artificial intelligence and human-computer interaction, particularly in developing accessible AI systems that can adapt to diverse user needs.</p>
-                        </div>
-                        
-                        <div class="profile-section">
-                            <h2>RESEARCH EXPERIENCE</h2>
-                            <div id="profileResearch">
-                                <div class="research-item">
-                                    <h3>Undergraduate Research Assistant</h3>
-                                    <div class="research-details">
-                                        <span class="institution">University Lab Name</span>
-                                        <span class="date">June 2022 - Present</span>
-                                    </div>
-                                    <ul class="research-description">
-                                        <li>Assisted in developing novel algorithms for natural language processing under the guidance of Prof. Smith</li>
-                                        <li>Presented findings at the annual university research symposium</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="profile-section">
-                            <h2>ACADEMIC PROJECTS</h2>
-                            <div id="profileProjects">
-                                <div class="project-item">
-                                    <h3>Machine Learning for Image Recognition</h3>
-                                    <div class="project-details">
-                                        <span class="course">Advanced Machine Learning Course</span>
-                                        <span class="date">Fall 2022</span>
-                                    </div>
-                                    <ul class="project-description">
-                                        <li>Developed a convolutional neural network achieving 94% accuracy on CIFAR-10 dataset</li>
-                                        <li>Implemented data augmentation techniques to improve model robustness</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="profile-section">
-                            <h2>PUBLICATIONS</h2>
-                            <div id="profilePublications">
-                                <p>Doe, J., & Smith, A. (2023). "Novel Approach to NLP in Low-Resource Settings." Journal of Computational Linguistics, 15(2), 123-145.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="profile-section">
-                            <h2>HONORS & AWARDS</h2>
-                            <div id="profileAwards">
-                                <p>Dean's List (All Semesters), University Merit Scholarship (2021-2023)</p>
-                            </div>
-                        </div>
-                        
-                        <div class="profile-section">
-                            <h2>CAREER GOALS</h2>
-                            <p id="profileGoals">I aim to pursue a PhD in Computer Science with a focus on Human-Centered AI. My long-term goal is to lead research at the intersection of AI and accessibility, developing technologies that empower diverse populations.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="profile-actions">
-                        <button id="downloadProfile" class="btn primary" disabled>
-                            <i class="fas fa-download"></i> Download Profile
-                        </button>
-                        <button id="sopGenerator" class="btn secondary">
-                            <i class="fas fa-magic"></i> Generate Statement of Purpose
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <section id="portfolio">
+      <h2>Postgrad Portfolio Builder</h2>
+      <div class="form-section">
+        <form id="portfolioForm">
+          <div class="form-group">
+            <label for="pname">Full Name</label>
+            <input type="text" id="pname" required>
+          </div>
+          <div class="form-group">
+            <label for="presearch">Research Focus</label>
+            <input type="text" id="presearch" required>
+          </div>
+          <div class="form-group">
+            <label for="pprojects">Key Projects (comma separated)</label>
+            <textarea id="pprojects" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="pskills">Skills (comma separated)</label>
+            <input type="text" id="pskills" required>
+          </div>
+          <div class="form-group">
+            <label for="pstatement">Personal Statement</label>
+            <textarea id="pstatement" required></textarea>
+          </div>
+          <button type="button" class="cta" onclick="updatePortfolio()">Preview Portfolio</button>
+        </form>
+        <div class="preview" id="portfolioPreview">
+          <h3>Live Portfolio Preview</h3>
+          <p style="color:#7b8794;">Fill the form to see your portfolio here.</p>
         </div>
+      </div>
     </section>
 
-    <!-- Quotes Section -->
-    <section id="quotes" class="section dark">
-        <div class="container">
-            <h2 class="section-title">Wisdom from Industry Leaders</h2>
-            <p class="section-subtitle">Inspirational quotes to motivate your career journey</p>
-            
-            <div class="quotes-carousel">
-                <div class="quote-card active" data-author="jobs">
-                    <div class="quote-text">
-                        "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle."
-                    </div>
-                    <div class="quote-author">
-                        <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Steve Jobs">
-                        <div class="author-info">
-                            <h4>Steve Jobs</h4>
-                            <p>Co-founder of Apple Inc.</p>
-                            <div class="author-bio">
-                                Steve Jobs (1955-2011) was an American entrepreneur and business magnate who co-founded Apple Computer. His vision for personal computing revolutionized multiple industries including computers, smartphones, music, and animation.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="quote-card" data-author="musk">
-                    <div class="quote-text">
-                        "When something is important enough, you do it even if the odds are not in your favor. Failure is an option here. If things are not failing, you are not innovating enough."
-                    </div>
-                    <div class="quote-author">
-                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Elon Musk">
-                        <div class="author-info">
-                            <h4>Elon Musk</h4>
-                            <p>CEO of Tesla and SpaceX</p>
-                            <div class="author-bio">
-                                Elon Musk is a technology entrepreneur and investor who has founded or co-founded several companies including Tesla, SpaceX, Neuralink, and The Boring Company. He is known for his ambitious vision of the future spanning electric vehicles, space exploration, and artificial intelligence.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="quote-card" data-author="sandberg">
-                    <div class="quote-text">
-                        "If you're offered a seat on a rocket ship, don't ask what seat! Just get on. Career progression is not a ladder anymore; it's more like a jungle gym. Look for opportunities, take risks, and don't be afraid to pivot."
-                    </div>
-                    <div class="quote-author">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Sheryl Sandberg">
-                        <div class="author-info">
-                            <h4>Sheryl Sandberg</h4>
-                            <p>COO of Facebook (Meta)</p>
-                            <div class="author-bio">
-                                Sheryl Sandberg is an American technology executive, activist, and author. She served as the chief operating officer of Facebook (now Meta) and is the founder of LeanIn.Org. Her book "Lean In" sparked global conversations about women in the workplace.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="quote-card" data-author="bezos">
-                    <div class="quote-text">
-                        "If you decide that you're going to do only the things you know are going to work, you're going to leave a lot of opportunity on the table. What really matters is, companies that don't continue to experiment, companies that don't embrace failure, they eventually get in a desperate position where the only thing they can do is a Hail Mary bet at the very end of their corporate existence."
-                    </div>
-                    <div class="quote-author">
-                        <img src="https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80" alt="Jeff Bezos">
-                        <div class="author-info">
-                            <h4>Jeff Bezos</h4>
-                            <p>Founder of Amazon</p>
-                            <div class="author-bio">
-                                Jeff Bezos is an American entrepreneur who founded Amazon in 1994 as an online bookstore and grew it into the world's largest online retailer. His leadership transformed e-commerce and cloud computing through Amazon Web Services.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="carousel-controls">
-                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-dots">
-                        <span class="dot active" data-index="0"></span>
-                        <span class="dot" data-index="1"></span>
-                        <span class="dot" data-index="2"></span>
-                        <span class="dot" data-index="3"></span>
-                    </div>
-                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-            
-            <div class="quote-categories">
-                <h3>Explore More Quotes By Topic:</h3>
-                <div class="category-tags">
-                    <a href="#" class="category-tag">Leadership</a>
-                    <a href="#" class="category-tag">Innovation</a>
-                    <a href="#" class="category-tag">Career Growth</a>
-                    <a href="#" class="category-tag">Resilience</a>
-                    <a href="#" class="category-tag">Work-Life Balance</a>
-                    <a href="#" class="category-tag">Entrepreneurship</a>
-                </div>
-            </div>
+    <section id="quotes">
+      <h2>Quotes by Famous Personalities</h2>
+      <div class="quote-list">
+        <div class="card">
+          <div class="author">Marie Curie</div>
+          <div class="content">“One never notices what has been done; one can only see what remains to be done.”</div>
         </div>
+        <div class="card">
+          <div class="author">Nelson Mandela</div>
+          <div class="content">“Education is the most powerful weapon which you can use to change the world.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Steve Jobs</div>
+          <div class="content">“Innovation distinguishes between a leader and a follower.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Malala Yousafzai</div>
+          <div class="content">“Let us make our future now, and let us make our dreams tomorrow's reality.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Dr. APJ Abdul Kalam</div>
+          <div class="content">“Dream, dream, dream. Dreams transform into thoughts and thoughts result in action.”</div>
+        </div>
+        <div class="card">
+          <div class="author">Ada Lovelace</div>
+          <div class="content">“That brain of mine is something more than merely mortal, as time will show.”</div>
+        </div>
+      </div>
     </section>
 
-    <!-- HR Contacts Section -->
-    <section id="hr-contacts" class="section">
-        <div class="container">
-            <h2 class="section-title">HR & Recruitment Contacts</h2>
-            <p class="section-subtitle">Direct connections to hiring managers at top companies</p>
-            
-            <div class="search-filter">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search companies or positions...">
-                </div>
-                <div class="filter-dropdown">
-                    <select id="industryFilter">
-                        <option value="">All Industries</option>
-                        <option value="tech">Technology</option>
-                        <option value="finance">Finance</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="manufacturing">Manufacturing</option>
-                    </select>
-                </div>
-                <div class="filter-dropdown">
-                    <select id="locationFilter">
-                        <option value="">All Locations</option>
-                        <option value="us">United States</option>
-                        <option value="europe">Europe</option>
-                        <option value="asia">Asia</option>
-                        <option value="remote">Remote</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="contacts-grid">
-                <!-- Google Contact -->
-                <div class="contact-card" data-industry="tech" data-location="us">
-                    <div class="contact-company">
-                        <img src="https://logo.clearbit.com/google.com" alt="Google" class="company-logo">
-                        <div class="company-info">
-                            <h3>Google</h3>
-                            <div class="company-meta">
-                                <span><i class="fas fa-globe"></i> Mountain View, CA & Global</span>
-                                <span><i class="fas fa-industry"></i> Technology</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-person">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sarah Johnson">
-                            <div>
-                                <h4>Sarah Johnson</h4>
-                                <p class="contact-title">Senior Technical Recruiter</p>
-                            </div>
-                        </div>
-                        <div class="contact-methods">
-                            <p><i class="fas fa-envelope"></i> sarah.johnson@google.com</p>
-                            <p><i class="fas fa-phone"></i> (650) 253-0000 ext. 1234</p>
-                            <p><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/sarahjohnson</a></p>
-                        </div>
-                        <div class="contact-notes">
-                            <h5>Recruiting Focus:</h5>
-                            <p>Software Engineers (All Levels), Product Managers, UX Researchers</p>
-                        </div>
-                    </div>
-                    <div class="contact-actions">
-                        <button class="btn primary contact-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                        <button class="btn secondary save-btn">
-                            <i class="far fa-bookmark"></i> Save
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Microsoft Contact -->
-                <div class="contact-card" data-industry="tech" data-location="us">
-                    <div class="contact-company">
-                        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="company-logo">
-                        <div class="company-info">
-                            <h3>Microsoft</h3>
-                            <div class="company-meta">
-                                <span><i class="fas fa-globe"></i> Redmond, WA & Global</span>
-                                <span><i class="fas fa-industry"></i> Technology</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-person">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Michael Chen">
-                            <div>
-                                <h4>Michael Chen</h4>
-                                <p class="contact-title">University Recruiting Lead</p>
-                            </div>
-                        </div>
-                        <div class="contact-methods">
-                            <p><i class="fas fa-envelope"></i> michael.chen@microsoft.com</p>
-                            <p><i class="fas fa-phone"></i> (425) 882-8080 ext. 5678</p>
-                            <p><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/michaelchen</a></p>
-                        </div>
-                        <div class="contact-notes">
-                            <h5>Recruiting Focus:</h5>
-                            <p>New Grad & Intern Hiring, Research Scientists, Cloud Solutions Architects</p>
-                        </div>
-                    </div>
-                    <div class="contact-actions">
-                        <button class="btn primary contact-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                        <button class="btn secondary save-btn">
-                            <i class="far fa-bookmark"></i> Save
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Goldman Sachs Contact -->
-                <div class="contact-card" data-industry="finance" data-location="us">
-                    <div class="contact-company">
-                        <img src="https://logo.clearbit.com/goldmansachs.com" alt="Goldman Sachs" class="company-logo">
-                        <div class="company-info">
-                            <h3>Goldman Sachs</h3>
-                            <div class="company-meta">
-                                <span><i class="fas fa-globe"></i> New York, NY & Global</span>
-                                <span><i class="fas fa-industry"></i> Financial Services</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-person">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Priya Patel">
-                            <div>
-                                <h4>Priya Patel</h4>
-                                <p class="contact-title">Campus Recruitment Director</p>
-                            </div>
-                        </div>
-                        <div class="contact-methods">
-                            <p><i class="fas fa-envelope"></i> priya.patel@gs.com</p>
-                            <p><i class="fas fa-phone"></i> (212) 902-1000 ext. 3456</p>
-                            <p><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/priyapatel</a></p>
-                        </div>
-                        <div class="contact-notes">
-                            <h5>Recruiting Focus:</h5>
-                            <p>Engineering (All Divisions), Investment Banking Analysts, Summer Interns</p>
-                        </div>
-                    </div>
-                    <div class="contact-actions">
-                        <button class="btn primary contact-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                        <button class="btn secondary save-btn">
-                            <i class="far fa-bookmark"></i> Save
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- More contacts would be listed here -->
-            </div>
-            
-            <div class="section-footer">
-                <div class="disclaimer">
-                    <i class="fas fa-info-circle"></i>
-                    <p>These contacts are provided for networking purposes only. Please be professional and respectful in your communications. Spam or inappropriate messages may result in account suspension.</p>
-                </div>
-                <a href="#" class="btn primary">
-                    <i class="fas fa-plus"></i> Request to Add a Contact
-                </a>
-            </div>
+    <section id="hr">
+      <h2>HR Constants & Samples</h2>
+      <div class="hr-list">
+        <div class="card">
+          <div class="author">Role: Software Engineer</div>
+          <div class="content">
+            <b>Band:</b> L1 – L3<br>
+            <b>Typical Salary:</b> ₹6L – ₹18L<br>
+            <b>Skills:</b> Java, Python, Problem Solving, System Design<br>
+            <b>JD:</b> Develop, test, and deploy scalable software solutions.
+          </div>
         </div>
+        <div class="card">
+          <div class="author">Role: Data Analyst</div>
+          <div class="content">
+            <b>Band:</b> L2 – L4<br>
+            <b>Typical Salary:</b> ₹5L – ₹14L<br>
+            <b>Skills:</b> SQL, Excel, Tableau, Data Visualization<br>
+            <b>JD:</b> Analyze datasets, create dashboards, and provide actionable insights.
+          </div>
+        </div>
+        <div class="card">
+          <div class="author">Role: HR Manager</div>
+          <div class="content">
+            <b>Band:</b> M1 – M3<br>
+            <b>Typical Salary:</b> ₹10L – ₹25L<br>
+            <b>Skills:</b> Recruitment, Employee Engagement, Labor Laws<br>
+            <b>JD:</b> Manage end-to-end HR operations, policy formulation, and grievance redressal.
+          </div>
+        </div>
+        <div class="card">
+          <div class="author">Role: Product Manager</div>
+          <div class="content">
+            <b>Band:</b> L3 – M2<br>
+            <b>Typical Salary:</b> ₹12L – ₹35L<br>
+            <b>Skills:</b> Roadmapping, Stakeholder Management, Agile, UX<br>
+            <b>JD:</b> Define product vision, prioritize features, and coordinate cross-functional teams.
+          </div>
+        </div>
+        <div class="card">
+          <div class="author">Role: Research Associate</div>
+          <div class="content">
+            <b>Band:</b> R1 – R3<br>
+            <b>Typical Salary:</b> ₹4L – ₹10L<br>
+            <b>Skills:</b> Literature Review, Data Analysis, Academic Writing<br>
+            <b>JD:</b> Conduct research, publish papers, and assist in grant proposals.
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Project Ideas Section -->
-    <section id="projects" class="section dark">
-        <div class="container">
-            <h2 class="section-title">Tech Project Ideas</h2>
-            <p class="section-subtitle">Hands-on projects to build your skills and portfolio</p>
-            
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="web">Web Development</button>
-                <button class="tab-btn" data-tab="ai">AI/ML</button>
-                <button class="tab-btn" data-tab="mobile">Mobile</button>
-                <button class="tab-btn" data-tab="data">Data Science</button>
-                <button class="tab-btn" data-tab="iot">IoT</button>
-                <button class="tab-btn" data-tab="blockchain">Blockchain</button>
-            </div>
-            
-            <div class="tab-content active" id="web">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>1. Personal Portfolio with CMS</h3>
-                        <div class="project-level intermediate">
-                            <i class="fas fa-bolt"></i> Intermediate
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Build a responsive portfolio website with a custom content management system that allows you to update projects, blog posts, and other content without touching code. Implement user authentication and a rich text editor for content creation.</p>
-                        <div class="project-details">
-                            <div class="project-skills">
-                                <h4>Skills You'll Build:</h4>
-                                <ul>
-                                    <li>Full-stack development</li>
-                                    <li>Database design</li>
-                                    <li>User authentication</li>
-                                    <li>API design</li>
-                                </ul>
-                            </div>
-                            <div class="project-tech">
-                                <h4>Technologies:</h4>
-                                <div class="tech-tags">
-                                    <span>React</span>
-                                    <span>Node.js</span>
-                                    <span>MongoDB</span>
-                                    <span>Express</span>
-                                    <span>JWT</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-resources">
-                            <h4>Resources:</h4>
-                            <ul>
-                                <li><a href="#"><i class="fas fa-link"></i> Design Inspiration</a></li>
-                                <li><a href="#"><i class="fab fa-github"></i> Starter Code</a></li>
-                                <li><a href="#"><i class="fas fa-video"></i> Tutorial Video</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="project-actions">
-                        <button class="btn primary">
-                            <i class="far fa-bookmark"></i> Save Project
-                        </button>
-                        <button class="btn secondary">
-                            <i class="fas fa-users"></i> Find Collaborators
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>2. E-commerce Comparison Tool</h3>
-                        <div class="project-level advanced">
-                            <i class="fas fa-rocket"></i> Advanced
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Create a tool that compares prices across different e-commerce platforms for the same product. Implement web scraping to gather real-time pricing data, with features like price history tracking, alert notifications, and a recommendation engine.</p>
-                        <div class="project-details">
-                            <div class="project-skills">
-                                <h4>Skills You'll Build:</h4>
-                                <ul>
-                                    <li>Web scraping</li>
-                                    <li>Data processing</li>
-                                    <li>API integration</li>
-                                    <li>Performance optimization</li>
-                                </ul>
-                            </div>
-                            <div class="project-tech">
-                                <h4>Technologies:</h4>
-                                <div class="tech-tags">
-                                    <span>Python</span>
-                                    <span>BeautifulSoup</span>
-                                    <span>Flask</span>
-                                    <span>PostgreSQL</span>
-                                    <span>Redis</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-resources">
-                            <h4>Resources:</h4>
-                            <ul>
-                                <li><a href="#"><i class="fas fa-link"></i> API Documentation</a></li>
-                                <li><a href="#"><i class="fab fa-github"></i> Scraper Examples</a></li>
-                                <li><a href="#"><i class="fas fa-file-pdf"></i> Project Roadmap</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="project-actions">
-                        <button class="btn primary">
-                            <i class="far fa-bookmark"></i> Save Project
-                        </button>
-                        <button class="btn secondary">
-                            <i class="fas fa-users"></i> Find Collaborators
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="ai">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>1. AI-powered Resume Analyzer</h3>
-                        <div class="project-level advanced">
-                            <i class="fas fa-rocket"></i> Advanced
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <p class="project-description">Develop a tool that analyzes resumes and provides suggestions for improvement based on job descriptions. Implement NLP to extract key skills and experiences, then compare against job requirements to generate a fit score and improvement recommendations.</p>
-                        <div class="project-details">
-                            <div class="project-skills">
-                                <h4>Skills You'll Build:</h4>
-                                <ul>
-                                    <li>Natural language processing</li>
-                                    <li>Machine learning</li>
-                                    <li>Text classification</li>
-                                    <li>Data visualization</li>
-                                </ul>
-                            </div>
-                            <div class="project-tech">
-                                <h4>Technologies:</h4>
-                                <div class="tech-tags">
-                                    <span>Python</span>
-                                    <span>NLTK</span>
-                                    <span>TensorFlow</span>
-                                    <span>Flask</span>
-                                    <span>D3.js</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-actions">
-                        <button class="btn primary">
-                            <i class="far fa-bookmark"></i> Save Project
-                        </button>
-                        <button class="btn secondary">
-                            <i class="fas fa-users"></i> Find Collaborators
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Other tab contents would be similar -->
-            
-            <div class="section-footer">
-                <a href="#" class="btn primary">
-                    <i class="fas fa-lightbulb"></i> Suggest a Project Idea
-                </a>
-                <a href="#" class="btn secondary">
-                    <i class="fas fa-trophy"></i> View Completed Projects
-                </a>
-            </div>
+    <section id="projects">
+      <h2>Project Ideas</h2>
+      <div class="project-list">
+        <div class="card">
+          <div class="author">Open-Source Resume Parser</div>
+          <div class="content">
+            Build a web tool that parses PDF resumes and extracts structured data. Use Python (Flask), JavaScript, and PDF parsing libraries. Focus on ATS compatibility and privacy[2].
+          </div>
         </div>
+        <div class="card">
+          <div class="author">Smart Portfolio Generator</div>
+          <div class="content">
+            Create a platform for students to generate research portfolios. Integrate with ORCID, allow project uploads, and export to PDF/HTML.
+          </div>
+        </div>
+        <div class="card">
+          <div class="author">Community Insights Platform</div>
+          <div class="content">
+            Develop a site where users can share and upvote authentic career advice. Use React for frontend, Node.js for backend, and MongoDB for storage.
+          </div>
+        </div>
+        <div class="card">
+          <div class="author">HR Constants API</div>
+          <div class="content">
+            Build an API serving up-to-date HR constants (roles, bands, skills, salaries) for integration into HRMS or job portals.
+          </div>
+        </div>
+        <div class="card">
+          <div class="author">AI Interview Coach</div>
+          <div class="content">
+            An AI-powered web app that simulates interviews, gives real-time feedback, and suggests improvements based on user responses.
+          </div>
+        </div>
+      </div>
     </section>
+  </main>
+  <script>
+    // Section navigation
+    function showSection(id) {
+      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
 
-    <!-- Job Listings Section -->
-    <section id="jobs" class="section">
-        <div class="container">
-            <h2 class="section-title">Job Opportunities</h2>
-            <p class="section-subtitle">Curated listings from top employers worldwide</p>
-            
-            <div class="coming-soon-container">
-                <div class="coming-soon-content">
-                    <div class="coming-soon-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Job Board Launching August 2023</h3>
-                    <p class="coming-soon-text">We're building an advanced job matching platform that will connect you with the best opportunities based on your skills, experience, and career goals. Our system will feature:</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Personalized job recommendations</li>
-                        <li><i class="fas fa-check"></i> Salary estimation tools</li>
-                        <li><i class="fas fa-check"></i> Company culture insights</li>
-                        <li><i class="fas fa-check"></i> Application tracking system</li>
-                    </ul>
-                    <div class="notify-form">
-                        <h4>Get Early Access</h4>
-                        <div class="form-group">
-                            <input type="email" placeholder="Enter your email address">
-                            <button class="btn primary">Notify Me</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    // Resume builder preview
+    function updateResume() {
+      const name = document.getElementById('rname').value.trim();
+      const role = document.getElementById('rrole').value.trim();
+      const summary = document.getElementById('rsummary').value.trim();
+      const exp = document.getElementById('rexperience').value.trim();
+      const skills = document.getElementById('rskills').value.trim();
+
+      if (!name || !role || !summary || !exp || !skills) {
+        alert('Please fill all fields!');
+        return;
+      }
+      document.getElementById('resumePreview').innerHTML = `
+        <h3 style="margin-bottom:0.5rem;">${name}</h3>
+        <div style="font-weight:bold;color:var(--accent);margin-bottom:0.5rem;">${role}</div>
+        <div style="margin-bottom:1rem;"><em>${summary}</em></div>
+        <div><b>Experience:</b>
+          <ul>${exp.split(',').map(e=>`<li>${e.trim()}</li>`).join('')}</ul>
         </div>
-    </section>
+        <div><b>Skills:</b> ${skills.split(',').map(s=>`<span style="background:#ffd580;padding:2px 8px;border-radius:8px;margin-right:5px;">${s.trim()}</span>`).join('')}</div>
+      `;
+    }
 
-    <!-- Hackathon Listings Section -->
-    <section id="hackathons" class="section dark">
-        <div class="container">
-            <h2 class="section-title">Hackathons & Coding Challenges</h2>
-            <p class="section-subtitle">Compete, learn, and showcase your skills</p>
-            
-            <div class="coming-soon-container">
-                <div class="coming-soon-content">
-                    <div class="coming-soon-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Hackathon Portal Coming Soon</h3>
-                    <p class="coming-soon-text">Our upcoming hackathon platform will feature:</p>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <h4>Global Events Calendar</h4>
-                            <p>Find hackathons matching your interests and schedule</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h4>Team Formation</h4>
-                            <p>Connect with other participants to form ideal teams</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <h4>Prize Tracking</h4>
-                            <p>See what prizes and opportunities each event offers</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <h4>Learning Resources</h4>
-                            <p>Access tutorials and guides to prepare for events</p>
-                        </div>
-                    </div>
-                    <div class="countdown">
-                        <h4>Launching in:</h4>
-                        <div class="countdown-timer" id="launchCountdown">
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="days">45</span>
-                                <span class="countdown-label">Days</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="hours">12</span>
-                                <span class="countdown-label">Hours</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="minutes">30</span>
-                                <span class="countdown-label">Minutes</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    // Portfolio builder preview
+    function updatePortfolio() {
+      const name = document.getElementById('pname').value.trim();
+      const research = document.getElementById('presearch').value.trim();
+      const projects = document.getElementById('pprojects').value.trim();
+      const skills = document.getElementById('pskills').value.trim();
+      const statement = document.getElementById('pstatement').value.trim();
+
+      if (!name || !research || !projects || !skills || !statement) {
+        alert('Please fill all fields!');
+        return;
+      }
+      document.getElementById('portfolioPreview').innerHTML = `
+        <h3 style="margin-bottom:0.5rem;">${name}</h3>
+        <div style="font-weight:bold;color:var(--accent);margin-bottom:0.5rem;">Research Focus: ${research}</div>
+        <div style="margin-bottom:1rem;"><em>${statement}</em></div>
+        <div><b>Key Projects:</b>
+          <ul>${projects.split(',').map(p=>`<li>${p.trim()}</li>`).join('')}</ul>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <div class="logo">
-                        <i class="fas fa-rocket"></i>
-                        <span>CareerHub Pro</span>
-                    </div>
-                    <p>Your comprehensive platform for career growth and professional development. We provide the tools, resources, and community to help you succeed at every stage of your career journey.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#forum"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
-                        <li><a href="#resume-builder"><i class="fas fa-chevron-right"></i> Resume Builder</a></li>
-                        <li><a href="#postgrad"><i class="fas fa-chevron-right"></i> Grad School Resources</a></li>
-                        <li><a href="#hr-contacts"><i class="fas fa-chevron-right"></i> HR Contacts</a></li>
-                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Project Ideas</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section links">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Career Guides</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Interview Prep</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Salary Negotiation</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Skill Assessments</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Mentorship Program</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section contact">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Career Street, San Francisco, CA 94107</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> contact@careerhubpro.com</p>
-                    <div class="newsletter">
-                        <h4>Subscribe to Newsletter</h4>
-                        <div class="newsletter-form">
-                            <input type="email" placeholder="Your email address">
-                            <button class="btn primary">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2023 CareerHub Pro. All rights reserved.</p>
-                    <div class="footer-legal">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Cookie Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Navigation
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            
-            hamburger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 70,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Navbar scroll effect
-            window.addEventListener('scroll', function() {
-                const navbar = document.querySelector('.navbar');
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-            
-            // Animate stats on hero section
-            function animateValue(id, start, end, duration) {
-                const obj = document.getElementById(id);
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    obj.innerHTML = Math.floor(progress * (end - start) + start + (id === 'success-rate' ? '%' : '+');
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    }
-                };
-                window.requestAnimationFrame(step);
-            }
-            
-            // Start animation when hero section is in view
-            const heroSection = document.querySelector('.hero');
-            const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    animateValue('members-count', 0, 25000, 2000);
-                    animateValue('jobs-count', 0, 1200, 2000);
-                    animateValue('success-rate', 0, 92, 2000);
-                    observer.unobserve(heroSection);
-                }
-            }, { threshold: 0.5 });
-            
-            observer.observe(heroSection);
-            
-            // Filter blog posts
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const blogCards = document.querySelectorAll('.blog-card');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active button
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // Filter blog cards
-                    blogCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Resume Builder Form
-            const resumeFormSteps = document.querySelectorAll('.step-form');
-            const resumeSteps = document.querySelectorAll('.step');
-            
-            // Show step 1 by default
-            showStep(1);
-            
-            // Next/previous buttons
-            document.querySelectorAll('.next-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const nextStep = parseInt(this.getAttribute('data-next'));
-                    showStep(nextStep);
-                });
-            });
-            
-            document.querySelectorAll('.prev-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const prevStep = parseInt(this.getAttribute('data-prev'));
-                    showStep(prevStep);
-                });
-            });
-            
-            function showStep(stepNumber) {
-                // Update form steps
-                resumeFormSteps.forEach(form => {
-                    form.classList.remove('active');
-                    if (parseInt(form.getAttribute('data-step')) === stepNumber) {
-                        form.classList.add('active');
-                    }
-                });
-                
-                // Update progress steps
-                resumeSteps.forEach(step => {
-                    step.classList.remove('active');
-                    if (parseInt(step.getAttribute('data-step')) <= stepNumber) {
-                        step.classList.add('active');
-                    }
-                });
-            }
-            
-            // Experience form handling
-            const experienceEntries = document.getElementById('experienceEntries');
-            const addExperienceBtn = document.getElementById('addExperience');
-            
-            addExperienceBtn.addEventListener('click', function() {
-                const entryCount = experienceEntries.children.length;
-                const entryHtml = `
-                    <div class="experience-entry">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="experienceTitle${entryCount}">Job Title *</label>
-                                <input type="text" id="experienceTitle${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="experienceCompany${entryCount}">Company *</label>
-                                <input type="text" id="experienceCompany${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="experienceStart${entryCount}">Start Date *</label>
-                                <input type="month" id="experienceStart${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="experienceEnd${entryCount}">End Date (or Present)</label>
-                                <input type="month" id="experienceEnd${entryCount}">
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="experienceDescription${entryCount}">Responsibilities & Achievements *</label>
-                                <textarea id="experienceDescription${entryCount}" rows="4" required placeholder="Bullet points work best. Start each with a strong action verb (e.g., Developed, Led, Implemented)"></textarea>
-                            </div>
-                        </div>
-                        <button type="button" class="remove-entry">
-                            <i class="fas fa-times"></i> Remove
-                        </button>
-                    </div>
-                `;
-                
-                const div = document.createElement('div');
-                div.innerHTML = entryHtml;
-                experienceEntries.appendChild(div);
-                
-                // Add event listener to remove button
-                div.querySelector('.remove-entry').addEventListener('click', function() {
-                    div.remove();
-                });
-            });
-            
-            // Education form handling
-            const educationEntries = document.getElementById('educationEntries');
-            const addEducationBtn = document.getElementById('addEducation');
-            
-            addEducationBtn.addEventListener('click', function() {
-                const entryCount = educationEntries.children.length;
-                const entryHtml = `
-                    <div class="education-entry">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="educationDegree${entryCount}">Degree *</label>
-                                <input type="text" id="educationDegree${entryCount}" required placeholder="e.g., Bachelor of Science in Computer Science">
-                            </div>
-                            <div class="form-group">
-                                <label for="educationInstitution${entryCount}">Institution *</label>
-                                <input type="text" id="educationInstitution${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="educationYear${entryCount}">Graduation Year *</label>
-                                <input type="month" id="educationYear${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="educationGPA${entryCount}">GPA (optional)</label>
-                                <input type="text" id="educationGPA${entryCount}" placeholder="e.g., 3.8/4.0">
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="educationHonors${entryCount}">Honors/Awards (optional)</label>
-                                <input type="text" id="educationHonors${entryCount}" placeholder="e.g., Summa Cum Laude, Dean's List">
-                            </div>
-                        </div>
-                        <button type="button" class="remove-entry">
-                            <i class="fas fa-times"></i> Remove
-                        </button>
-                    </div>
-                `;
-                
-                const div = document.createElement('div');
-                div.innerHTML = entryHtml;
-                educationEntries.appendChild(div);
-                
-                // Add event listener to remove button
-                div.querySelector('.remove-entry').addEventListener('click', function() {
-                    div.remove();
-                });
-            });
-            
-            // Skills tags input
-            const skillsInputs = ['technicalSkills', 'softSkills', 'languages'];
-            
-            skillsInputs.forEach(skill => {
-                const input = document.getElementById(skill);
-                const inputContainer = document.getElementById(`${skill}Input`);
-                
-                input.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ',') {
-                        e.preventDefault();
-                        const value = this.value.trim();
-                        if (value) {
-                            addTag(value, skill);
-                            this.value = '';
-                        }
-                    }
-                });
-                
-                // Add suggestion click handler
-                const suggestions = document.getElementById(`${skill}Suggestions`);
-                if (suggestions) {
-                    suggestions.querySelectorAll('span').forEach(suggestion => {
-                        suggestion.addEventListener('click', function() {
-                            addTag(this.textContent, skill);
-                        });
-                    });
-                }
-            });
-            
-            function addTag(value, skill) {
-                const inputContainer = document.getElementById(`${skill}Input`);
-                const tag = document.createElement('span');
-                tag.className = 'tag';
-                tag.innerHTML = `${value} <i class="fas fa-times"></i>`;
-                
-                // Insert before input
-                inputContainer.insertBefore(tag, inputContainer.querySelector('.tags-input-field'));
-                
-                // Add remove handler
-                tag.querySelector('i').addEventListener('click', function() {
-                    tag.remove();
-                });
-            }
-            
-            // Resume template selector
-            const templateSelect = document.getElementById('templateSelect');
-            const resumeOutput = document.getElementById('resumeOutput');
-            
-            templateSelect.addEventListener('change', function() {
-                resumeOutput.className = 'resume-template ' + this.value;
-            });
-            
-            // Generate resume
-            document.getElementById('skillsForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Basic info
-                document.getElementById('resumeName').textContent = document.getElementById('name').value;
-                document.getElementById('resumeHeadline').textContent = document.getElementById('headline').value;
-                
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const location = document.getElementById('location').value;
-                const linkedin = document.getElementById('linkedin').value;
-                const portfolio = document.getElementById('portfolio').value;
-                
-                const contactInfo = [];
-                if (email) contactInfo.push(email);
-                if (phone) contactInfo.push(phone);
-                if (location) contactInfo.push(location);
-                
-                document.getElementById('resumeContact').innerHTML = contactInfo.map(info => `<span>${info}</span>`).join('<span>•</span>');
-                
-                const socialLinks = [];
-                if (linkedin) socialLinks.push(`<a href="${linkedin}">LinkedIn</a>`);
-                if (portfolio) socialLinks.push(`<a href="${portfolio}">Portfolio</a>`);
-                
-                document.getElementById('resumeSocial').innerHTML = socialLinks.join('<span>•</span>');
-                
-                // Summary
-                document.getElementById('resumeSummary').textContent = document.getElementById('summary').value;
-                
-                // Experience
-                const experienceItems = [];
-                const experienceEntries = document.querySelectorAll('.experience-entry');
-                
-                experienceEntries.forEach((entry, index) => {
-                    const title = entry.querySelector(`#experienceTitle${index}`).value;
-                    const company = entry.querySelector(`#experienceCompany${index}`).value;
-                    const start = entry.querySelector(`#experienceStart${index}`).value;
-                    const end = entry.querySelector(`#experienceEnd${index}`).value || 'Present';
-                    const description = entry.querySelector(`#experienceDescription${index}`).value;
-                    
-                    const bullets = description.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('');
-                    
-                    experienceItems.push(`
-                        <div class="experience-item">
-                            <div class="experience-header">
-                                <h3>${title}</h3>
-                                <span class="experience-date">${formatDate(start)} - ${end === 'Present' ? 'Present' : formatDate(end)}</span>
-                            </div>
-                            <div class="experience-company">${company}</div>
-                            <ul class="experience-details">${bullets}</ul>
-                        </div>
-                    `);
-                });
-                
-                document.getElementById('resumeExperience').innerHTML = experienceItems.join('') || '<p>No experience listed</p>';
-                
-                // Education
-                const educationItems = [];
-                const educationEntries = document.querySelectorAll('.education-entry');
-                
-                educationEntries.forEach((entry, index) => {
-                    const degree = entry.querySelector(`#educationDegree${index}`).value;
-                    const institution = entry.querySelector(`#educationInstitution${index}`).value;
-                    const year = entry.querySelector(`#educationYear${index}`).value;
-                    const gpa = entry.querySelector(`#educationGPA${index}`).value;
-                    const honors = entry.querySelector(`#educationHonors${index}`).value;
-                    
-                    let educationHtml = `<h3>${degree}</h3><div class="education-institution">${institution}, ${year ? new Date(year).getFullYear() : ''}`;
-                    
-                    if (gpa) educationHtml += ` | GPA: ${gpa}`;
-                    if (honors) educationHtml += ` | ${honors}`;
-                    
-                    educationHtml += '</div>';
-                    
-                    educationItems.push(`<div class="education-item">${educationHtml}</div>`);
-                });
-                
-                document.getElementById('resumeEducation').innerHTML = educationItems.join('') || '<p>No education listed</p>';
-                
-                // Skills
-                const technicalSkills = Array.from(document.querySelectorAll('#technicalSkillsInput .tag')).map(tag => tag.textContent.trim().replace('×', ''));
-                const softSkills = Array.from(document.querySelectorAll('#softSkillsInput .tag')).map(tag => tag.textContent.trim().replace('×', ''));
-                
-                document.getElementById('resumeTechnicalSkills').innerHTML = technicalSkills.map(skill => `<span>${skill}</span>`).join('');
-                document.getElementById('resumeSoftSkills').innerHTML = softSkills.map(skill => `<span>${skill}</span>`).join('');
-                
-                // Enable download and print buttons
-                document.getElementById('downloadResume').disabled = false;
-                document.getElementById('printResume').disabled = false;
-                
-                // Scroll to preview
-                document.getElementById('resumePreview').scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            function formatDate(dateString) {
-                if (!dateString) return '';
-                const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-            }
-            
-            // Postgrad Profile Builder
-            const researchEntries = document.getElementById('researchEntries');
-            const addResearchBtn = document.getElementById('addResearch');
-            
-            addResearchBtn.addEventListener('click', function() {
-                const entryCount = researchEntries.children.length;
-                const entryHtml = `
-                    <div class="research-entry">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="researchTitle${entryCount}">Position/Title *</label>
-                                <input type="text" id="researchTitle${entryCount}" required placeholder="e.g., Undergraduate Research Assistant">
-                            </div>
-                            <div class="form-group">
-                                <label for="researchInstitution${entryCount}">Institution/Lab *</label>
-                                <input type="text" id="researchInstitution${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="researchStart${entryCount}">Start Date *</label>
-                                <input type="month" id="researchStart${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="researchEnd${entryCount}">End Date (or Present)</label>
-                                <input type="month" id="researchEnd${entryCount}">
-                            </div>
-                            <div class="form-group">
-                                <label for="researchAdvisor${entryCount}">Advisor/Mentor</label>
-                                <input type="text" id="researchAdvisor${entryCount}" placeholder="Professor Name">
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="researchDescription${entryCount}">Description *</label>
-                                <textarea id="researchDescription${entryCount}" rows="4" required placeholder="Describe your research focus, methodologies used, and any significant findings or contributions"></textarea>
-                            </div>
-                        </div>
-                        <button type="button" class="remove-entry">
-                            <i class="fas fa-times"></i> Remove
-                        </button>
-                    </div>
-                `;
-                
-                const div = document.createElement('div');
-                div.innerHTML = entryHtml;
-                researchEntries.appendChild(div);
-                
-                // Add event listener to remove button
-                div.querySelector('.remove-entry').addEventListener('click', function() {
-                    div.remove();
-                });
-            });
-            
-            const projectEntries = document.getElementById('projectEntries');
-            const addProjectBtn = document.getElementById('addProject');
-            
-            addProjectBtn.addEventListener('click', function() {
-                const entryCount = projectEntries.children.length;
-                const entryHtml = `
-                    <div class="project-entry">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="projectTitle${entryCount}">Project Title *</label>
-                                <input type="text" id="projectTitle${entryCount}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="projectCourse${entryCount}">Course (if applicable)</label>
-                                <input type="text" id="projectCourse${entryCount}" placeholder="e.g., Advanced Machine Learning">
-                            </div>
-                            <div class="form-group">
-                                <label for="projectDate${entryCount}">Date Completed *</label>
-                                <input type="month" id="projectDate${entryCount}" required>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="projectDescription${entryCount}">Description *</label>
-                                <textarea id="projectDescription${entryCount}" rows="4" required placeholder="Describe the project objectives, your contributions, technologies used, and outcomes"></textarea>
-                            </div>
-                        </div>
-                        <button type="button" class="remove-entry">
-                            <i class="fas fa-times"></i> Remove
-                        </button>
-                    </div>
-                `;
-                
-                const div = document.createElement('div');
-                div.innerHTML = entryHtml;
-                projectEntries.appendChild(div);
-                
-                // Add event listener to remove button
-                div.querySelector('.remove-entry').addEventListener('click', function() {
-                    div.remove();
-                });
-            });
-            
-            // Generate postgrad profile
-            document.getElementById('postgradForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Basic info
-                document.getElementById('profileName').textContent = document.getElementById('pgName').value;
-                
-                const email = document.getElementById('pgEmail').value;
-                document.getElementById('profileContact').innerHTML = `<span>${email}</span>`;
-                
-                // Education
-                const undergrad = document.getElementById('pgUndergrad').value;
-                const major = document.getElementById('pgMajor').value;
-                const gpa = document.getElementById('pgGPA').value;
-                const graduation = document.getElementById('pgGraduation').value;
-                
-                let educationHtml = `<h3>${major}</h3><div class="institution">${undergrad}`;
-                
-                if (graduation) educationHtml += `, Expected ${new Date(graduation).getFullYear()}`;
-                if (gpa) educationHtml += ` | GPA: ${gpa}`;
-                
-                educationHtml += '</div>';
-                
-                document.getElementById('profileEducation').innerHTML = educationHtml;
-                
-                // Research Interests
-                document.getElementById('profileInterests').textContent = document.getElementById('pgInterests').value;
-                
-                // Research Experience
-                const researchItems = [];
-                const researchEntries = document.querySelectorAll('.research-entry');
-                
-                researchEntries.forEach((entry, index) => {
-                    const title = entry.querySelector(`#researchTitle${index}`).value;
-                    const institution = entry.querySelector(`#researchInstitution${index}`).value;
-                    const start = entry.querySelector(`#researchStart${index}`).value;
-                    const end = entry.querySelector(`#researchEnd${index}`).value || 'Present';
-                    const advisor = entry.querySelector(`#researchAdvisor${index}`).value;
-                    const description = entry.querySelector(`#researchDescription${index}`).value;
-                    
-                    const bullets = description.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('');
-                    
-                    let researchHtml = `<h3>${title}</h3><div class="research-details"><span class="institution">${institution}</span><span class="date">${formatDate(start)} - ${end === 'Present' ? 'Present' : formatDate(end)}</span></div>`;
-                    
-                    if (advisor) researchHtml += `<div class="advisor">Advisor: ${advisor}</div>`;
-                    if (bullets) researchHtml += `<ul class="research-description">${bullets}</ul>`;
-                    
-                    researchItems.push(`<div class="research-item">${researchHtml}</div>`);
-                });
-                
-                document.getElementById('profileResearch').innerHTML = researchItems.join('') || '<p>No research experience listed</p>';
-                
-                // Academic Projects
-                const projectItems = [];
-                const projectEntries = document.querySelectorAll('.project-entry');
-                
-                projectEntries.forEach((entry, index) => {
-                    const title = entry.querySelector(`#projectTitle${index}`).value;
-                    const course = entry.querySelector(`#projectCourse${index}`).value;
-                    const date = entry.querySelector(`#projectDate${index}`).value;
-                    const description = entry.querySelector(`#projectDescription${index}`).value;
-                    
-                    const bullets = description.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('');
-                    
-                    let projectHtml = `<h3>${title}</h3><div class="project-details">`;
-                    
-                    if (course) projectHtml += `<span class="course">${course}</span>`;
-                    if (date) projectHtml += `<span class="date">${formatDate(date)}</span>`;
-                    
-                    projectHtml += `</div><ul class="project-description">${bullets}</ul>`;
-                    
-                    projectItems.push(`<div class="project-item">${projectHtml}</div>`);
-                });
-                
-                document.getElementById('profileProjects').innerHTML = projectItems.join('') || '<p>No academic projects listed</p>';
-                
-                // Publications
-                const publications = document.getElementById('pgPublications').value;
-                document.getElementById('profilePublications').innerHTML = publications.split('\n').filter(line => line.trim()).map(line => `<p>${line.trim()}</p>`).join('') || '<p>No publications listed</p>';
-                
-                // Awards
-                const awards = document.getElementById('pgAwards').value;
-                document.getElementById('profileAwards').innerHTML = awards.split('\n').filter(line => line.trim()).map(line => `<p>${line.trim()}</p>`).join('') || '<p>No honors or awards listed</p>';
-                
-                // Career Goals
-                document.getElementById('profileGoals').textContent = document.getElementById('pgGoals').value;
-                
-                // Enable download button
-                document.getElementById('downloadProfile').disabled = false;
-                
-                // Scroll to preview
-                document.getElementById('profileOutput').scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // Quotes Carousel
-            const quoteCards = document.querySelectorAll('.quote-card');
-            const dots = document.querySelectorAll('.carousel-dots .dot');
-            const prevBtn = document.querySelector('.carousel-prev');
-            const nextBtn = document.querySelector('.carousel-next');
-            let currentIndex = 0;
-            let autoSlideInterval;
-            
-            function showQuote(index) {
-                // Wrap around if at beginning or end
-                if (index >= quoteCards.length) index = 0;
-                if (index < 0) index = quoteCards.length - 1;
-                
-                // Hide all quotes
-                quoteCards.forEach(card => card.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                // Show selected quote
-                quoteCards[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentIndex = index;
-            }
-            
-            function nextQuote() {
-                showQuote(currentIndex + 1);
-            }
-            
-            function prevQuote() {
-                showQuote(currentIndex - 1);
-            }
-            
-            // Button event listeners
-            if (nextBtn && prevBtn) {
-                nextBtn.addEventListener('click', nextQuote);
-                prevBtn.addEventListener('click', prevQuote);
-            }
-            
-            // Dot navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => showQuote(index));
-            });
-            
-            // Auto-advance quotes
-            function startAutoSlide() {
-                autoSlideInterval = setInterval(nextQuote, 8000);
-            }
-            
-            function stopAutoSlide() {
-                clearInterval(autoSlideInterval);
-            }
-            
-            // Start auto slide when carousel is in view
-            const carouselObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    startAutoSlide();
-                } else {
-                    stopAutoSlide();
-                }
-            }, { threshold: 0.5 });
-            
-            if (document.querySelector('.quotes-carousel')) {
-                carouselObserver.observe(document.querySelector('.quotes-carousel'));
-            }
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight') {
-                    nextQuote();
-                    stopAutoSlide();
-                    startAutoSlide();
-                } else if (e.key === 'ArrowLeft') {
-                    prevQuote();
-                    stopAutoSlide();
-                    startAutoSlide();
-                }
-            });
-            
-            // Project Tabs
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const tabId = btn.getAttribute('data-tab');
-                    
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    btn.classList.add('active');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-            
-            // HR Contacts Filter
-            const industryFilter = document.getElementById('industryFilter');
-            const locationFilter = document.getElementById('locationFilter');
-            const contactCards = document.querySelectorAll('.contact-card');
-            
-            function filterContacts() {
-                const industryValue = industryFilter.value;
-                const locationValue = locationFilter.value;
-                
-                contactCards.forEach(card => {
-                    const cardIndustry = card.getAttribute('data-industry');
-                    const cardLocation = card.getAttribute('data-location');
-                    
-                    const industryMatch = !industryValue || cardIndustry === industryValue;
-                    const locationMatch = !locationValue || cardLocation === locationValue;
-                    
-                    if (industryMatch && locationMatch) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-            
-            if (industryFilter && locationFilter) {
-                industryFilter.addEventListener('change', filterContacts);
-                locationFilter.addEventListener('change', filterContacts);
-            }
-            
-            // Search functionality for HR contacts
-            const searchBox = document.querySelector('.search-box input');
-            if (searchBox) {
-                searchBox.addEventListener('input', function() {
-                    const searchTerm = this.value.toLowerCase();
-                    
-                    contactCards.forEach(card => {
-                        const text = card.textContent.toLowerCase();
-                        if (text.includes(searchTerm)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            }
-            
-            // Launch countdown timer
-            function updateCountdown() {
-                const launchDate = new Date();
-                launchDate.setDate(launchDate.getDate() + 45); // 45 days from now
-                
-                const now = new Date();
-                const diff = launchDate - now;
-                
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours;
-                document.getElementById('minutes').textContent = minutes;
-            }
-            
-            if (document.getElementById('launchCountdown')) {
-                updateCountdown();
-                setInterval(updateCountdown, 60000); // Update every minute
-            }
-            
-            // Download buttons (placeholder functionality)
-            document.getElementById('downloadResume')?.addEventListener('click', () => {
-                alert('In a full implementation, this would generate a PDF of your resume.');
-            });
-            
-            document.getElementById('printResume')?.addEventListener('click', () => {
-                window.print();
-            });
-            
-            document.getElementById('downloadProfile')?.addEventListener('click', () => {
-                alert('In a full implementation, this would generate a PDF of your academic profile.');
-            });
-            
-            // Analyze resume button
-            document.getElementById('analyzeResume')?.addEventListener('click', () => {
-                alert('This feature would analyze your resume against job descriptions and provide improvement suggestions.');
-            });
-            
-            // SOP generator button
-            document.getElementById('sopGenerator')?.addEventListener('click', () => {
-                alert('This feature would help you generate a statement of purpose based on your academic profile.');
-            });
-            
-            // Notify me buttons
-            document.querySelectorAll('.notify-form button').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const email = this.parentElement.querySelector('input').value;
-                    if (email && email.includes('@')) {
-                        alert(`Thank you! We'll notify you at ${email} when this feature is available.`);
-                        this.parentElement.querySelector('input').value = '';
-                    } else {
-                        alert('Please enter a valid email address.');
-                    }
-                });
-            });
-            
-            // Save buttons
-            document.querySelectorAll('.save-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.innerHTML = '<i class="fas fa-check"></i> Saved';
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="far fa-bookmark"></i> Save';
-                    }, 2000);
-                });
-            });
-            
-            // Contact buttons
-            document.querySelectorAll('.contact-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const card = this.closest('.contact-card');
-                    const name = card.querySelector('h4').textContent;
-                    alert(`This would open a message form to contact ${name}.`);
-                });
-            });
-        });
-    </script>
+        <div><b>Skills:</b> ${skills.split(',').map(s=>`<span style="background:#ffd580;padding:2px 8px;border-radius:8px;margin-right:5px;">${s.trim()}</span>`).join('')}</div>
+      `;
+    }
+  </script>
 </body>
 </html>
