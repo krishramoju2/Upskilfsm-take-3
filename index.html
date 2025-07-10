@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Career Nexus: Community, Resume, Portfolio & Chatbot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Career Nexus: Community, Resume, Portfolio & More</title>
+  <meta name="description" content="Career platform with authentic insights, resume builder, portfolio builder, HR contacts, and an AI chatbot assistant">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -26,6 +27,9 @@
       height: 100%;
       margin: 0;
       padding: 0;
+    }
+    body {
+      min-height: 100vh;
       font-family: 'Manrope', 'Montserrat', Arial, sans-serif;
       background: var(--bg-gradient);
       color: var(--primary);
@@ -108,7 +112,6 @@
       padding: 2.7rem;
       backdrop-filter: blur(3px);
       position: relative;
-      z-index: 10;
     }
     section {
       display: none;
@@ -370,7 +373,7 @@
     footer p {
       margin: 0.5rem 0;
     }
-
+    
     /* Chatbot Styles */
     .chatbot-container {
       position: fixed;
@@ -378,159 +381,142 @@
       right: 30px;
       z-index: 1000;
       width: 350px;
-      height: 500px;
+      font-family: 'Manrope', sans-serif;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s ease;
       display: flex;
       flex-direction: column;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      transform: translateY(20px);
-      opacity: 0;
-      transition: all 0.3s ease;
+      max-height: 80vh;
     }
-    
     .chatbot-container.active {
       transform: translateY(0);
       opacity: 1;
     }
-    
     .chatbot-header {
-      background: linear-gradient(100deg, #3c2e6a 0%, #ff9100 100%);
+      background: linear-gradient(100deg, #3c2e6a 60%, #ff9100 120%);
       color: white;
-      padding: 15px 20px;
+      padding: 15px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
     }
-    
     .chatbot-header h3 {
       margin: 0;
       font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: white;
       font-weight: 700;
-      color: white;
-      border: none;
-      padding: 0;
     }
-    
-    .chatbot-header button {
-      background: none;
-      border: none;
-      color: white;
+    .chatbot-header i {
       font-size: 1.2rem;
-      cursor: pointer;
     }
-    
     .chatbot-messages {
       flex: 1;
-      background: white;
-      padding: 20px;
+      background: #f0f4ff;
+      padding: 15px;
       overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+      max-height: 400px;
+      min-height: 300px;
     }
-    
     .message {
+      margin-bottom: 15px;
+      display: flex;
+    }
+    .message.bot {
+      justify-content: flex-start;
+    }
+    .message.user {
+      justify-content: flex-end;
+    }
+    .message-content {
       max-width: 80%;
-      padding: 12px 15px;
+      padding: 10px 15px;
       border-radius: 18px;
-      line-height: 1.4;
-      position: relative;
-      animation: fadeIn 0.3s ease;
+      line-height: 1.5;
     }
-    
-    .user-message {
-      background: #e3e9ff;
-      align-self: flex-end;
-      border-bottom-right-radius: 5px;
+    .bot .message-content {
+      background: white;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
-    
-    .bot-message {
-      background: #f0f5ff;
-      align-self: flex-start;
-      border-bottom-left-radius: 5px;
+    .user .message-content {
+      background: var(--accent);
+      color: white;
+      border-bottom-right-radius: 4px;
     }
-    
     .chatbot-input {
       display: flex;
       padding: 15px;
-      background: #f8fafc;
+      background: white;
       border-top: 1px solid #e3e9ff;
     }
-    
     .chatbot-input input {
       flex: 1;
-      padding: 12px 15px;
+      padding: 10px 15px;
       border: 1px solid #e3e9ff;
       border-radius: 30px;
       outline: none;
-      font-size: 0.95rem;
+      font-family: 'Manrope', sans-serif;
     }
-    
     .chatbot-input button {
       background: var(--accent);
       color: white;
       border: none;
-      width: 45px;
-      height: 45px;
       border-radius: 50%;
+      width: 40px;
+      height: 40px;
       margin-left: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
     }
-    
-    .chatbot-input button:hover {
-      background: var(--accent2);
-    }
-    
-    .chatbot-trigger {
+    .chatbot-toggle {
       position: fixed;
       bottom: 30px;
       right: 30px;
       width: 60px;
       height: 60px;
-      background: linear-gradient(100deg, #3c2e6a 0%, #ff9100 100%);
+      background: linear-gradient(100deg, #3c2e6a 60%, #ff9100 120%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 1.5rem;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      z-index: 1001;
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: transform 0.3s ease;
     }
-    
-    .chatbot-trigger:hover {
+    .chatbot-toggle:hover {
       transform: scale(1.1);
     }
-    
-    .suggestions {
+    .chatbot-toggle i {
+      font-size: 24px;
+      color: white;
+    }
+    .suggested-questions {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       margin-top: 10px;
     }
-    
-    .suggestion {
-      background: rgba(78, 137, 174, 0.1);
-      color: var(--accent3);
-      padding: 6px 12px;
+    .suggested-questions button {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #e3e9ff;
       border-radius: 20px;
+      padding: 6px 12px;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
-    
-    .suggestion:hover {
-      background: rgba(78, 137, 174, 0.2);
+    .suggested-questions button:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
     }
 
     @media (max-width: 900px) {
@@ -545,9 +531,8 @@
       }
       .chatbot-container {
         width: 300px;
-        height: 450px;
-        bottom: 20px;
         right: 20px;
+        bottom: 20px;
       }
     }
     @media (max-width: 600px) {
@@ -565,10 +550,10 @@
         min-width: 100%;
       }
       .chatbot-container {
-        width: 90%;
-        height: 70vh;
-        bottom: 10px;
-        right: 5%;
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        max-height: 70vh;
       }
     }
   </style>
@@ -576,7 +561,7 @@
 <body>
   <header>
     <h1>Career Nexus</h1>
-    <p>Your hub for authentic career insights, resume & portfolio builders, HR contacts, and project inspiration.</p>
+    <p>Your hub for career insights, resume & portfolio builders, and an AI assistant</p>
     <nav>
       <button onclick="showSection('home')" class="active">Home</button>
       <button onclick="showSection('insights')">Community Insights</button>
@@ -622,14 +607,6 @@
       <div class="unique">
         <b>What makes us unique?</b> Every section is packed with <span style="color:var(--accent2);font-weight:bold;">authentic, detailed, and factual content</span>—no blanks, no placeholders. Every button works, every sample is real, and the design is crafted for clarity and beauty.
       </div>
-      
-      <div style="margin-top: 3rem; text-align: center;">
-        <h3>Try Our Career Assistant</h3>
-        <p>Ask our AI assistant about any feature on the site, get resume tips, portfolio advice, or career insights!</p>
-        <button class="cta" onclick="toggleChatbot()">
-          <i class="fas fa-robot"></i> Open Career Assistant
-        </button>
-      </div>
     </section>
 
     <section id="insights">
@@ -651,6 +628,50 @@
           <div class="card"><div class="author">Carlos Mendez</div><div class="role">Lead Data Scientist, Mexico City</div><div class="content">“Build a portfolio of real-world projects. Employers care more about what you’ve built than your degree. My Kaggle competitions opened doors.”</div></div>
           <div class="card"><div class="author">Jin Park</div><div class="role">AI Research Lead, Seoul</div><div class="content">“Contribute to open-source. It’s how I got my first job and built a global network. Start with small documentation fixes.”</div></div>
           <div class="card"><div class="author">Rajiv Menon</div><div class="role">DevOps Architect, Hyderabad</div><div class="content">“Automate repetitive tasks. It frees up time for more impactful work and reduces errors. Our deployment time reduced by 70%.”</div></div>
+          <div class="card"><div class="author">Fatou Bamba</div><div class="role">ML Engineer, ETH Zurich</div><div class="content">“Understand the math behind algorithms. It helps debug when things go wrong and innovate new solutions.”</div></div>
+          <div class="card"><div class="author">Miguel Torres</div><div class="role">Cloud Solutions Lead, Madrid</div><div class="content">“Learn infrastructure-as-code early. It transformed how our team manages environments and reduced configuration drift.”</div></div>
+        </div>
+      </div>
+      
+      <div id="insights-design" class="subsection">
+        <div class="section-intro">
+          Perspectives from UX/UI designers, graphic artists, product designers, and creative directors on building impactful design careers.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Samantha Lee</div><div class="role">UX Director, Singapore</div><div class="content">“Ask questions—even basic ones. My growth accelerated when I started seeking feedback early and often. Don't wait for perfection.”</div></div>
+          <div class="card"><div class="author">Sarah Kim</div><div class="role">Product Designer, San Francisco</div><div class="content">“Master both design tools and psychology. Understanding user behavior is more important than mastering the latest software.”</div></div>
+          <div class="card"><div class="author">Maya Johnson</div><div class="role">Visual Artist, Yale</div><div class="content">“Develop a unique style but remain adaptable. The best designers balance personal expression with client needs.”</div></div>
+          <div class="card"><div class="author">Liam O'Connor</div><div class="role">Creative Director, Dublin</div><div class="content">“Presentation matters as much as design. Learn to articulate your design decisions to stakeholders effectively.”</div></div>
+          <div class="card"><div class="author">Ananya Desai</div><div class="role">UI/UX Lead, Mumbai</div><div class="content">“Accessibility isn't optional. Designing inclusively opens your work to wider audiences and often sparks innovation.”</div></div>
+          <div class="card"><div class="author">Oliver Chen</div><div class="role">Motion Designer, Taipei</div><div class="content">“Study traditional art forms. My background in calligraphy transformed how I approach digital animation and timing.”</div></div>
+        </div>
+      </div>
+      
+      <div id="insights-business" class="subsection">
+        <div class="section-intro">
+          Advice from executives, entrepreneurs, financial analysts, and business strategists on navigating corporate landscapes and building successful careers.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Emily Chen</div><div class="role">VP Product, San Francisco</div><div class="content">“Align your work with business goals. Understanding the ‘why’ behind a feature made me stand out during promotions.”</div></div>
+          <div class="card"><div class="author">David Brown</div><div class="role">Sales Director, New York</div><div class="content">“Follow up after every meeting. Consistency is what closes deals. I track all follow-ups systematically.”</div></div>
+          <div class="card"><div class="author">Anna Petrova</div><div class="role">Product Strategy Lead, Moscow</div><div class="content">“Build cross-functional relationships. My most successful products came from collaborating early with engineering and marketing.”</div></div>
+          <div class="card"><div class="author">Kwame Nkrumah</div><div class="role">Fintech Entrepreneur, Accra</div><div class="content">“Solve real problems, not imagined ones. Validate needs before building. Our pivot saved the company.”</div></div>
+          <div class="card"><div class="author">Sophie Dubois</div><div class="role">Financial Analyst, Paris</div><div class="content">“Understand the story behind numbers. The best analysts contextualize data within business realities.”</div></div>
+          <div class="card"><div class="author">James Wilson</div><div class="role">Operations Director, London</div><div class="content">“Document processes before automating. Many teams automate inefficiencies instead of redesigning workflows.”</div></div>
+        </div>
+      </div>
+      
+      <div id="insights-research" class="subsection">
+        <div class="section-intro">
+          Guidance from academics, researchers, and scientists on building impactful research careers and navigating academic environments.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Luca Rossi</div><div class="role">Postdoc Researcher, Milan</div><div class="content">“Document your research process thoroughly. It helps during thesis defense and international collaborations.”</div></div>
+          <div class="card"><div class="author">Sophia Müller</div><div class="role">Clinical Research Lead, Berlin</div><div class="content">“Ethics in research is non-negotiable. Transparency and honesty are your best assets for long-term credibility.”</div></div>
+          <div class="card"><div class="author">Arjun Nair</div><div class="role">Quantum Physics Researcher, Bangalore</div><div class="content">“Collaborate outside your specialty. My breakthrough came from a conversation with a materials scientist.”</div></div>
+          <div class="card"><div class="author">Elena Garcia</div><div class="role">Biotech Researcher, Barcelona</div><div class="content">“Learn to communicate complex ideas simply. Your impact multiplies when non-specialists understand your work.”</div></div>
+          <div class="card"><div class="author">Wei Zhang</div><div class="role">Civil Engineering Researcher, Beijing</div><div class="content">“Fieldwork complements theory. My most cited papers emerged from unexpected onsite observations.”</div></div>
+          <div class="card"><div class="author">Chloe Dubois</div><div class="role">Social Science Researcher, Montreal</div><div class="content">“Diverse methodologies strengthen research. Quantitative and qualitative approaches together reveal deeper insights.”</div></div>
         </div>
       </div>
     </section>
@@ -688,11 +709,80 @@
               <label for="rskills">Skills (comma separated)</label>
               <input type="text" id="rskills" placeholder="e.g. SQL, Tableau, Python" required>
             </div>
+            <div class="form-group">
+              <label for="reducation">Education</label>
+              <textarea id="reducation" placeholder="Degree, Institution, Year" required></textarea>
+            </div>
             <button type="button" class="cta" onclick="updateResume()">Preview Resume</button>
           </form>
           <div class="preview" id="resumePreview">
             <h3>Live Resume Preview</h3>
             <p style="color:#7b8794;">Fill the form to see your resume here.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="resume-templates" class="subsection">
+        <h3>Professional Resume Templates</h3>
+        <div class="section-intro">
+          Choose from ATS-friendly templates designed to get your resume noticed. All templates are optimized for applicant tracking systems.
+        </div>
+        <div class="grid-list">
+          <div class="card">
+            <div class="author">Modern Professional</div>
+            <div class="content">Clean, contemporary design with emphasis on skills and achievements. Ideal for tech and corporate roles.</div>
+          </div>
+          <div class="card">
+            <div class="author">Creative Showcase</div>
+            <div class="content">Designed for designers and creatives with portfolio integration. Features visual elements and project highlights.</div>
+          </div>
+          <div class="card">
+            <div class="author">Academic Focus</div>
+            <div class="content">Structured layout emphasizing publications, research, and academic achievements. Perfect for research positions.</div>
+          </div>
+          <div class="card">
+            <div class="author">Executive Minimalist</div>
+            <div class="content">Sophisticated design for senior roles with strategic focus. Highlights leadership and impact.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="resume-samples" class="subsection">
+        <h3>Sample Resumes</h3>
+        <div class="section-intro">
+          Real resume examples from professionals who secured positions at top companies. Study what works in different industries.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Priya Sinha</div><div class="role">Data Analyst</div><div class="content"><b>Summary:</b> Analytical Data Analyst with 3+ years' experience in fintech, skilled in SQL, Tableau, and Python.<br><b>Experience:</b> Axis Bank, Infosys<br><b>Skills:</b> Data Visualization, Data Cleaning, Dashboarding</div></div>
+          <div class="card"><div class="author">Miguel Torres</div><div class="role">Full Stack Developer</div><div class="content"><b>Summary:</b> Passionate developer with expertise in React, Node.js, and AWS.<br><b>Experience:</b> Globant, Freelancer<br><b>Skills:</b> React, Node.js, AWS, REST APIs</div></div>
+          <div class="card"><div class="author">Sarah Kim</div><div class="role">UX/UI Designer</div><div class="content"><b>Summary:</b> Creative designer with focus on accessibility and user research.<br><b>Experience:</b> Samsung, Upwork<br><b>Skills:</b> Figma, Sketch, User Testing, Wireframing</div></div>
+          <div class="card"><div class="author">Vikram Singh</div><div class="role">Mechanical Engineer</div><div class="content"><b>Summary:</b> Results-driven engineer with hands-on experience in automotive design.<br><b>Experience:</b> Tata Motors, Mahindra<br><b>Skills:</b> CAD, SolidWorks, Project Management</div></div>
+          <div class="card"><div class="author">Anna Petrova</div><div class="role">Product Manager</div><div class="content"><b>Summary:</b> Product leader with a track record in SaaS and mobile apps.<br><b>Experience:</b> Yandex, Mail.ru<br><b>Skills:</b> Agile, Roadmapping, Cross-functional Teams</div></div>
+          <div class="card"><div class="author">James Okafor</div><div class="role">Biomedical Scientist</div><div class="content"><b>Summary:</b> Research-driven scientist with a focus on molecular diagnostics.<br><b>Experience:</b> Lagos University Hospital<br><b>Skills:</b> PCR, Data Analysis, Scientific Writing</div></div>
+        </div>
+      </div>
+      
+      <div id="resume-tips" class="subsection">
+        <h3>Resume Writing Tips from HR Professionals</h3>
+        <div class="section-intro">
+          Direct advice from hiring managers and HR specialists on creating resumes that get interviews.
+        </div>
+        <div class="grid-list">
+          <div class="card">
+            <div class="author">Quantify Achievements</div>
+            <div class="content">"Instead of 'Managed social media accounts,' write 'Grew Instagram following by 240% in 6 months through targeted campaigns.' Numbers get attention."</div>
+          </div>
+          <div class="card">
+            <div class="author">Tailor for Each Role</div>
+            <div class="content">"We spot generic resumes immediately. Mention specific technologies from the job description and align your experience accordingly."</div>
+          </div>
+          <div class="card">
+            <div class="author">Optimize for ATS</div>
+            <div class="content">"Avoid graphics, columns, and unusual fonts. We process thousands of resumes through tracking systems that read text only."</div>
+          </div>
+          <div class="card">
+            <div class="author">Focus on Impact</div>
+            <div class="content">"Describe how your actions benefited previous employers. Did you save time? Increase revenue? Improve efficiency? That's what we care about."</div>
           </div>
         </div>
       </div>
@@ -730,11 +820,55 @@
               <label for="pstatement">Personal Statement</label>
               <textarea id="pstatement" placeholder="Your research philosophy and career goals" required></textarea>
             </div>
+            <div class="form-group">
+              <label for="ppublications">Publications (if any)</label>
+              <textarea id="ppublications" placeholder="Citations in APA/MLA format"></textarea>
+            </div>
             <button type="button" class="cta" onclick="updatePortfolio()">Preview Portfolio</button>
           </form>
           <div class="preview" id="portfolioPreview">
             <h3>Live Portfolio Preview</h3>
             <p style="color:#7b8794;">Fill the form to see your portfolio here.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="portfolio-samples" class="subsection">
+        <h3>Sample Academic Portfolios</h3>
+        <div class="section-intro">
+          These portfolios helped researchers secure positions at top institutions and industry research labs.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Elena Garcia</div><div class="role">MSc Biotechnology, University of Barcelona</div><div class="content"><b>Focus:</b> CRISPR gene editing<br><b>Projects:</b> CRISPR in crop improvement, Genome sequencing pipeline<br><b>Skills:</b> PCR, DNA extraction, R, Bioinformatics<br><b>Statement:</b> "I aim to bridge the gap between lab research and field application in agriculture."</div></div>
+          <div class="card"><div class="author">Arjun Nair</div><div class="role">PhD Physics, IISc Bangalore</div><div class="content"><b>Focus:</b> Quantum optics<br><b>Projects:</b> Single-photon sources, Quantum cryptography<br><b>Skills:</b> Matlab, Python, Experimental Design<br><b>Statement:</b> "My research explores the intersection of quantum theory and secure communications."</div></div>
+          <div class="card"><div class="author">Maya Johnson</div><div class="role">MFA Visual Arts, Yale</div><div class="content"><b>Focus:</b> Digital installations<br><b>Projects:</b> Interactive gallery, VR art experience<br><b>Skills:</b> Unity, Blender, Adobe Suite<br><b>Statement:</b> "I create immersive experiences that challenge perceptions of reality."</div></div>
+          <div class="card"><div class="author">Wei Zhang</div><div class="role">MEng Civil Engineering, Tsinghua</div><div class="content"><b>Focus:</b> Sustainable urban infrastructure<br><b>Projects:</b> Smart drainage system, Green building audit<br><b>Skills:</b> AutoCAD, GIS, Project Management<br><b>Statement:</b> "My goal is to design resilient cities for the future."</div></div>
+          <div class="card"><div class="author">Fatou Bamba</div><div class="role">MSc Computer Science, ETH Zurich</div><div class="content"><b>Focus:</b> Machine learning for healthcare<br><b>Projects:</b> Disease prediction model, Medical image analysis<br><b>Skills:</b> Python, TensorFlow, Data Visualization<br><b>Statement:</b> "I want to harness AI to improve diagnostic accuracy in resource-limited settings."</div></div>
+          <div class="card"><div class="author">Lucas White</div><div class="role">MA Economics, LSE</div><div class="content"><b>Focus:</b> Behavioral economics<br><b>Projects:</b> Nudge theory in public policy, Experimental economics lab<br><b>Skills:</b> Stata, R, Survey Design<br><b>Statement:</b> "I'm passionate about applying economic theory to solve real-world problems."</div></div>
+        </div>
+      </div>
+      
+      <div id="portfolio-showcase" class="subsection">
+        <h3>Project Showcase Examples</h3>
+        <div class="section-intro">
+          Detailed examples of how to effectively present academic and research projects in your portfolio.
+        </div>
+        <div class="grid-list">
+          <div class="card">
+            <div class="author">CRISPR-Enhanced Crop Resilience</div>
+            <div class="content"><b>Challenge:</b> Improve drought resistance in staple crops<br><b>Approach:</b> Targeted gene editing of stress-response pathways<br><b>Outcome:</b> 40% yield improvement under water stress in trials</div>
+          </div>
+          <div class="card">
+            <div class="author">Quantum Key Distribution Network</div>
+            <div class="content"><b>Challenge:</b> Secure communication infrastructure<br><b>Approach:</b> Developed photon-based encryption protocol<br><b>Outcome:</b> Unhackable prototype tested at 15km distance</div>
+          </div>
+          <div class="card">
+            <div class="author">Urban Flood Prediction System</div>
+            <div class="content"><b>Challenge:</b> Predict flooding in megacities<br><b>Approach:</b> IoT sensors + machine learning model<br><b>Outcome:</b> 92% accuracy in predicting flood zones 6hrs in advance</div>
+          </div>
+          <div class="card">
+            <div class="author">AI-Assisted Radiology Diagnosis</div>
+            <div class="content"><b>Challenge:</b> Reduce diagnostic errors in medical imaging<br><b>Approach:</b> Deep learning model trained on 50k scans<br><b>Outcome:</b> 30% reduction in false negatives compared to human radiologists</div>
           </div>
         </div>
       </div>
@@ -758,6 +892,51 @@
           <div class="card"><div class="author">Steve Jobs</div><div class="content">"Innovation distinguishes between a leader and a follower."</div></div>
           <div class="card"><div class="author">Marie Curie</div><div class="content">"One never notices what has been done; one can only see what remains to be done."</div></div>
           <div class="card"><div class="author">Elon Musk</div><div class="content">"When something is important enough, you do it even if the odds are not in your favor."</div></div>
+          <div class="card"><div class="author">Ada Lovelace</div><div class="content">"That brain of mine is something more than merely mortal, as time will show."</div></div>
+          <div class="card"><div class="author">Albert Einstein</div><div class="content">"Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world."</div></div>
+          <div class="card"><div class="author">Grace Hopper</div><div class="content">"The most dangerous phrase in the language is 'We've always done it this way.'"</div></div>
+        </div>
+      </div>
+      
+      <div id="quotes-perseverance" class="subsection">
+        <div class="section-intro">
+          Words of resilience and determination from those who overcame obstacles to achieve greatness.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Nelson Mandela</div><div class="content">"The greatest glory in living lies not in never falling, but in rising every time we fall."</div></div>
+          <div class="card"><div class="author">Malala Yousafzai</div><div class="content">"Let us make our future now, and let us make our dreams tomorrow's reality."</div></div>
+          <div class="card"><div class="author">Serena Williams</div><div class="content">"A champion is defined not by their wins but by how they can recover when they fall."</div></div>
+          <div class="card"><div class="author">Thomas Edison</div><div class="content">"I have not failed. I've just found 10,000 ways that won't work."</div></div>
+          <div class="card"><div class="author">J.K. Rowling</div><div class="content">"Rock bottom became the solid foundation on which I rebuilt my life."</div></div>
+          <div class="card"><div class="author">Stephen Hawking</div><div class="content">"However difficult life may seem, there is always something you can do and succeed at."</div></div>
+        </div>
+      </div>
+      
+      <div id="quotes-leadership" class="subsection">
+        <div class="section-intro">
+          Timeless wisdom on leadership, influence, and making a difference from history's great leaders.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Dr. APJ Abdul Kalam</div><div class="content">"Dream, dream, dream. Dreams transform into thoughts and thoughts result in action."</div></div>
+          <div class="card"><div class="author">Ruth Bader Ginsburg</div><div class="content">"Fight for the things that you care about, but do it in a way that will lead others to join you."</div></div>
+          <div class="card"><div class="author">Indira Gandhi</div><div class="content">"You cannot shake hands with a clenched fist."</div></div>
+          <div class="card"><div class="author">Martin Luther King Jr.</div><div class="content">"The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy."</div></div>
+          <div class="card"><div class="author">Sheryl Sandberg</div><div class="content">"Leadership is about making others better as a result of your presence and making sure that impact lasts in your absence."</div></div>
+          <div class="card"><div class="author">Narendra Modi</div><div class="content">"Dreams are not those which come while we are sleeping, but dreams are those when you don't sleep before fulfilling them."</div></div>
+        </div>
+      </div>
+      
+      <div id="quotes-wisdom" class="subsection">
+        <div class="section-intro">
+          Profound insights on life, learning, and human potential from thinkers across generations.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Mahatma Gandhi</div><div class="content">"The best way to find yourself is to lose yourself in the service of others."</div></div>
+          <div class="card"><div class="author">Confucius</div><div class="content">"Choose a job you love, and you will never have to work a day in your life."</div></div>
+          <div class="card"><div class="author">Jane Goodall</div><div class="content">"What you do makes a difference, and you have to decide what kind of difference you want to make."</div></div>
+          <div class="card"><div class="author">Maya Angelou</div><div class="content">"I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel."</div></div>
+          <div class="card"><div class="author">Rabindranath Tagore</div><div class="content">"Don't limit a child to your own learning, for he was born in another time."</div></div>
+          <div class="card"><div class="author">Aristotle</div><div class="content">"We are what we repeatedly do. Excellence, then, is not an act, but a habit."</div></div>
         </div>
       </div>
     </section>
@@ -779,6 +958,45 @@
         <div class="grid-list">
           <div class="card"><div class="author">Priya Sharma</div><div class="role">HR Lead, Infosys</div><div class="content"><b>Email:</b> priya.sharma@infosys.com<br><b>Phone:</b> +91-80-1234-5678<br><b>Specialization:</b> Tech recruitment, Lateral hiring</div></div>
           <div class="card"><div class="author">Ananya Gupta</div><div class="role">HR Business Partner, Google India</div><div class="content"><b>Email:</b> ananya.gupta@google.com<br><b>Phone:</b> +91-80-2345-6789<br><b>Specialization:</b> Product roles, International mobility</div></div>
+          <div class="card"><div class="author">Siddharth Rao</div><div class="role">HR Manager, Amazon</div><div class="content"><b>Email:</b> siddharth.rao@amazon.in<br><b>Phone:</b> +91-40-8765-4321<br><b>Specialization:</b> Operations, Leadership hiring</div></div>
+          <div class="card"><div class="author">Shalini Rao</div><div class="role">Recruitment Head, Accenture</div><div class="content"><b>Email:</b> shalini.rao@accenture.com<br><b>Phone:</b> +91-22-7654-3210<br><b>Specialization:</b> Consulting, Digital transformation</div></div>
+          <div class="card"><div class="author">Vinay Kulkarni</div><div class="role">HR, HCL Technologies</div><div class="content"><b>Email:</b> vinay.kulkarni@hcl.com<br><b>Phone:</b> +91-44-2345-6789<br><b>Specialization:</b> IT services, Lateral hiring</div></div>
+          <div class="card"><div class="author">Karthik Srinivasan</div><div class="role">HR, Flipkart</div><div class="content"><b>Email:</b> karthik.srinivasan@flipkart.com<br><b>Phone:</b> +91-80-9876-5432<br><b>Specialization:</b> Ecommerce, Campus hiring</div></div>
+        </div>
+      </div>
+      
+      <div id="hr-finance" class="subsection">
+        <div class="section-intro">
+          Contacts for HR professionals in banking, financial services, and fintech companies.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Rajiv Kapoor</div><div class="role">HR Director, ICICI Bank</div><div class="content"><b>Email:</b> rajiv.kapoor@icicibank.com<br><b>Phone:</b> +91-22-3456-7890<br><b>Specialization:</b> Retail banking, Wealth management</div></div>
+          <div class="card"><div class="author">Neha Patel</div><div class="role">Talent Acquisition, Goldman Sachs</div><div class="content"><b>Email:</b> neha.patel@gs.com<br><b>Phone:</b> +91-20-4567-8901<br><b>Specialization:</b> Investment banking, Quantitative roles</div></div>
+          <div class="card"><div class="author">Amit Joshi</div><div class="role">HR Manager, Paytm</div><div class="content"><b>Email:</b> amit.joshi@paytm.com<br><b>Phone:</b> +91-120-5678-9012<br><b>Specialization:</b> Fintech, Product management</div></div>
+          <div class="card"><div class="author">Sanjay Mehta</div><div class="role">HR Head, Axis Bank</div><div class="content"><b>Email:</b> sanjay.mehta@axisbank.com<br><b>Phone:</b> +91-22-6789-0123<br><b>Specialization:</b> Corporate banking, Leadership development</div></div>
+        </div>
+      </div>
+      
+      <div id="hr-healthcare" class="subsection">
+        <div class="section-intro">
+          HR contacts in hospitals, pharmaceutical companies, and healthcare organizations.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Dr. Anjali Reddy</div><div class="role">HR Director, Apollo Hospitals</div><div class="content"><b>Email:</b> anjali.reddy@apollohospitals.com<br><b>Phone:</b> +91-40-7890-1234<br><b>Specialization:</b> Medical professionals recruitment</div></div>
+          <div class="card"><div class="author">Rahul Verma</div><div class="role">Talent Head, Sun Pharma</div><div class="content"><b>Email:</b> rahul.verma@sunpharma.com<br><b>Phone:</b> +91-22-8901-2345<br><b>Specialization:</b> Pharmaceutical research, Manufacturing</div></div>
+          <div class="card"><div class="author">Priyanka Singh</div><div class="role">HR Manager, Fortis Healthcare</div><div class="content"><b>Email:</b> priyanka.singh@fortishealthcare.com<br><b>Phone:</b> +91-11-9012-3456<br><b>Specialization:</b> Nursing staff, Hospital administration</div></div>
+        </div>
+      </div>
+      
+      <div id="hr-manufacturing" class="subsection">
+        <div class="section-intro">
+          HR professionals in automotive, industrial, and consumer goods manufacturing.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Meera Iyer</div><div class="role">HR, Tata Steel</div><div class="content"><b>Email:</b> meera.iyer@tatasteel.com<br><b>Phone:</b> +91-33-1234-5678<br><b>Specialization:</b> Engineering, Manufacturing roles</div></div>
+          <div class="card"><div class="author">Vikram Malhotra</div><div class="role">HR Director, Maruti Suzuki</div><div class="content"><b>Email:</b> vikram.malhotra@maruti.co.in<br><b>Phone:</b> +91-124-2345-6789<br><b>Specialization:</b> Automotive engineering, Plant operations</div></div>
+          <div class="card"><div class="author">Sunita Verma</div><div class="role">HR, Reliance Industries</div><div class="content"><b>Email:</b> sunita.verma@ril.com<br><b>Phone:</b> +91-22-8765-4321<br><b>Specialization:</b> Oil & Gas, Manufacturing</div></div>
+          <div class="card"><div class="author">Arvind Kumar</div><div class="role">HR Head, Larsen & Toubro</div><div class="content"><b>Email:</b> arvind.kumar@lntindia.com<br><b>Phone:</b> +91-22-3456-7890<br><b>Specialization:</b> Infrastructure projects, Heavy engineering</div></div>
         </div>
       </div>
     </section>
@@ -800,6 +1018,46 @@
         <div class="grid-list">
           <div class="card"><div class="author">Open-Source Resume Parser</div><div class="content">Build a web tool that parses PDF resumes and extracts structured data. Use Python (Flask), JavaScript, and PDF parsing libraries. Focus on ATS compatibility and privacy.</div></div>
           <div class="card"><div class="author">Smart Portfolio Generator</div><div class="content">Create a platform for students to generate research portfolios. Integrate with ORCID, allow project uploads, and export to PDF/HTML.</div></div>
+          <div class="card"><div class="author">AI Interview Coach</div><div class="content">An AI-powered web app that simulates interviews, gives real-time feedback, and suggests improvements based on user responses.</div></div>
+          <div class="card"><div class="author">Automated Research Paper Summarizer</div><div class="content">Use NLP to summarize academic papers, highlighting key findings and methodologies for quick review.</div></div>
+          <div class="card"><div class="author">Blockchain Document Verification</div><div class="content">Create a system for universities to issue verifiable digital diplomas using blockchain technology.</div></div>
+          <div class="card"><div class="author">AR Campus Navigation</div><div class="content">Develop an augmented reality app that helps visitors navigate large university campuses with real-time directions.</div></div>
+        </div>
+      </div>
+      
+      <div id="projects-social" class="subsection">
+        <div class="section-intro">
+          Projects focused on community development, accessibility, and social improvement.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Community Skill Exchange Platform</div><div class="content">A platform where neighbors can exchange skills (e.g., cooking lessons for car repair). Focus on building community connections.</div></div>
+          <div class="card"><div class="author">Accessibility Map for Cities</div><div class="content">Create a crowdsourced map showing wheelchair accessibility of public spaces, restaurants, and transportation.</div></div>
+          <div class="card"><div class="author">Digital Literacy for Seniors</div><div class="content">Develop a simple tablet interface and curriculum to help seniors navigate essential online services.</div></div>
+          <div class="card"><div class="author">Crisis Response Coordination</div><div class="content">Build a platform to coordinate volunteers and resources during natural disasters or emergencies.</div></div>
+        </div>
+      </div>
+      
+      <div id="projects-sustainability" class="subsection">
+        <div class="section-intro">
+          Eco-friendly projects addressing environmental challenges and promoting sustainability.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Plastic Waste Tracker</div><div class="content">An app that helps users track and reduce their plastic consumption with personalized recommendations.</div></div>
+          <div class="card"><div class="author">Urban Farming Network</div><div class="content">Create a platform connecting urban farmers, facilitating resource sharing and produce exchange.</div></div>
+          <div class="card"><div class="author">Energy Consumption Dashboard</div><div class="content">A home energy monitoring system with IoT sensors and visualization tools to reduce electricity usage.</div></div>
+          <div class="card"><div class="author">Sustainable Campus Map</div><div class="content">An interactive map for universities showing recycling points, green buildings, and sustainable initiatives.</div></div>
+        </div>
+      </div>
+      
+      <div id="projects-health" class="subsection">
+        <div class="section-intro">
+          Projects focused on improving physical and mental health through technology and innovation.
+        </div>
+        <div class="grid-list">
+          <div class="card"><div class="author">Mental Health Support Bot</div><div class="content">Create a chatbot that provides mental health resources, daily check-ins, and connects users to professional help.</div></div>
+          <div class="card"><div class="author">Telemedicine for Remote Areas</div><div class="content">A low-bandwidth telemedicine platform designed for areas with poor internet connectivity.</div></div>
+          <div class="card"><div class="author">Nutritional Meal Planner</div><div class="content">An AI-powered app that creates personalized meal plans based on dietary restrictions, budget, and preferences.</div></div>
+          <div class="card"><div class="author">Elderly Fall Detection System</div><div class="content">Develop a wearable device that detects falls and automatically alerts emergency contacts.</div></div>
         </div>
       </div>
     </section>
@@ -810,32 +1068,35 @@
     <p>Designed with ❤️ for professionals worldwide</p>
   </footer>
   
-  <!-- Chatbot Container -->
-  <div class="chatbot-container" id="chatbot">
-    <div class="chatbot-header">
-      <h3><i class="fas fa-robot"></i> Career Assistant</h3>
-      <button onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+  <!-- Chatbot toggle button -->
+  <div class="chatbot-toggle" onclick="toggleChatbot()">
+    <i class="fas fa-comments"></i>
+  </div>
+  
+  <!-- Chatbot container -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header" onclick="toggleChatbot()">
+      <h3>Career Assistant</h3>
+      <i class="fas fa-times"></i>
     </div>
-    <div class="chatbot-messages" id="chat-messages">
-      <div class="message bot-message">
-        Hello! I'm your Career Assistant. How can I help you today? 😊
-        <div class="suggestions">
-          <div class="suggestion" onclick="sendSuggestion('Tell me about resume builder')">Resume Builder</div>
-          <div class="suggestion" onclick="sendSuggestion('How to build a portfolio?')">Portfolio Tips</div>
-          <div class="suggestion" onclick="sendSuggestion('Show community insights')">Community Insights</div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="message bot">
+        <div class="message-content">
+          Hi there! I'm your Career Nexus assistant. How can I help you today?
+          <div class="suggested-questions">
+            <button onclick="askQuestion('What can you help me with?')">What can you help me with?</button>
+            <button onclick="askQuestion('Tell me about resume tips')">Resume tips</button>
+            <button onclick="askQuestion('Show me project ideas')">Project ideas</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="chatbot-input">
-      <input type="text" id="user-input" placeholder="Ask about career resources...">
+      <input type="text" id="userInput" placeholder="Ask about careers, resumes, portfolios..." onkeyup="if(event.key === 'Enter') sendMessage()">
       <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
   
-  <div class="chatbot-trigger" onclick="toggleChatbot()">
-    <i class="fas fa-robot"></i>
-  </div>
-
   <script>
     // Section navigation with active button highlight
     function showSection(id) {
@@ -886,8 +1147,9 @@
       const summary = document.getElementById('rsummary').value.trim();
       const exp = document.getElementById('rexperience').value.trim();
       const skills = document.getElementById('rskills').value.trim();
+      const education = document.getElementById('reducation').value.trim();
 
-      if (!name || !role || !summary || !exp || !skills) {
+      if (!name || !role || !summary || !exp || !skills || !education) {
         alert('Please fill all required fields!');
         return;
       }
@@ -895,6 +1157,10 @@
       // Format experience
       const expItems = exp.split('\n').filter(item => item.trim() !== '');
       const expHTML = expItems.map(item => `<li>${item.trim()}</li>`).join('');
+      
+      // Format education
+      const eduItems = education.split('\n').filter(item => item.trim() !== '');
+      const eduHTML = eduItems.map(item => `<li>${item.trim()}</li>`).join('');
       
       document.getElementById('resumePreview').innerHTML = `
         <div style="border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1rem;">
@@ -912,11 +1178,19 @@
           <ul style="margin-top: 0; padding-left: 1.2rem;">${expHTML}</ul>
         </div>
         
+        <div style="margin-bottom: 1.2rem;">
+          <h4 style="margin: 0 0 0.3rem 0; color: var(--accent);">EDUCATION</h4>
+          <ul style="margin-top: 0; padding-left: 1.2rem;">${eduHTML}</ul>
+        </div>
+        
         <div>
           <h4 style="margin: 0 0 0.3rem 0; color: var(--accent);">SKILLS</h4>
           <div>${skills.split(',').map(s => `<span style="display: inline-block; background: #ffe0b2; padding: 4px 12px; border-radius: 20px; margin: 0 6px 6px 0;">${s.trim()}</span>`).join('')}</div>
         </div>
       `;
+      
+      // Show the preview subsection
+      showSubsection('resume', 'preview');
     }
 
     // Portfolio builder preview
@@ -926,6 +1200,7 @@
       const projects = document.getElementById('pprojects').value.trim();
       const skills = document.getElementById('pskills').value.trim();
       const statement = document.getElementById('pstatement').value.trim();
+      const publications = document.getElementById('ppublications').value.trim();
 
       if (!name || !research || !projects || !skills || !statement) {
         alert('Please fill all required fields!');
@@ -935,6 +1210,18 @@
       // Format projects
       const projectItems = projects.split('\n').filter(item => item.trim() !== '');
       const projectHTML = projectItems.map(item => `<li>${item.trim()}</li>`).join('');
+      
+      // Format publications if available
+      let publicationsHTML = '';
+      if (publications) {
+        const pubItems = publications.split('\n').filter(item => item.trim() !== '');
+        publicationsHTML = `
+          <div style="margin-bottom: 1.2rem;">
+            <h4 style="margin: 0 0 0.3rem 0; color: var(--accent);">PUBLICATIONS</h4>
+            <ul style="margin-top: 0; padding-left: 1.2rem;">${pubItems.map(item => `<li>${item.trim()}</li>`).join('')}</ul>
+          </div>
+        `;
+      }
       
       document.getElementById('portfolioPreview').innerHTML = `
         <div style="text-align: center; margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent3); padding-bottom: 1rem;">
@@ -955,7 +1242,12 @@
           <h4 style="margin: 0 0 0.3rem 0; color: var(--accent);">TECHNICAL SKILLS</h4>
           <div>${skills.split(',').map(s => `<span style="display: inline-block; background: #e3e9ff; padding: 4px 12px; border-radius: 20px; margin: 0 6px 6px 0;">${s.trim()}</span>`).join('')}</div>
         </div>
+        
+        ${publicationsHTML}
       `;
+      
+      // Show the preview subsection
+      showSubsection('portfolio', 'preview');
     }
     
     // Initialize the page
@@ -973,107 +1265,105 @@
     });
     
     // Chatbot functionality
-    function toggleChatbot() {
-      const chatbot = document.getElementById('chatbot');
-      chatbot.classList.toggle('active');
-    }
+    let chatbotOpen = false;
     
-    function sendMessage() {
-      const userInput = document.getElementById('user-input');
-      const message = userInput.value.trim();
+    function toggleChatbot() {
+      const chatbot = document.getElementById('chatbotContainer');
+      chatbotOpen = !chatbotOpen;
       
-      if (message) {
-        addMessage(message, 'user');
-        userInput.value = '';
-        
-        // Simulate bot thinking
-        setTimeout(() => {
-          const response = generateBotResponse(message);
-          addMessage(response, 'bot');
-        }, 500);
+      if (chatbotOpen) {
+        chatbot.classList.add('active');
+      } else {
+        chatbot.classList.remove('active');
       }
     }
     
-    function sendSuggestion(message) {
-      document.getElementById('user-input').value = message;
+    function askQuestion(question) {
+      document.getElementById('userInput').value = question;
       sendMessage();
     }
     
-    function addMessage(text, sender) {
-      const messagesContainer = document.getElementById('chat-messages');
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message');
-      messageElement.classList.add(sender + '-message');
-      messageElement.textContent = text;
+    function sendMessage() {
+      const userInput = document.getElementById('userInput').value.trim();
+      if (!userInput) return;
       
-      messagesContainer.appendChild(messageElement);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-    
-    function generateBotResponse(userMessage) {
-      const lowerMessage = userMessage.toLowerCase();
+      // Add user message to chat
+      addMessage(userInput, 'user');
       
-      // Home section
-      if (lowerMessage.includes('home') || lowerMessage.includes('welcome') || lowerMessage.includes('about')) {
-        return "Career Nexus is your comprehensive career platform. We offer Community Insights, Resume Builder, Portfolio Builder, Famous Quotes, HR Contacts, and Project Ideas. Everything is designed to help you advance your career!";
-      }
+      // Clear input
+      document.getElementById('userInput').value = '';
       
-      // Community Insights
-      if (lowerMessage.includes('community') || lowerMessage.includes('insight') || lowerMessage.includes('advice')) {
-        return "Our Community Insights section features real advice from professionals worldwide. You'll find insights for Tech Industry, Creative Design, Business & Finance, and Academic Research. These tips come from experienced professionals sharing what actually works.";
-      }
-      
-      // Resume Builder
-      if (lowerMessage.includes('resume') || lowerMessage.includes('cv') || lowerMessage.includes('curriculum vitae')) {
-        return "Our Resume Builder helps you create ATS-friendly resumes with real-time preview. You can choose from professional templates, see sample resumes, and get expert tips from HR professionals. Just fill in your details and see your resume take shape instantly!";
-      }
-      
-      // Portfolio Builder
-      if (lowerMessage.includes('portfolio') || lowerMessage.includes('projects') || lowerMessage.includes('showcase')) {
-        return "The Portfolio Builder is designed especially for postgrads and researchers. You can showcase your research focus, key projects, technical skills, and personal statement. We provide sample portfolios and project showcase examples to inspire you.";
-      }
-      
-      // Famous Quotes
-      if (lowerMessage.includes('quote') || lowerMessage.includes('inspiration') || lowerMessage.includes('motivation')) {
-        return "Our Famous Quotes section features carefully curated quotes from innovators, leaders, and thinkers. Quotes are categorized by Innovation, Perseverance, Leadership, and Wisdom. These can provide inspiration for your career journey.";
-      }
-      
-      // HR Contacts
-      if (lowerMessage.includes('hr') || lowerMessage.includes('contact') || lowerMessage.includes('recruiter')) {
-        return "The HR Contacts section provides authentic contacts for HR professionals across industries. We have contacts in Technology, Finance & Banking, Healthcare, and Manufacturing sectors. Each listing includes specialization areas to help you find the right contact.";
-      }
-      
-      // Project Ideas
-      if (lowerMessage.includes('project') || lowerMessage.includes('idea') || lowerMessage.includes('build')) {
-        return "Our Project Ideas section offers innovative concepts you can implement. We have tech projects, social impact initiatives, sustainability solutions, and health/wellness applications. Each idea includes a challenge, approach, and potential outcome.";
-      }
-      
-      // Default response
-      const defaultResponses = [
-        "I'm here to help you navigate Career Nexus. You can ask about any section of the site!",
-        "How can I assist you with your career development today?",
-        "I specialize in career resources. Feel free to ask about resumes, portfolios, or job search strategies.",
-        "Looking for career advice? I can guide you through our resources and features."
-      ];
-      
-      return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-    }
-    
-    // Initialize chatbot with welcome message
-    document.addEventListener('DOMContentLoaded', function() {
+      // Simulate thinking
       setTimeout(() => {
-        document.getElementById('chat-messages').innerHTML = `
-          <div class="message bot-message">
-            Hello! I'm your Career Assistant. How can I help you today? 😊
-            <div class="suggestions">
-              <div class="suggestion" onclick="sendSuggestion('Tell me about resume builder')">Resume Builder</div>
-              <div class="suggestion" onclick="sendSuggestion('How to build a portfolio?')">Portfolio Tips</div>
-              <div class="suggestion" onclick="sendSuggestion('Show community insights')">Community Insights</div>
-            </div>
-          </div>
-        `;
-      }, 1000);
-    });
+        const response = generateResponse(userInput);
+        addMessage(response, 'bot');
+      }, 800);
+    }
+    
+    function addMessage(content, sender) {
+      const chatMessages = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}`;
+      messageDiv.innerHTML = `<div class="message-content">${content}</div>`;
+      chatMessages.appendChild(messageDiv);
+      
+      // Scroll to bottom
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    function generateResponse(userInput) {
+      // Convert to lowercase for easier matching
+      const input = userInput.toLowerCase();
+      
+      // Define responses for different categories
+      const responses = {
+        greeting: ["Hello! How can I assist you with your career journey today?", "Hi there! What career question can I help with?"],
+        resume: [
+          "Here are some resume tips:<br>1. Quantify achievements with numbers<br>2. Tailor for each job application<br>3. Use action verbs like 'developed', 'managed', 'increased'<br>4. Keep it to one page if possible<br>5. Proofread multiple times",
+          "For your resume:<br>- Focus on accomplishments rather than responsibilities<br>- Use keywords from the job description<br>- Include relevant skills and certifications<br>- Make sure it's ATS-friendly with simple formatting"
+        ],
+        portfolio: [
+          "For a strong portfolio:<br>1. Showcase your best 3-5 projects<br>2. Include case studies showing your process<br>3. Highlight measurable results<br>4. Include testimonials if possible<br>5. Make it visually appealing but professional",
+          "Portfolio tips:<br>- Explain your role in each project<br>- Include both team and individual projects<br>- Show diversity in your work<br>- Keep it updated with your latest work<br>- Make it easy to navigate"
+        ],
+        projects: [
+          "Here are some project ideas:<br>- Resume parser tool<br>- AI interview coach<br>- Portfolio generator<br>- Career path recommender<br>- Job application tracker",
+          "Project suggestions:<br>- Skills gap analysis tool<br>- Salary negotiation simulator<br>- Company culture comparison platform<br>- Remote work productivity tracker"
+        ],
+        contact: [
+          "You can find HR contacts in the HR Contacts section. We have contacts for:<br>- Technology companies<br>- Finance & Banking<br>- Healthcare organizations<br>- Manufacturing firms",
+          "Check the HR Contacts section for direct contacts. You can filter by industry and specialization."
+        ],
+        default: [
+          "I can help with career advice, resume tips, portfolio building, and more. Ask me about:<br>- Resume best practices<br>- Portfolio examples<br>- Project ideas<br>- HR contacts",
+          "I'm here to help with your career development. You can ask me about:<br>- Improving your resume<br>- Building a portfolio<br>- Finding project ideas<br>- Connecting with HR professionals"
+        ]
+      };
+      
+      // Determine which response to use
+      let response;
+      
+      if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
+        response = responses.greeting[Math.floor(Math.random() * responses.greeting.length)];
+      } 
+      else if (input.includes('resume') || input.includes('cv')) {
+        response = responses.resume[Math.floor(Math.random() * responses.resume.length)];
+      } 
+      else if (input.includes('portfolio')) {
+        response = responses.portfolio[Math.floor(Math.random() * responses.portfolio.length)];
+      } 
+      else if (input.includes('project') || input.includes('idea')) {
+        response = responses.projects[Math.floor(Math.random() * responses.projects.length)];
+      } 
+      else if (input.includes('contact') || input.includes('hr') || input.includes('recruiter')) {
+        response = responses.contact[Math.floor(Math.random() * responses.contact.length)];
+      } 
+      else {
+        response = responses.default[Math.floor(Math.random() * responses.default.length)];
+      }
+      
+      return response;
+    }
   </script>
 </body>
 </html>
