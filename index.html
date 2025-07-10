@@ -6,7 +6,1987 @@
     <title>CareerHub Pro - Advanced Career Development Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-color: #4361ee;
+            --primary-light: #5e72e4;
+            --primary-dark: #3a56c9;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --accent-light: #5fa8ff;
+            --dark-color: #1a1a2e;
+            --darker-color: #12121a;
+            --light-color: #f8f9fa;
+            --lighter-color: #ffffff;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+            --dark-gray: #343a40;
+            --success-color: #4bb543;
+            --warning-color: #f0ad4e;
+            --danger-color: #d9534f;
+            --info-color: #5bc0de;
+            
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --box-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --border-radius-sm: 5px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(67, 97, 238, 0.2);
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section.dark {
+            background-color: var(--dark-color);
+            color: var(--lighter-color);
+        }
+
+        .section.dark p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: var(--dark-color);
+        }
+
+        .section.dark .section-title {
+            color: var(--lighter-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 1rem auto 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn.secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn.secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn.add-btn {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .btn.add-btn:hover {
+            background-color: var(--gray-color);
+            color: white;
+        }
+
+        .btn.next-btn, .btn.prev-btn {
+            min-width: 120px;
+        }
+
+        .btn.contact-btn {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn.save-btn {
+            background: none;
+            border: 1px solid var(--gray-color);
+            color: var(--gray-color);
+            padding: 0.5rem 1rem;
+        }
+
+        .btn.save-btn:hover {
+            background: var(--gray-color);
+            color: white;
+        }
+
+        .section-footer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--lighter-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a i {
+            font-size: 1rem;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--dark-gray);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Forum Section */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            background-color: var(--light-gray);
+            color: var(--gray-color);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .forum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background-color: var(--lighter-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .blog-card.featured {
+            grid-column: span 2;
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .blog-header {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .blog-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+
+        .blog-header h3 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .blog-meta i {
+            margin-right: 0.3rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .blog-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        .blog-content p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-tags {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-tags li {
+            background-color: var(--light-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .blog-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem 1.5rem;
+            margin-top: auto;
+        }
+
+        .read-more {
+            font-weight: 500;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .read-more i {
+            transition: var(--transition);
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Resume Builder Section */
+        .resume-builder-container {
+            margin-top: 3rem;
+        }
+
+        .resume-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .resume-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .step.active {
+            background-color: var(--accent-color);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step.active .step-number {
+            background-color: white;
+            color: var(--accent-color);
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-content p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+        }
+
+        .resume-builder-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .resume-form-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .step-form {
+            display: none;
+        }
+
+        .step-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-form h3 {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .step-form h3 i {
+            color: var(--accent-light);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-sm);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-light);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.3);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .tags-input-container {
+            position: relative;
+        }
+
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-sm);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .tag i {
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+
+        .tags-input-field {
+            flex: 1;
+            border: none;
+            background: transparent;
+            color: white;
+            padding: 0.5rem;
+            min-width: 100px;
+        }
+
+        .tags-input-field:focus {
+            outline: none;
+        }
+
+        .suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .suggestions span {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .suggestions span:hover {
+            background-color: var(--accent-color);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .resume-preview-container {
+            background-color: var(--lighter-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .resume-preview-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .template-selector select {
+            padding: 0.5rem;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--light-gray);
+        }
+
+        .resume-preview {
+            padding: 1.5rem;
+            height: 700px;
+            overflow-y: auto;
+        }
+
+        .resume-template {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100%;
+        }
+
+        .resume-template.modern {
+            background-color: white;
+        }
+
+        .resume-template.professional {
+            background-color: #f9f9f9;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .resume-template.creative {
+            background-color: #f5f9ff;
+            color: #1a1a2e;
+        }
+
+        .resume-template.minimal {
+            background-color: white;
+            color: #333;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .resume-header h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-header p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .resume-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-section h2 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .experience-date {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .experience-company {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: var(--gray-color);
+        }
+
+        .experience-details {
+            padding-left: 1.5rem;
+        }
+
+        .experience-details li {
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item {
+            margin-bottom: 1rem;
+        }
+
+        .education-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-institution {
+            color: var(--gray-color);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .skills-column h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skills-list span {
+            background-color: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .resume-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* Postgrad Profile Section */
+        .postgrad-builder-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .postgrad-form-container {
+            background-color: var(--lighter-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .form-section h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-section h3 i {
+            color: var(--accent-color);
+        }
+
+        #researchEntries, #projectEntries {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .research-entry, .project-entry {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: var(--border-radius-sm);
+            position: relative;
+        }
+
+        .remove-entry {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            color: var(--gray-color);
+            cursor: pointer;
+        }
+
+        .profile-template {
+            font-family: 'Georgia', serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            min-height: 700px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .profile-header h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-contact {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .profile-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-section h2 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-item, .project-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .research-item h3, .project-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .research-details, .project-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .research-description, .project-description {
+            padding-left: 1.5rem;
+        }
+
+        .research-description li, .project-description li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Quotes Section */
+        .quotes-carousel {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .quote-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quote-card.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quote-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+            line-height: 1.6;
+            padding-left: 2rem;
+        }
+
+        .quote-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            position: absolute;
+            left: -1rem;
+            top: -1rem;
+        }
+
+        .quote-author {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .quote-author img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+        }
+
+        .author-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .author-bio {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-prev, .carousel-next {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .carousel-prev:hover, .carousel-next:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background-color: white;
+        }
+
+        .quote-categories {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .quote-categories h3 {
+            margin-bottom: 1rem;
+        }
+
+        .category-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .category-tag {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .category-tag:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* HR Contacts Section */
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            color: var(--gray-color);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+        }
+
+        .filter-dropdown {
+            min-width: 200px;
+        }
+
+        .filter-dropdown select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: var(--lighter-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .contact-company {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: var(--light-gray);
+            border-bottom: 1px solid #eee;
+            gap: 1rem;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background-color: white;
+            padding: 0.3rem;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .company-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .company-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .company-meta i {
+            margin-right: 0.3rem;
+        }
+
+        .contact-details {
+            padding: 1.5rem;
+        }
+
+        .contact-person {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-person img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .contact-title {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .contact-methods {
+            margin-bottom: 1rem;
+        }
+
+        .contact-methods p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-notes h5 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .contact-notes p {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .contact-actions {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .disclaimer {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+        }
+
+        .disclaimer i {
+            color: var(--warning-color);
+            margin-top: 0.2rem;
+        }
+
+        /* Project Ideas Section */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-level {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .project-level.beginner {
+            background-color: rgba(75, 181, 67, 0.2);
+            color: var(--success-color);
+        }
+
+        .project-level.intermediate {
+            background-color: rgba(72, 149, 239, 0.2);
+            color: var(--accent-color);
+        }
+
+        .project-level.advanced {
+            background-color: rgba(217, 83, 79, 0.2);
+            color: var(--danger-color);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-skills h4, .project-tech h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: white;
+        }
+
+        .project-skills ul {
+            list-style: none;
+        }
+
+        .project-skills li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-skills li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tags span {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .project-resources {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-resources h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: white;
+        }
+
+        .project-resources ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-resources a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+        }
+
+        .project-resources a:hover {
+            color: white;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Coming Soon Sections */
+        .coming-soon-container {
+            background-color: var(--lighter-color);
+            border-radius: var(--border-radius);
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .coming-soon-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .coming-soon-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon-icon i {
+            background-color: rgba(67, 97, 238, 0.1);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .coming-soon-text {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            text-align: left;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list i {
+            color: var(--success-color);
+        }
+
+        .notify-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .notify-form h4 {
+            margin-bottom: 1rem;
+        }
+
+        .notify-form .form-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .notify-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-icon i {
+            background-color: rgba(72, 149, 239, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+        }
+
+        .countdown {
+            margin-top: 2rem;
+        }
+
+        .countdown h4 {
+            margin-bottom: 1rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            min-width: 60px;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--darker-color);
+            color: white;
+            padding: 4rem 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section {
+            padding: 0 1rem;
+        }
+
+        .footer-section.about .logo {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li a i {
+            font-size: 0.8rem;
+        }
+
+        .newsletter {
+            margin-top: 1.5rem;
+        }
+
+        .newsletter h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 3rem;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .resume-builder-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .postgrad-builder-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-card.featured {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--lighter-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .resume-steps {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .resume-steps::before {
+                display: none;
+            }
+            
+            .step {
+                width: 100%;
+            }
+            
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 10rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .section-footer {
+                flex-direction: column;
+            }
+            
+            .quote-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .quote-author img {
+                margin-bottom: 1rem;
+            }
+            
+            .author-info {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -90,7 +2070,7 @@
                         <i class="fas fa-star"></i> Featured
                     </div>
                     <div class="blog-header">
-                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Satya Nadella">
+                        <img src="https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80" alt="Satya Nadella">
                         <div>
                             <h3>Satya Nadella</h3>
                             <p class="blog-meta">
@@ -117,7 +2097,7 @@
                 <!-- Blog 2 -->
                 <div class="blog-card" data-category="leadership">
                     <div class="blog-header">
-                        <img src="https://media.licdn.com/dms/image/C5603AQH6w9Z2J0X9Zg/profile-displayphoto-shrink_800_800/0/1517286190665?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Sheryl Sandberg">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Sheryl Sandberg">
                         <div>
                             <h3>Sheryl Sandberg</h3>
                             <p class="blog-meta">
@@ -144,7 +2124,7 @@
                 <!-- Blog 3 -->
                 <div class="blog-card" data-category="productivity">
                     <div class="blog-header">
-                        <img src="https://media.licdn.com/dms/image/C5603AQH6w9Z2J0X9Zg/profile-displayphoto-shrink_800_800/0/1517286190665?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Tim Ferriss">
+                        <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1390&q=80" alt="Tim Ferriss">
                         <div>
                             <h3>Tim Ferriss</h3>
                             <p class="blog-meta">
@@ -171,7 +2151,7 @@
                 <!-- Blog 4 -->
                 <div class="blog-card" data-category="interview">
                     <div class="blog-header">
-                        <img src="https://media.licdn.com/dms/image/C5603AQH6w9Z2J0X9Zg/profile-displayphoto-shrink_800_800/0/1517286190665?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Gayle McDowell">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Gayle McDowell">
                         <div>
                             <h3>Gayle McDowell</h3>
                             <p class="blog-meta">
@@ -333,7 +2313,7 @@
                                         <input type="text" id="technicalSkills" placeholder="Add skills (e.g. JavaScript, Python, React)" class="tags-input-field">
                                     </div>
                                     <div class="suggestions" id="techSkillSuggestions">
-                                        <span>Popular: JavaScript</span>
+                                        <span>JavaScript</span>
                                         <span>Python</span>
                                         <span>React</span>
                                         <span>SQL</span>
@@ -672,7 +2652,7 @@
                         "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle."
                     </div>
                     <div class="quote-author">
-                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Steve Jobs">
+                        <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Steve Jobs">
                         <div class="author-info">
                             <h4>Steve Jobs</h4>
                             <p>Co-founder of Apple Inc.</p>
@@ -688,7 +2668,7 @@
                         "When something is important enough, you do it even if the odds are not in your favor. Failure is an option here. If things are not failing, you are not innovating enough."
                     </div>
                     <div class="quote-author">
-                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Elon Musk">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Elon Musk">
                         <div class="author-info">
                             <h4>Elon Musk</h4>
                             <p>CEO of Tesla and SpaceX</p>
@@ -704,7 +2684,7 @@
                         "If you're offered a seat on a rocket ship, don't ask what seat! Just get on. Career progression is not a ladder anymore; it's more like a jungle gym. Look for opportunities, take risks, and don't be afraid to pivot."
                     </div>
                     <div class="quote-author">
-                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Sheryl Sandberg">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Sheryl Sandberg">
                         <div class="author-info">
                             <h4>Sheryl Sandberg</h4>
                             <p>COO of Facebook (Meta)</p>
@@ -720,7 +2700,7 @@
                         "If you decide that you're going to do only the things you know are going to work, you're going to leave a lot of opportunity on the table. What really matters is, companies that don't continue to experiment, companies that don't embrace failure, they eventually get in a desperate position where the only thing they can do is a Hail Mary bet at the very end of their corporate existence."
                     </div>
                     <div class="quote-author">
-                        <img src="https://media.licdn.com/dms/image/D4D03AQH5Uq-3Z1nZ6Q/profile-displayphoto-shrink_800_800/0/1687281021237?e=2147483647&v=beta&t=2j1wSJX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9JX9" alt="Jeff Bezos">
+                        <img src="https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80" alt="Jeff Bezos">
                         <div class="author-info">
                             <h4>Jeff Bezos</h4>
                             <p>Founder of Amazon</p>
@@ -803,7 +2783,7 @@
                     </div>
                     <div class="contact-details">
                         <div class="contact-person">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sarah Johnson">
                             <div>
                                 <h4>Sarah Johnson</h4>
                                 <p class="contact-title">Senior Technical Recruiter</p>
@@ -843,7 +2823,7 @@
                     </div>
                     <div class="contact-details">
                         <div class="contact-person">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Michael Chen">
                             <div>
                                 <h4>Michael Chen</h4>
                                 <p class="contact-title">University Recruiting Lead</p>
@@ -883,7 +2863,7 @@
                     </div>
                     <div class="contact-details">
                         <div class="contact-person">
-                            <img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Priya Patel">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Priya Patel">
                             <div>
                                 <h4>Priya Patel</h4>
                                 <p class="contact-title">Campus Recruitment Director</p>
@@ -1261,6 +3241,790 @@
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Animate stats on hero section
+            function animateValue(id, start, end, duration) {
+                const obj = document.getElementById(id);
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    obj.innerHTML = Math.floor(progress * (end - start) + start + (id === 'success-rate' ? '%' : '+');
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+            
+            // Start animation when hero section is in view
+            const heroSection = document.querySelector('.hero');
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateValue('members-count', 0, 25000, 2000);
+                    animateValue('jobs-count', 0, 1200, 2000);
+                    animateValue('success-rate', 0, 92, 2000);
+                    observer.unobserve(heroSection);
+                }
+            }, { threshold: 0.5 });
+            
+            observer.observe(heroSection);
+            
+            // Filter blog posts
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Filter blog cards
+                    blogCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Resume Builder Form
+            const resumeFormSteps = document.querySelectorAll('.step-form');
+            const resumeSteps = document.querySelectorAll('.step');
+            
+            // Show step 1 by default
+            showStep(1);
+            
+            // Next/previous buttons
+            document.querySelectorAll('.next-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const nextStep = parseInt(this.getAttribute('data-next'));
+                    showStep(nextStep);
+                });
+            });
+            
+            document.querySelectorAll('.prev-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const prevStep = parseInt(this.getAttribute('data-prev'));
+                    showStep(prevStep);
+                });
+            });
+            
+            function showStep(stepNumber) {
+                // Update form steps
+                resumeFormSteps.forEach(form => {
+                    form.classList.remove('active');
+                    if (parseInt(form.getAttribute('data-step')) === stepNumber) {
+                        form.classList.add('active');
+                    }
+                });
+                
+                // Update progress steps
+                resumeSteps.forEach(step => {
+                    step.classList.remove('active');
+                    if (parseInt(step.getAttribute('data-step')) <= stepNumber) {
+                        step.classList.add('active');
+                    }
+                });
+            }
+            
+            // Experience form handling
+            const experienceEntries = document.getElementById('experienceEntries');
+            const addExperienceBtn = document.getElementById('addExperience');
+            
+            addExperienceBtn.addEventListener('click', function() {
+                const entryCount = experienceEntries.children.length;
+                const entryHtml = `
+                    <div class="experience-entry">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="experienceTitle${entryCount}">Job Title *</label>
+                                <input type="text" id="experienceTitle${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="experienceCompany${entryCount}">Company *</label>
+                                <input type="text" id="experienceCompany${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="experienceStart${entryCount}">Start Date *</label>
+                                <input type="month" id="experienceStart${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="experienceEnd${entryCount}">End Date (or Present)</label>
+                                <input type="month" id="experienceEnd${entryCount}">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="experienceDescription${entryCount}">Responsibilities & Achievements *</label>
+                                <textarea id="experienceDescription${entryCount}" rows="4" required placeholder="Bullet points work best. Start each with a strong action verb (e.g., Developed, Led, Implemented)"></textarea>
+                            </div>
+                        </div>
+                        <button type="button" class="remove-entry">
+                            <i class="fas fa-times"></i> Remove
+                        </button>
+                    </div>
+                `;
+                
+                const div = document.createElement('div');
+                div.innerHTML = entryHtml;
+                experienceEntries.appendChild(div);
+                
+                // Add event listener to remove button
+                div.querySelector('.remove-entry').addEventListener('click', function() {
+                    div.remove();
+                });
+            });
+            
+            // Education form handling
+            const educationEntries = document.getElementById('educationEntries');
+            const addEducationBtn = document.getElementById('addEducation');
+            
+            addEducationBtn.addEventListener('click', function() {
+                const entryCount = educationEntries.children.length;
+                const entryHtml = `
+                    <div class="education-entry">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="educationDegree${entryCount}">Degree *</label>
+                                <input type="text" id="educationDegree${entryCount}" required placeholder="e.g., Bachelor of Science in Computer Science">
+                            </div>
+                            <div class="form-group">
+                                <label for="educationInstitution${entryCount}">Institution *</label>
+                                <input type="text" id="educationInstitution${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="educationYear${entryCount}">Graduation Year *</label>
+                                <input type="month" id="educationYear${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="educationGPA${entryCount}">GPA (optional)</label>
+                                <input type="text" id="educationGPA${entryCount}" placeholder="e.g., 3.8/4.0">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="educationHonors${entryCount}">Honors/Awards (optional)</label>
+                                <input type="text" id="educationHonors${entryCount}" placeholder="e.g., Summa Cum Laude, Dean's List">
+                            </div>
+                        </div>
+                        <button type="button" class="remove-entry">
+                            <i class="fas fa-times"></i> Remove
+                        </button>
+                    </div>
+                `;
+                
+                const div = document.createElement('div');
+                div.innerHTML = entryHtml;
+                educationEntries.appendChild(div);
+                
+                // Add event listener to remove button
+                div.querySelector('.remove-entry').addEventListener('click', function() {
+                    div.remove();
+                });
+            });
+            
+            // Skills tags input
+            const skillsInputs = ['technicalSkills', 'softSkills', 'languages'];
+            
+            skillsInputs.forEach(skill => {
+                const input = document.getElementById(skill);
+                const inputContainer = document.getElementById(`${skill}Input`);
+                
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ',') {
+                        e.preventDefault();
+                        const value = this.value.trim();
+                        if (value) {
+                            addTag(value, skill);
+                            this.value = '';
+                        }
+                    }
+                });
+                
+                // Add suggestion click handler
+                const suggestions = document.getElementById(`${skill}Suggestions`);
+                if (suggestions) {
+                    suggestions.querySelectorAll('span').forEach(suggestion => {
+                        suggestion.addEventListener('click', function() {
+                            addTag(this.textContent, skill);
+                        });
+                    });
+                }
+            });
+            
+            function addTag(value, skill) {
+                const inputContainer = document.getElementById(`${skill}Input`);
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.innerHTML = `${value} <i class="fas fa-times"></i>`;
+                
+                // Insert before input
+                inputContainer.insertBefore(tag, inputContainer.querySelector('.tags-input-field'));
+                
+                // Add remove handler
+                tag.querySelector('i').addEventListener('click', function() {
+                    tag.remove();
+                });
+            }
+            
+            // Resume template selector
+            const templateSelect = document.getElementById('templateSelect');
+            const resumeOutput = document.getElementById('resumeOutput');
+            
+            templateSelect.addEventListener('change', function() {
+                resumeOutput.className = 'resume-template ' + this.value;
+            });
+            
+            // Generate resume
+            document.getElementById('skillsForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic info
+                document.getElementById('resumeName').textContent = document.getElementById('name').value;
+                document.getElementById('resumeHeadline').textContent = document.getElementById('headline').value;
+                
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const location = document.getElementById('location').value;
+                const linkedin = document.getElementById('linkedin').value;
+                const portfolio = document.getElementById('portfolio').value;
+                
+                const contactInfo = [];
+                if (email) contactInfo.push(email);
+                if (phone) contactInfo.push(phone);
+                if (location) contactInfo.push(location);
+                
+                document.getElementById('resumeContact').innerHTML = contactInfo.map(info => `<span>${info}</span>`).join('<span>•</span>');
+                
+                const socialLinks = [];
+                if (linkedin) socialLinks.push(`<a href="${linkedin}">LinkedIn</a>`);
+                if (portfolio) socialLinks.push(`<a href="${portfolio}">Portfolio</a>`);
+                
+                document.getElementById('resumeSocial').innerHTML = socialLinks.join('<span>•</span>');
+                
+                // Summary
+                document.getElementById('resumeSummary').textContent = document.getElementById('summary').value;
+                
+                // Experience
+                const experienceItems = [];
+                const experienceEntries = document.querySelectorAll('.experience-entry');
+                
+                experienceEntries.forEach((entry, index) => {
+                    const title = entry.querySelector(`#experienceTitle${index}`).value;
+                    const company = entry.querySelector(`#experienceCompany${index}`).value;
+                    const start = entry.querySelector(`#experienceStart${index}`).value;
+                    const end = entry.querySelector(`#experienceEnd${index}`).value || 'Present';
+                    const description = entry.querySelector(`#experienceDescription${index}`).value;
+                    
+                    const bullets = description.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('');
+                    
+                    experienceItems.push(`
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <h3>${title}</h3>
+                                <span class="experience-date">${formatDate(start)} - ${end === 'Present' ? 'Present' : formatDate(end)}</span>
+                            </div>
+                            <div class="experience-company">${company}</div>
+                            <ul class="experience-details">${bullets}</ul>
+                        </div>
+                    `);
+                });
+                
+                document.getElementById('resumeExperience').innerHTML = experienceItems.join('') || '<p>No experience listed</p>';
+                
+                // Education
+                const educationItems = [];
+                const educationEntries = document.querySelectorAll('.education-entry');
+                
+                educationEntries.forEach((entry, index) => {
+                    const degree = entry.querySelector(`#educationDegree${index}`).value;
+                    const institution = entry.querySelector(`#educationInstitution${index}`).value;
+                    const year = entry.querySelector(`#educationYear${index}`).value;
+                    const gpa = entry.querySelector(`#educationGPA${index}`).value;
+                    const honors = entry.querySelector(`#educationHonors${index}`).value;
+                    
+                    let educationHtml = `<h3>${degree}</h3><div class="education-institution">${institution}, ${year ? new Date(year).getFullYear() : ''}`;
+                    
+                    if (gpa) educationHtml += ` | GPA: ${gpa}`;
+                    if (honors) educationHtml += ` | ${honors}`;
+                    
+                    educationHtml += '</div>';
+                    
+                    educationItems.push(`<div class="education-item">${educationHtml}</div>`);
+                });
+                
+                document.getElementById('resumeEducation').innerHTML = educationItems.join('') || '<p>No education listed</p>';
+                
+                // Skills
+                const technicalSkills = Array.from(document.querySelectorAll('#technicalSkillsInput .tag')).map(tag => tag.textContent.trim().replace('×', ''));
+                const softSkills = Array.from(document.querySelectorAll('#softSkillsInput .tag')).map(tag => tag.textContent.trim().replace('×', ''));
+                
+                document.getElementById('resumeTechnicalSkills').innerHTML = technicalSkills.map(skill => `<span>${skill}</span>`).join('');
+                document.getElementById('resumeSoftSkills').innerHTML = softSkills.map(skill => `<span>${skill}</span>`).join('');
+                
+                // Enable download and print buttons
+                document.getElementById('downloadResume').disabled = false;
+                document.getElementById('printResume').disabled = false;
+                
+                // Scroll to preview
+                document.getElementById('resumePreview').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            function formatDate(dateString) {
+                if (!dateString) return '';
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            }
+            
+            // Postgrad Profile Builder
+            const researchEntries = document.getElementById('researchEntries');
+            const addResearchBtn = document.getElementById('addResearch');
+            
+            addResearchBtn.addEventListener('click', function() {
+                const entryCount = researchEntries.children.length;
+                const entryHtml = `
+                    <div class="research-entry">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="researchTitle${entryCount}">Position/Title *</label>
+                                <input type="text" id="researchTitle${entryCount}" required placeholder="e.g., Undergraduate Research Assistant">
+                            </div>
+                            <div class="form-group">
+                                <label for="researchInstitution${entryCount}">Institution/Lab *</label>
+                                <input type="text" id="researchInstitution${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="researchStart${entryCount}">Start Date *</label>
+                                <input type="month" id="researchStart${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="researchEnd${entryCount}">End Date (or Present)</label>
+                                <input type="month" id="researchEnd${entryCount}">
+                            </div>
+                            <div class="form-group">
+                                <label for="researchAdvisor${entryCount}">Advisor/Mentor</label>
+                                <input type="text" id="researchAdvisor${entryCount}" placeholder="Professor Name">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="researchDescription${entryCount}">Description *</label>
+                                <textarea id="researchDescription${entryCount}" rows="4" required placeholder="Describe your research focus, methodologies used, and any significant findings or contributions"></textarea>
+                            </div>
+                        </div>
+                        <button type="button" class="remove-entry">
+                            <i class="fas fa-times"></i> Remove
+                        </button>
+                    </div>
+                `;
+                
+                const div = document.createElement('div');
+                div.innerHTML = entryHtml;
+                researchEntries.appendChild(div);
+                
+                // Add event listener to remove button
+                div.querySelector('.remove-entry').addEventListener('click', function() {
+                    div.remove();
+                });
+            });
+            
+            const projectEntries = document.getElementById('projectEntries');
+            const addProjectBtn = document.getElementById('addProject');
+            
+            addProjectBtn.addEventListener('click', function() {
+                const entryCount = projectEntries.children.length;
+                const entryHtml = `
+                    <div class="project-entry">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="projectTitle${entryCount}">Project Title *</label>
+                                <input type="text" id="projectTitle${entryCount}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="projectCourse${entryCount}">Course (if applicable)</label>
+                                <input type="text" id="projectCourse${entryCount}" placeholder="e.g., Advanced Machine Learning">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectDate${entryCount}">Date Completed *</label>
+                                <input type="month" id="projectDate${entryCount}" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="projectDescription${entryCount}">Description *</label>
+                                <textarea id="projectDescription${entryCount}" rows="4" required placeholder="Describe the project objectives, your contributions, technologies used, and outcomes"></textarea>
+                            </div>
+                        </div>
+                        <button type="button" class="remove-entry">
+                            <i class="fas fa-times"></i> Remove
+                        </button>
+                    </div>
+                `;
+                
+                const div = document.createElement('div');
+                div.innerHTML = entryHtml;
+                projectEntries.appendChild(div);
+                
+                // Add event listener to remove button
+                div.querySelector('.remove-entry').addEventListener('click', function() {
+                    div.remove();
+                });
+            });
+            
+            // Generate postgrad profile
+            document.getElementById('postgradForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic info
+                document.getElementById('profileName').textContent = document.getElementById('pgName').value;
+                
+                const email = document.getElementById('pgEmail').value;
+                document.getElementById('profileContact').innerHTML = `<span>${email}</span>`;
+                
+                // Education
+                const undergrad = document.getElementById('pgUndergrad').value;
+                const major = document.getElementById('pgMajor').value;
+                const gpa = document.getElementById('pgGPA').value;
+                const graduation = document.getElementById('pgGraduation').value;
+                
+                let educationHtml = `<h3>${major}</h3><div class="institution">${undergrad}`;
+                
+                if (graduation) educationHtml += `, Expected ${new Date(graduation).getFullYear()}`;
+                if (gpa) educationHtml += ` | GPA: ${gpa}`;
+                
+                educationHtml += '</div>';
+                
+                document.getElementById('profileEducation').innerHTML = educationHtml;
+                
+                // Research Interests
+                document.getElementById('profileInterests').textContent = document.getElementById('pgInterests').value;
+                
+                // Research Experience
+                const researchItems = [];
+                const researchEntries = document.querySelectorAll('.research-entry');
+                
+                researchEntries.forEach((entry, index) => {
+                    const title = entry.querySelector(`#researchTitle${index}`).value;
+                    const institution = entry.querySelector(`#researchInstitution${index}`).value;
+                    const start = entry.querySelector(`#researchStart${index}`).value;
+                    const end = entry.querySelector(`#researchEnd${index}`).value || 'Present';
+                    const advisor = entry.querySelector(`#researchAdvisor${index}`).value;
+                    const description = entry.querySelector(`#researchDescription${index}`).value;
+                    
+                    const bullets = description.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('');
+                    
+                    let researchHtml = `<h3>${title}</h3><div class="research-details"><span class="institution">${institution}</span><span class="date">${formatDate(start)} - ${end === 'Present' ? 'Present' : formatDate(end)}</span></div>`;
+                    
+                    if (advisor) researchHtml += `<div class="advisor">Advisor: ${advisor}</div>`;
+                    if (bullets) researchHtml += `<ul class="research-description">${bullets}</ul>`;
+                    
+                    researchItems.push(`<div class="research-item">${researchHtml}</div>`);
+                });
+                
+                document.getElementById('profileResearch').innerHTML = researchItems.join('') || '<p>No research experience listed</p>';
+                
+                // Academic Projects
+                const projectItems = [];
+                const projectEntries = document.querySelectorAll('.project-entry');
+                
+                projectEntries.forEach((entry, index) => {
+                    const title = entry.querySelector(`#projectTitle${index}`).value;
+                    const course = entry.querySelector(`#projectCourse${index}`).value;
+                    const date = entry.querySelector(`#projectDate${index}`).value;
+                    const description = entry.querySelector(`#projectDescription${index}`).value;
+                    
+                    const bullets = description.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('');
+                    
+                    let projectHtml = `<h3>${title}</h3><div class="project-details">`;
+                    
+                    if (course) projectHtml += `<span class="course">${course}</span>`;
+                    if (date) projectHtml += `<span class="date">${formatDate(date)}</span>`;
+                    
+                    projectHtml += `</div><ul class="project-description">${bullets}</ul>`;
+                    
+                    projectItems.push(`<div class="project-item">${projectHtml}</div>`);
+                });
+                
+                document.getElementById('profileProjects').innerHTML = projectItems.join('') || '<p>No academic projects listed</p>';
+                
+                // Publications
+                const publications = document.getElementById('pgPublications').value;
+                document.getElementById('profilePublications').innerHTML = publications.split('\n').filter(line => line.trim()).map(line => `<p>${line.trim()}</p>`).join('') || '<p>No publications listed</p>';
+                
+                // Awards
+                const awards = document.getElementById('pgAwards').value;
+                document.getElementById('profileAwards').innerHTML = awards.split('\n').filter(line => line.trim()).map(line => `<p>${line.trim()}</p>`).join('') || '<p>No honors or awards listed</p>';
+                
+                // Career Goals
+                document.getElementById('profileGoals').textContent = document.getElementById('pgGoals').value;
+                
+                // Enable download button
+                document.getElementById('downloadProfile').disabled = false;
+                
+                // Scroll to preview
+                document.getElementById('profileOutput').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Quotes Carousel
+            const quoteCards = document.querySelectorAll('.quote-card');
+            const dots = document.querySelectorAll('.carousel-dots .dot');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            let currentIndex = 0;
+            let autoSlideInterval;
+            
+            function showQuote(index) {
+                // Wrap around if at beginning or end
+                if (index >= quoteCards.length) index = 0;
+                if (index < 0) index = quoteCards.length - 1;
+                
+                // Hide all quotes
+                quoteCards.forEach(card => card.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Show selected quote
+                quoteCards[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+            function nextQuote() {
+                showQuote(currentIndex + 1);
+            }
+            
+            function prevQuote() {
+                showQuote(currentIndex - 1);
+            }
+            
+            // Button event listeners
+            if (nextBtn && prevBtn) {
+                nextBtn.addEventListener('click', nextQuote);
+                prevBtn.addEventListener('click', prevQuote);
+            }
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showQuote(index));
+            });
+            
+            // Auto-advance quotes
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextQuote, 8000);
+            }
+            
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+            
+            // Start auto slide when carousel is in view
+            const carouselObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    startAutoSlide();
+                } else {
+                    stopAutoSlide();
+                }
+            }, { threshold: 0.5 });
+            
+            if (document.querySelector('.quotes-carousel')) {
+                carouselObserver.observe(document.querySelector('.quotes-carousel'));
+            }
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextQuote();
+                    stopAutoSlide();
+                    startAutoSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevQuote();
+                    stopAutoSlide();
+                    startAutoSlide();
+                }
+            });
+            
+            // Project Tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // HR Contacts Filter
+            const industryFilter = document.getElementById('industryFilter');
+            const locationFilter = document.getElementById('locationFilter');
+            const contactCards = document.querySelectorAll('.contact-card');
+            
+            function filterContacts() {
+                const industryValue = industryFilter.value;
+                const locationValue = locationFilter.value;
+                
+                contactCards.forEach(card => {
+                    const cardIndustry = card.getAttribute('data-industry');
+                    const cardLocation = card.getAttribute('data-location');
+                    
+                    const industryMatch = !industryValue || cardIndustry === industryValue;
+                    const locationMatch = !locationValue || cardLocation === locationValue;
+                    
+                    if (industryMatch && locationMatch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (industryFilter && locationFilter) {
+                industryFilter.addEventListener('change', filterContacts);
+                locationFilter.addEventListener('change', filterContacts);
+            }
+            
+            // Search functionality for HR contacts
+            const searchBox = document.querySelector('.search-box input');
+            if (searchBox) {
+                searchBox.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    
+                    contactCards.forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+            
+            // Launch countdown timer
+            function updateCountdown() {
+                const launchDate = new Date();
+                launchDate.setDate(launchDate.getDate() + 45); // 45 days from now
+                
+                const now = new Date();
+                const diff = launchDate - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+            }
+            
+            if (document.getElementById('launchCountdown')) {
+                updateCountdown();
+                setInterval(updateCountdown, 60000); // Update every minute
+            }
+            
+            // Download buttons (placeholder functionality)
+            document.getElementById('downloadResume')?.addEventListener('click', () => {
+                alert('In a full implementation, this would generate a PDF of your resume.');
+            });
+            
+            document.getElementById('printResume')?.addEventListener('click', () => {
+                window.print();
+            });
+            
+            document.getElementById('downloadProfile')?.addEventListener('click', () => {
+                alert('In a full implementation, this would generate a PDF of your academic profile.');
+            });
+            
+            // Analyze resume button
+            document.getElementById('analyzeResume')?.addEventListener('click', () => {
+                alert('This feature would analyze your resume against job descriptions and provide improvement suggestions.');
+            });
+            
+            // SOP generator button
+            document.getElementById('sopGenerator')?.addEventListener('click', () => {
+                alert('This feature would help you generate a statement of purpose based on your academic profile.');
+            });
+            
+            // Notify me buttons
+            document.querySelectorAll('.notify-form button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const email = this.parentElement.querySelector('input').value;
+                    if (email && email.includes('@')) {
+                        alert(`Thank you! We'll notify you at ${email} when this feature is available.`);
+                        this.parentElement.querySelector('input').value = '';
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            });
+            
+            // Save buttons
+            document.querySelectorAll('.save-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.innerHTML = '<i class="fas fa-check"></i> Saved';
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="far fa-bookmark"></i> Save';
+                    }, 2000);
+                });
+            });
+            
+            // Contact buttons
+            document.querySelectorAll('.contact-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.contact-card');
+                    const name = card.querySelector('h4').textContent;
+                    alert(`This would open a message form to contact ${name}.`);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
